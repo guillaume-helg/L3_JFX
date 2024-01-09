@@ -46,4 +46,5 @@ public class Chaine {
     public void setListeElementSortie(HashMap<Element, Integer> listeElementSortie) {
         this.listeElementSortie = listeElementSortie;
     }
+
 }

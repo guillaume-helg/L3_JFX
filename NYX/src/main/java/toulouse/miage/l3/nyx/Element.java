@@ -2,6 +2,8 @@ package toulouse.miage.l3.nyx;
 
 public class Element {
     private String code;
+    private String nom;
+    private char uniteMesure;
     private Double prixAchat;
     private Double prixVente;
     private int quantite;
