@@ -1,4 +1,6 @@
-package toulouse.miage.l3.nyx;
+package toulouse.miage.l3.nyx.core.service;
+
+import toulouse.miage.l3.nyx.core.model.Element;
 
 import java.util.ArrayList;
 

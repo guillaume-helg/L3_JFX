@@ -1,4 +1,4 @@
-package toulouse.miage.l3.nyx;
+package toulouse.miage.l3.nyx.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

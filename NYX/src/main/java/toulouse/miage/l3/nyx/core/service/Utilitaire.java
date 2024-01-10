@@ -1,4 +1,7 @@
-package toulouse.miage.l3.nyx;
+package toulouse.miage.l3.nyx.core.service;
+
+import toulouse.miage.l3.nyx.core.model.Chaine;
+import toulouse.miage.l3.nyx.core.model.Element;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -12,6 +15,9 @@ public class Utilitaire {
         return elements.size();
     }
 
+    /**
+     *
+     */
     public static void lireElements() {
         String nomFichier = "./elements.csv";
         String ligne;

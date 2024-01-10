@@ -1,4 +1,4 @@
-package toulouse.miage.l3.nyx;
+package toulouse.miage.l3.nyx.core.model;
 
 public class Element {
     private String code;

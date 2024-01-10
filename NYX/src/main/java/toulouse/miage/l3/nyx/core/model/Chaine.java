@@ -1,9 +1,12 @@
-package toulouse.miage.l3.nyx;
+package toulouse.miage.l3.nyx.core.model;
 import java.util.HashMap;
 
 public class Chaine {
 
+    /** code de la chaine de production */
     private String code;
+
+    /** nom de la chaine de production */
     private String nom;
     private HashMap<Element, Integer> listeElementEntree;
     private HashMap<Element, Integer> listeElementSortie;
@@ -46,5 +49,4 @@ public class Chaine {
     public void setListeElementSortie(HashMap<Element, Integer> listeElementSortie) {
         this.listeElementSortie = listeElementSortie;
     }
-
 }
