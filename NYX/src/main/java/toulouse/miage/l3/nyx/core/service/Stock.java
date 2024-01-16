@@ -14,6 +14,4 @@ public class Stock {
     public void ajouterElement(Element e) {
         this.elements.add(e);
     }
-
-
 }

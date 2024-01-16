@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69f875e4-5928-4d0d-af0a-ad67a070a351" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/toulouse/miage/l3/nyx/style/nyx.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/toulouse/miage/l3/nyx/view/hello-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/Chaine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/controllers/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/Utilitaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/Utilitaire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/toulouse/miage/l3/nyx/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/core/model/Commande.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/core/model/Commande.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/core/service/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/toulouse/miage/l3/nyx/core/service/Stock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/toulouse/miage/l3/nyx/style/nyx.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/toulouse/miage/l3/nyx/style/nyx.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/toulouse/miage/l3/nyx/view/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/toulouse/miage/l3/nyx/view/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,26 +38,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "JUnit.toulouse.miage.l3.nyx in NYX.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/GuillaumeHelg/Documents/Project/NYX_Project/NYX/src/main/resources/toulouse/miage/l3/nyx/images",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.toulouse.miage.l3.nyx in NYX.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/GuillaumeHelg/Documents/Project/NYX_Project/NYX/src/main/resources/toulouse/miage/l3/nyx/images&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\GuillaumeHelg\Documents\Project\NYX_Project\NYX\src\main\resources\toulouse\miage\l3\nyx\images" />
@@ -130,7 +127,12 @@
       <workItem from="1704790809251" duration="1327000" />
       <workItem from="1704888051645" duration="592000" />
       <workItem from="1704888667617" duration="545000" />
-      <workItem from="1704914753469" duration="5600000" />
+      <workItem from="1704914753469" duration="6472000" />
+      <workItem from="1704973133308" duration="239000" />
+      <workItem from="1704974138027" duration="1232000" />
+      <workItem from="1704998459812" duration="1312000" />
+      <workItem from="1705302560625" duration="101000" />
+      <workItem from="1705313759808" duration="45000" />
     </task>
     <servers />
   </component>

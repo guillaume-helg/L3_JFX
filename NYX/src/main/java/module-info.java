@@ -1,6 +1,7 @@
 module toulouse.miage.l3.nyx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens toulouse.miage.l3.nyx to javafx.fxml;

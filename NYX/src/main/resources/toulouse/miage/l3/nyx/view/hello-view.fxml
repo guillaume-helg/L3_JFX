@@ -11,7 +11,7 @@
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
-   <AnchorPane prefHeight="1080" prefWidth="1920">
+   <AnchorPane>
       <children>
          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="FFFFFF" height="182.0" layoutY="-1.0" strokeType="INSIDE" width="1940.0" />
          <Button contentDisplay="CENTER" layoutX="473.0" layoutY="78.0" mnemonicParsing="false" text="Accueil">
@@ -41,6 +41,7 @@
            </columns>
          </TableView>
          <Button layoutX="1499.0" layoutY="759.0" mnemonicParsing="false" text="Commander" />
+         <ChoiceBox layoutX="345.0" layoutY="156.0" prefWidth="150.0" styleClass="ch" />
       </children></AnchorPane>
   <Button onAction="#onHelloButtonClick" text="Hello!" />
 </VBox>
