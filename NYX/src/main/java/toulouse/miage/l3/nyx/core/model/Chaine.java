@@ -8,10 +8,10 @@ public class Chaine {
 
     /** nom de la chaine de production */
     private String nom;
-    private HashMap<Element, Integer> listeElementEntree;
-    private HashMap<Element, Integer> listeElementSortie;
+    private HashMap<Element, Double> listeElementEntree;
+    private HashMap<Element, Double> listeElementSortie;
 
-    public Chaine(String code, String nom, HashMap<Element, Integer> listeElementEntree, HashMap<Element, Integer> listeElementSortie) {
+    public Chaine(String code, String nom, HashMap<Element, Double> listeElementEntree, HashMap<Element, Double> listeElementSortie) {
         this.code = code;
         this.nom = nom;
         this.listeElementEntree = listeElementEntree;
@@ -32,21 +32,5 @@ public class Chaine {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public HashMap<Element, Integer> getListeElementEntree() {
-        return listeElementEntree;
-    }
-
-    public void setListeElementEntree(HashMap<Element, Integer> listeElementEntree) {
-        this.listeElementEntree = listeElementEntree;
-    }
-
-    public HashMap<Element, Integer> getListeElementSortie() {
-        return listeElementSortie;
-    }
-
-    public void setListeElementSortie(HashMap<Element, Integer> listeElementSortie) {
-        this.listeElementSortie = listeElementSortie;
     }
 }
