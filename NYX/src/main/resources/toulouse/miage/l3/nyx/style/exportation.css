@@ -1,0 +1,20 @@
+* {
+    -fx-font-size: 24px;
+    -fx-font-family: Inter;
+}
+
+.btn {
+    -fx-background-color: white;
+    -fx-font-size: 24px;
+    -fx-font-family: Inter;
+    -fx-background-color: #FFFFFF;
+}
+
+.ch {
+    -fx-background-color: red;
+}
+
+.table {
+    -fx-start-margin: auto;
+    -fx-end-margin: auto;
+}

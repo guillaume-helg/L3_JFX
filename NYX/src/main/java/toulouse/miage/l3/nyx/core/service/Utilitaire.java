@@ -9,37 +9,32 @@ import java.util.HashMap;
 
 public class Utilitaire {
 
-    private static ArrayList<Element> elements;
-
-
-    public static int compterElements(Element e) {
-        return elements.size();
-    }
-
     /**
-     * @return
+     * Read every line of a file of element, parse these lines into Element,
+     * and add them to an ArrayList
+     * @return a table of elements
      */
-    public static ArrayList<Element> lireElements() {
-        String nomFichier = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
-        String ligne;
+    public static ArrayList<Element> readElement() {
+        String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
+        String line;
         ArrayList<Element> element = new ArrayList<>();
 
         try {
-            BufferedReader fichier = new BufferedReader(new FileReader(nomFichier));
+            BufferedReader file = new BufferedReader(new FileReader(fileName));
 
-            while ((ligne = fichier.readLine()) != null) {
-                element.add(convertirLigneEnElement(ligne));
+            while ((line = file.readLine()) != null) {
+                element.add(parseElement(line));
             }
 
-            fichier.close();
+            file.close();
         } catch (IOException ex) {
-            System.out.println("Problème d'accès fichier");
+            System.out.println("Acces problem");
         }
         return element;
     }
 
-    private static Element convertirLigneEnElement(String ligne) {
-        String[] l = ligne.split(";");
+    private static Element parseElement(String line) {
+        String[] l = line.split(";");
         return new Element(l[0], l[1], Double.parseDouble(l[2]), l[3], Double.parseDouble(l[4]), Double.parseDouble(l[5]));
     }
 
@@ -94,6 +89,11 @@ public class Utilitaire {
         return new Chaine(code, nom, listeElementEntree, listeElementSortie);
     }
 
+    /**
+     * TODO : Changer la génération de l'élément en ajoutant l'élément qui possède le même code et qui est déjà charger dans l'observable list
+     * @param input
+     * @return
+     */
     private static HashMap<Element, Double> parseElementList(String input) {
         HashMap<Element, Double> elementMap = new HashMap<>();
         String[] elements = input.split(",");
