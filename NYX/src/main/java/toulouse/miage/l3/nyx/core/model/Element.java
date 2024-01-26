@@ -1,19 +1,27 @@
 package toulouse.miage.l3.nyx.core.model;
-
+//Code;Nom;Quantite;unite;achat;vente
 public class Element {
     private String code;
     private String nom;
-    private char uniteMesure;
+    private Double quantite;
+    private String uniteMesure;
     private Double prixAchat;
     private Double prixVente;
-    private int quantite;
 
-    public Element(String code, Double prixAchat, Double prixVente, int quantite) {
+    public Element(String code, String nom, Double quantite, String uniteMesure, Double prixAchat, Double prixVente) {
         this.code = code;
+        this.uniteMesure = uniteMesure;
         this.prixAchat = prixAchat;
         this.prixVente = prixVente;
         this.quantite = quantite;
+        this.nom = nom;
     }
+
+    public Element(String code) {
+        this.code = code;
+    }
+
+
 
     public String getCode() {
         return code;
@@ -35,11 +43,4 @@ public class Element {
         this.prixVente = prixVente;
     }
 
-    public int getQuantite() {
-        return quantite;
-    }
-
-    public void setQuantite(int quantite) {
-        this.quantite = quantite;
-    }
 }

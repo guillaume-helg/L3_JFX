@@ -1,5 +1,6 @@
 package toulouse.miage.l3.nyx.core.model;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Chaine {
 
@@ -8,14 +9,18 @@ public class Chaine {
 
     /** nom de la chaine de production */
     private String nom;
-    private HashMap<Element, Integer> listeElementEntree;
-    private HashMap<Element, Integer> listeElementSortie;
+    private HashMap<Element, Double> listeElementEntree;
+    private HashMap<Element, Double> listeElementSortie;
+    private String listeElementEntrees;
+    private String liseElementSorties;
 
-    public Chaine(String code, String nom, HashMap<Element, Integer> listeElementEntree, HashMap<Element, Integer> listeElementSortie) {
+    public Chaine(String code, String nom, HashMap<Element, Double> listeElementEntree, HashMap<Element, Double> listeElementSortie) {
         this.code = code;
         this.nom = nom;
         this.listeElementEntree = listeElementEntree;
         this.listeElementSortie = listeElementSortie;
+        this.listeElementEntrees = getFormattedListeEntree();
+        this.liseElementSorties = getFormattedListeSortie();
     }
 
     public String getCode() {
@@ -34,19 +39,35 @@ public class Chaine {
         this.nom = nom;
     }
 
-    public HashMap<Element, Integer> getListeElementEntree() {
-        return listeElementEntree;
+    public String getFormattedListeEntree() {
+        StringBuilder str = new StringBuilder();
+        for (Map.Entry<Element, Double> entry : listeElementEntree.entrySet()) {
+            str.append(entry.getKey().getCode());
+            str.append(" * ");
+            str.append(entry.getValue());
+            str.append(", ");
+        }
+        str.setLength(str.length() - 2);
+        return str.toString();
     }
 
-    public void setListeElementEntree(HashMap<Element, Integer> listeElementEntree) {
-        this.listeElementEntree = listeElementEntree;
+    public String getFormattedListeSortie() {
+        StringBuilder str = new StringBuilder();
+        for (Map.Entry<Element, Double> entry : listeElementSortie.entrySet()) {
+            str.append(entry.getKey().getCode());
+            str.append(" * ");
+            str.append(entry.getValue());
+            str.append(", ");
+        }
+        str.setLength(str.length() - 2);
+        return str.toString();
     }
 
-    public HashMap<Element, Integer> getListeElementSortie() {
-        return listeElementSortie;
+    public String getListeElementEntree() {
+        return getFormattedListeEntree();
     }
 
-    public void setListeElementSortie(HashMap<Element, Integer> listeElementSortie) {
-        this.listeElementSortie = listeElementSortie;
+    public String getListeElementSortie() {
+        return getFormattedListeSortie();
     }
 }
