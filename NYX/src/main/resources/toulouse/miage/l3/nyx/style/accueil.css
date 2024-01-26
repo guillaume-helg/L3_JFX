@@ -7,6 +7,7 @@ Button {
     -fx-background-color: white;
     -fx-font-size: 24px;
     -fx-font-family: Inter;
+    -fx-border-radius: 20px;
 }
 
 .table-view {
@@ -29,4 +30,12 @@ Button {
     -fx-pref-width: -1;
     -fx-min-width: -1;
     -fx-max-width: -1;
+}
+
+.ImageView {
+    -fx-border-radius: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+
 }

@@ -30,8 +30,7 @@ public class CustomNumericTableCell extends TableCell<Chaine, Integer> {
                 cancelEdit();
             }
         });
-
-        setGraphic((Node) createGraphic());
+        setGraphic(createGraphic());
     }
 
     private void incrementValue() {
@@ -46,7 +45,7 @@ public class CustomNumericTableCell extends TableCell<Chaine, Integer> {
         commitEdit(currentValue - 1);
     }
 
-    private HBox createGraphic() {
+    public Node createGraphic() {
         HBox graphic = new HBox(addButton, subtractButton, inputField);
         graphic.setSpacing(5);
         graphic.setAlignment(Pos.CENTER);

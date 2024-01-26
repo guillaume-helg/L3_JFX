@@ -35,8 +35,8 @@ public class Main extends Application {
             scene.getStylesheets().add(css);
             stage.setTitle("NYX");
             stage.setScene(scene);
-            stage.setMinHeight(400);
-            stage.setMinWidth(600);
+            stage.setMinHeight(300);
+            stage.setMinWidth(500);
             stage.show();
             chargerElements();
             chargerChaines();

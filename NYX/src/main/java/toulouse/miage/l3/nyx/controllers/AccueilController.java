@@ -38,7 +38,9 @@ public class AccueilController implements Initializable {
     private Parent root;
 
 
-
+    /**
+     * Display the content of listesChaines in the tableview
+     */
     public void displayTableView() {
         chaineCode.setCellValueFactory(new PropertyValueFactory<>("code"));
         chaineNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -46,7 +48,7 @@ public class AccueilController implements Initializable {
         chaineSortie.setCellValueFactory(new PropertyValueFactory<>("listeElementSortie"));
         // TODO : voir pour faire 2 buttons avec un input
         //qte.setCellFactory(NumericComboBoxTableCell.forTableColumn(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
-        qte.setCellFactory(CustomNumericTableCell::new);;
+        qte.setCellValueFactory(new PropertyValueFactory<>("CustomNumericTableCell"));
         chaineTableView.setItems(listesChaines);
     }
 
@@ -60,6 +62,8 @@ public class AccueilController implements Initializable {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml")));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/resultat.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
     }
