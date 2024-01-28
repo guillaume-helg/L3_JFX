@@ -17,6 +17,7 @@ public class ResultatController {
     private Parent root;
 
 
+
     public void goToAccueil(javafx.event.ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

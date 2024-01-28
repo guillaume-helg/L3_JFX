@@ -4,14 +4,17 @@ import java.util.Map;
 
 public class Chaine {
 
-    /** code de la chaine de production */
+    /** code of chaine */
     private String code;
-
-    /** nom de la chaine de production */
+    /** name of the chain */
     private String nom;
+    /** list of each element and his quantity needed by the chaine to create something */
     private HashMap<Element, Double> listeElementEntree;
+    /** list of each element we make by using this chaine */
     private HashMap<Element, Double> listeElementSortie;
+    /** toString of the Hashmap listeElementEntree */
     private String listeElementEntrees;
+    /** toString of the Hashmap listeElementSortie */
     private String liseElementSorties;
 
     public Chaine(String code, String nom, HashMap<Element, Double> listeElementEntree, HashMap<Element, Double> listeElementSortie) {
@@ -69,5 +72,10 @@ public class Chaine {
 
     public String getListeElementSortie() {
         return getFormattedListeSortie();
+    }
+
+    public String toString() {
+        String str = this.code + "\n" + this.nom + "\n" + this.getFormattedListeEntree() + "\n" + this.getFormattedListeSortie();
+        return str;
     }
 }

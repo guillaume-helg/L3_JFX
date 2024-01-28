@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Element;
+import toulouse.miage.l3.nyx.core.model.Usine;
 
 import java.awt.*;
 import java.io.IOException;
@@ -18,14 +19,7 @@ import static toulouse.miage.l3.nyx.core.service.Utilitaire.lireChaine;
 import static toulouse.miage.l3.nyx.core.service.Utilitaire.readElement;
 
 public class Main extends Application {
-    public static ObservableList<Chaine> listesChaines = FXCollections.observableArrayList();
-    public static ObservableList<Element> listesElements = FXCollections.observableArrayList();
-    public void chargerChaines() {
-        listesChaines.addAll(lireChaine());
-    }
-    public void chargerElements() {
-        listesElements.addAll(readElement());
-    }
+
     @Override
     public void start(Stage stage) {
         try {
@@ -38,8 +32,9 @@ public class Main extends Application {
             stage.setMinHeight(300);
             stage.setMinWidth(500);
             stage.show();
-            chargerElements();
-            chargerChaines();
+            Usine u = new Usine();
+            u.chargerElements();
+            u.chargerChaines();
         } catch (IOException e) {
             e.printStackTrace();
         }

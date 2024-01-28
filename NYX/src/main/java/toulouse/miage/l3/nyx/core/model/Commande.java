@@ -6,6 +6,8 @@ public class Commande {
     private double prixVente;
     private double quantite;
 
+    public String qtt;
+
     public Commande(String code, double prixAchat, double prixVente, double quantite) {
         this.code = code;
         this.prixAchat = prixAchat;
