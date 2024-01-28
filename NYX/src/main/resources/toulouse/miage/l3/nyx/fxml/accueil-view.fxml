@@ -38,11 +38,11 @@
                <children>
                   <TableView fx:id="chaineTableView" fixedCellSize="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="458.0" prefWidth="1649.0" styleClass="table-view">
                     <columns>
-                      <TableColumn fx:id="chaineCode" prefWidth="75.0" styleClass="table-column" text="Code" />
-                      <TableColumn fx:id="chaineNom" prefWidth="75.0" styleClass="table-column" text="Nom" />
-                      <TableColumn fx:id="chaineEntree" minWidth="100.0" prefWidth="248.20001220703125" styleClass="table-column" text="Liste des éléments en entrée" />
+                      <TableColumn fx:id="chaineCode" prefWidth="25.0" styleClass="table-column" text="Code" />
+                      <TableColumn fx:id="chaineNom" prefWidth="25.0" styleClass="table-column" text="Nom" />
+                      <TableColumn fx:id="chaineEntree" minWidth="250.0" prefWidth="248.20001220703125" styleClass="table-column" text="Liste des éléments en entrée" />
                       <TableColumn fx:id="chaineSortie" prefWidth="248.20001220703125" styleClass="table-column" text="Liste des éléments en sortie" />
-                        <TableColumn fx:id="qte" prefWidth="248.20001220703125" styleClass="table-column" text="Qte" />
+                      <TableColumn fx:id="qte" prefWidth="248.20001220703125" styleClass="table-column" text="Qte" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -57,23 +57,23 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="77.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
-               <image >
+               <image>
                   <Image url="@../image/logo.png" />
                </image>
             </ImageView>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="Accueil" />
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="105.0" text="Accueil" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Inventaire" />
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="107.0" text="Inventaire" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="241.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="205.0" text="Chaine de production" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="205.0" text="Chaine de production" />
                </children>
             </VBox>
          </children>
