@@ -6,6 +6,9 @@ import toulouse.miage.l3.nyx.core.model.Element;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import static toulouse.miage.l3.nyx.core.model.Usine.listesElements;
 
 public class Utilitaire {
 
@@ -41,7 +44,7 @@ public class Utilitaire {
     /**
      *
      */
-    public static void ecritureElement(Element[] e) {
+    public static void writeElement(Element[] e) {
         String nomFichier = "element.csv";
         try {
             PrintWriter fichier = new PrintWriter(new FileWriter(nomFichier));
@@ -56,7 +59,7 @@ public class Utilitaire {
         }
     }
 
-    public static ArrayList<Chaine> lireChaine() {
+    public static ArrayList<Chaine> readChaine() {
         String nomFichier = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv";
         String ligne;
         ArrayList<Chaine> chaines = new ArrayList<>();
@@ -90,7 +93,7 @@ public class Utilitaire {
     }
 
     /**
-     * TODO : Changer la génération de l'élément en ajoutant l'élément qui possède le même code et qui est déjà charger dans l'observable list
+     *
      * @param input
      * @return
      */
@@ -98,16 +101,32 @@ public class Utilitaire {
         HashMap<Element, Double> elementMap = new HashMap<>();
         String[] elements = input.split(",");
 
-        for (int i = 0; i < elements.length; i+=2) {
-            Element e = new Element(elements[i].replaceAll("[(]", ""));
-            Double value = Double.parseDouble(elements[i+1].replaceAll("[)]", ""));
-            elementMap.put(e, value);
+        for (int i = 0; i < elements.length; i += 2) {
+            String code = elements[i].replaceAll("[(]", "");
+            Double value = Double.parseDouble(elements[i + 1].replaceAll("[)]", ""));
+
+            Element existingElement = findElementByCode(listesElements, code);
+
+            if (existingElement != null) {
+                elementMap.put(existingElement, value);
+            } else {
+                System.err.println("erreur element pas existant");
+            }
         }
         return elementMap;
     }
 
+    private static Element findElementByCode(List<Element> elements, String code) {
+        for (Element element : elements) {
+            if (element.getCode().equals(code)) {
+                return element;
+            }
+        }
+        return null;
+    }
 
-    public static void ecrireChaine(Chaine[] c) {
+
+    public static void writeChaine(Chaine[] c) {
         String nomFichier = "element.csv";
         try {
             PrintWriter fichier = new PrintWriter(new FileWriter(nomFichier));

@@ -4,9 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.HashMap;
-import java.util.Map;
 
-import static toulouse.miage.l3.nyx.core.service.Utilitaire.lireChaine;
+import static toulouse.miage.l3.nyx.core.service.Utilitaire.readChaine;
 import static toulouse.miage.l3.nyx.core.service.Utilitaire.readElement;
 
 public class Usine {
@@ -20,7 +19,7 @@ public class Usine {
 
     public static HashMap<Chaine, Integer> listeCommande = new HashMap<>();
     public void chargerChaines() {
-        listesChaines.addAll(lireChaine());
+        listesChaines.addAll(readChaine());
     }
     public void chargerElements() {
         listesElements.addAll(readElement());

@@ -1,5 +1,4 @@
 package toulouse.miage.l3.nyx.core.model;
-//Code;Nom;Quantite;unite;achat;vente
 public class Element {
     private String code;
     private String nom;
@@ -16,12 +15,6 @@ public class Element {
         this.quantite = quantite;
         this.nom = nom;
     }
-
-    public Element(String code) {
-        this.code = code;
-    }
-
-
 
     public String getCode() {
         return code;
