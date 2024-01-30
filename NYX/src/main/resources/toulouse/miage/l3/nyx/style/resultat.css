@@ -8,6 +8,8 @@ Button {
     -fx-font-size: 24px;
     -fx-font-family: Inter;
     -fx-background-color: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-fill-width: content;
 }
 
 .ch {
