@@ -72,10 +72,10 @@ public class AccueilController implements Initializable {
                                     "-fx-alignment: center;"
                         );
 
-                        add.setStyle("-fx-cursor: hand;" + "-glyph-size:28px;" + "-fx-fill:#ff1744;"
+                        add.setStyle("-fx-cursor: hand;" + "-glyph-size:28px;" + "-fx-fill:#ff1744;"+ "-fx-border-radius: 50px;"
                         );
 
-                        less.setStyle(" -fx-cursor: hand ;" + "-glyph-size:28px;" + "-fx-fill:#00E676;"
+                        less.setStyle(" -fx-cursor: hand ;" + "-glyph-size:28px;" + "-fx-fill:#00E676;" + "-fx-border-radius: 50px;"
                         );
 
                         tf.setEditable(true);
@@ -112,7 +112,12 @@ public class AccueilController implements Initializable {
         return chaineQuantities;
     }
 
-    public void switchToScene2(ActionEvent actionEvent) throws IOException {
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void goToResultat(ActionEvent actionEvent) throws IOException {
         listeCommande = getChaineQuantities();
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml")));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -124,9 +129,37 @@ public class AccueilController implements Initializable {
         afficherListeCommande();
     }
 
+    /**
+     *
+     * @param actionEvent
+     */
+    public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml")));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/chaineproduction.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     *
+     * @param actionEvent
+     */
+    public void goToInventaire(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml")));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/inventaire.css").toExternalForm();
+        scene.getStylesheets().add(css);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void afficherListeCommande() {
         for (Map.Entry<Chaine, Integer> entry : listeCommande.entrySet()) {
-            System.out.println("Clé : " + entry.getKey() + ", Valeur : " + entry.getValue());
+            System.out.println("Clé : " + entry.getKey() + "\nValeur : " + entry.getValue());
         }
     }
 }

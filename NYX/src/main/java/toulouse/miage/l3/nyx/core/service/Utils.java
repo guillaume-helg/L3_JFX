@@ -10,7 +10,7 @@ import java.util.List;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.listesElements;
 
-public class Utilitaire {
+public class Utils {
 
     /**
      * Read every line of a file of element, parse these lines into Element,
@@ -36,6 +36,11 @@ public class Utilitaire {
         return element;
     }
 
+    /**
+     *
+     * @param line
+     * @return
+     */
     private static Element parseElement(String line) {
         String[] l = line.split(";");
         return new Element(l[0], l[1], Double.parseDouble(l[2]), l[3], Double.parseDouble(l[4]), Double.parseDouble(l[5]));
@@ -59,6 +64,10 @@ public class Utilitaire {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static ArrayList<Chaine> readChaine() {
         String nomFichier = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv";
         String ligne;
@@ -78,8 +87,11 @@ public class Utilitaire {
         return chaines;
     }
 
-    //Code;Nom;Entree (code,qte);Sortie (code,qte)
-    //
+    /**
+     * Code;Nom;Entree (code,qte);Sortie (code,qte)
+     * @param input
+     * @return
+     */
     public static Chaine parseChaine(String input) {
         String[] parts = input.split(";");
 
@@ -116,6 +128,12 @@ public class Utilitaire {
         return elementMap;
     }
 
+    /**
+     *
+     * @param elements
+     * @param code
+     * @return
+     */
     private static Element findElementByCode(List<Element> elements, String code) {
         for (Element element : elements) {
             if (element.getCode().equals(code)) {
@@ -125,19 +143,22 @@ public class Utilitaire {
         return null;
     }
 
-
+    /**
+     *
+     * @param c
+     */
     public static void writeChaine(Chaine[] c) {
-        String nomFichier = "element.csv";
+        String fileName = "element.csv";
         try {
-            PrintWriter fichier = new PrintWriter(new FileWriter(nomFichier));
+            PrintWriter file = new PrintWriter(new FileWriter(fileName));
 
             for (Chaine a : c) {
-                fichier.println(a);
+                file.println(a);
             }
 
-            fichier.close();
+            file.close();
         } catch (IOException ex) {
-            System.out.println("Problème d'accès au fichier");
+            System.out.println("File access problem");
         }
     }
 }
