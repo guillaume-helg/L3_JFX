@@ -26,7 +26,7 @@ public class Main extends Application {
             stage.show();
             Usine u = new Usine();
             u.chargerElements();
-            u.chargerChaines();
+            u.chargerChaines ();
         } catch (IOException e) {
             e.printStackTrace();
         }

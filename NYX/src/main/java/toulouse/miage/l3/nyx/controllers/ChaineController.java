@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class ResultatController {
+public class ChaineController {
 
     private Stage stage;
     private Scene scene;
