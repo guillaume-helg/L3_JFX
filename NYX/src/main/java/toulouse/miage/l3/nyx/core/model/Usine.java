@@ -21,8 +21,9 @@ public class Usine {
     }
 
     public static ObservableList<Chaine> listesChaines = FXCollections.observableArrayList();
+    public static ObservableList<ChaineCommande> listesChainesCommandes = FXCollections.observableArrayList();
+
     public static ObservableList<Element> listesElements = FXCollections.observableArrayList();
-    public static ObservableList<Commande> listesCommandes = FXCollections.observableArrayList();
     public static ObservableList<Production> listesProductions = FXCollections.observableArrayList();
 
     public static HashMap<Chaine, Integer> listeCommande = new HashMap<>();

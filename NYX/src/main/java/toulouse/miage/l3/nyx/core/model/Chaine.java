@@ -74,6 +74,14 @@ public class Chaine {
         return getFormattedListeSortie();
     }
 
+    public HashMap<Element, Double> getHashlap1() {
+        return this.listeElementEntree;
+    }
+
+    public HashMap<Element, Double> getHashlap2() {
+        return this.listeElementSortie;
+    }
+
     public String toString() {
         String str = this.code + "\n" + this.nom + "\n" + this.getFormattedListeEntree() + "\n" + this.getFormattedListeSortie();
         return str;
