@@ -3,20 +3,44 @@ package toulouse.miage.l3.nyx.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Element;
 
-import javax.swing.text.TableView;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class InventaireController {
+import static toulouse.miage.l3.nyx.core.model.Usine.listesChaines;
+import static toulouse.miage.l3.nyx.core.model.Usine.listesElements;
+
+public class InventaireController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    @FXML
+    private TableView<Element> elementTableView;
+    @FXML
+    private TableColumn<Element, Integer> elementCode;
+    @FXML
+    private TableColumn<Element, String> elementNom;
+    @FXML
+    private TableColumn<Element, String> elementPrixA;
+    @FXML
+    private TableColumn<Element, String> elementPrixV;
+    @FXML
+    private TableColumn<Element, String> qte;
+    @FXML
+    private TableColumn<Element,String> unite;
+
     public void goToAccueil(javafx.event.ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -47,4 +71,14 @@ public class InventaireController {
         stage.show();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        elementCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        elementNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        elementPrixA.setCellValueFactory(new PropertyValueFactory<>("prix achat"));
+        elementPrixV.setCellValueFactory(new PropertyValueFactory<>("prix vente"));
+        qte.setCellValueFactory(new PropertyValueFactory<>("qte"));
+        unite.setCellValueFactory(new PropertyValueFactory<>("unité"));
+        elementTableView.setItems(listesElements);
+    }
 }
