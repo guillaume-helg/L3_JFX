@@ -10,10 +10,10 @@
 }
 
 Button {
-    -fx-background-color: white;
     -fx-font-size: 24px;
     -fx-font-family: Inter;
     -fx-border-radius: 30px;
+
 }
 
 .table-view {
@@ -30,12 +30,20 @@ Button {
 
 }
 
+.btn {
+    cursor: pointer;
+    border: 1px solid #3498db;
+    background-color: rgba(24, 100, 171, 0.1);
+    height: 50px;
+    width: 200px;
+    color: #3498db;
+    font-size: 1.5em;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+}
+
 .table-column {
     -fx-padding: 0.0em;
     -fx-background-color: -fx-table-cell-border-color, -fx-background;
-    -fx-font-size: 2px;
-
-
 
 }
 

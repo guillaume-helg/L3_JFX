@@ -39,10 +39,10 @@ public class ResultatController {
     }
 
     public void goToChaineProduction(javafx.event.ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/chaine-view.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/chaine.css").toExternalForm();
+        String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/chaineproduction.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
