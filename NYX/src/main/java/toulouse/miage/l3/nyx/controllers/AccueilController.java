@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import toulouse.miage.l3.nyx.core.model.Chaine;
+import toulouse.miage.l3.nyx.core.model.ChaineCommande;
 
 import java.io.IOException;
 import java.net.URL;
@@ -108,6 +109,10 @@ public class AccueilController implements Initializable {
         chaineTableView.setItems(listesChaines);
     }
 
+    /**
+     *
+     * @return
+     */
     public HashMap<Chaine, Integer> getChaineQuantities() {
         return chaineQuantities;
     }
@@ -119,6 +124,8 @@ public class AccueilController implements Initializable {
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
         listeCommande = getChaineQuantities();
+        afficherListeCommande();
+        doListCommand();
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml")));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -126,7 +133,6 @@ public class AccueilController implements Initializable {
         scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
-        afficherListeCommande();
     }
 
     /**
@@ -162,4 +168,19 @@ public class AccueilController implements Initializable {
             System.out.println("Clé : " + entry.getKey() + "\nValeur : " + entry.getValue());
         }
     }
+
+    public void doListCommand() {
+        System.out.println("okay");
+        for (Map.Entry<Chaine, Integer> entry : listeCommande.entrySet()) {
+            listesChainesCommandes.add(new ChaineCommande(
+                        entry.getKey().getCode(),
+                        entry.getKey().getNom(),
+                        entry.getKey().getHashlap1(),
+                        entry.getKey().getHashlap2(),
+                        entry.getValue()
+                    ));
+        }
+    }
+
+
 }
