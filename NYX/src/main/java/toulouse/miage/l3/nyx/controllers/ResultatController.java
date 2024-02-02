@@ -14,9 +14,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.ChaineCommande;
+import toulouse.miage.l3.nyx.core.model.Element;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -109,9 +111,5 @@ public class ResultatController implements Initializable {
         chaineSortie.setCellValueFactory(new PropertyValueFactory<>("listeElementSortie"));
         qte.setCellValueFactory(new PropertyValueFactory<>("qte"));
         chaineTableView.setItems(listesChainesCommandes);
-    }
-
-    public boolean isEnoughResource() {
-        return true;
     }
 }

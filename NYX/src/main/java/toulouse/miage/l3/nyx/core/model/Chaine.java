@@ -9,7 +9,7 @@ public class Chaine {
     /** name of the chain */
     private String nom;
     /** list of each element and his quantity needed by the chaine to create something */
-    private HashMap<Element, Double> listeElementEntree;
+    protected HashMap<Element, Double> listeElementEntree;
     /** list of each element we make by using this chaine */
     private HashMap<Element, Double> listeElementSortie;
     /** toString of the Hashmap listeElementEntree */
