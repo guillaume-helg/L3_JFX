@@ -108,14 +108,7 @@ public class AccueilController implements Initializable {
         chaineTableView.setItems(listesChaines);
     }
 
-    /**
-     *
-     * @param actionEvent
-     */
-    public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
-                "/toulouse/miage/l3/nyx/style/chaineproduction.css", actionEvent);
-    }
+
 
     /**
      *
@@ -127,6 +120,15 @@ public class AccueilController implements Initializable {
         doListCommand();
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml",
                 "/toulouse/miage/l3/nyx/style/resultat.css", actionEvent);
+    }
+
+    /**
+     *
+     * @param actionEvent
+     */
+    public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
+                "/toulouse/miage/l3/nyx/style/chaineproduction.css", actionEvent);
     }
 
     /**
