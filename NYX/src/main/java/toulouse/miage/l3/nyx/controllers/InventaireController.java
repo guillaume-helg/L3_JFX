@@ -11,7 +11,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Element;
 
 import java.io.IOException;
@@ -33,13 +32,13 @@ public class InventaireController implements Initializable {
     @FXML
     private TableColumn<Element, String> elementNom;
     @FXML
-    private TableColumn<Element, String> elementPrixA;
+    private TableColumn<Element, Double> elementPrixA;
     @FXML
-    private TableColumn<Element, String> elementPrixV;
+    private TableColumn<Element, Double> elementPrixV;
     @FXML
-    private TableColumn<Element, String> qte;
+    private TableColumn<Element, Double> elementQuantite;
     @FXML
-    private TableColumn<Element,String> unite;
+    private TableColumn<Element,String> elementUnite;
 
     public void goToAccueil(javafx.event.ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml")));
@@ -75,10 +74,10 @@ public class InventaireController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         elementCode.setCellValueFactory(new PropertyValueFactory<>("code"));
         elementNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        elementPrixA.setCellValueFactory(new PropertyValueFactory<>("prix achat"));
-        elementPrixV.setCellValueFactory(new PropertyValueFactory<>("prix vente"));
-        qte.setCellValueFactory(new PropertyValueFactory<>("qte"));
-        unite.setCellValueFactory(new PropertyValueFactory<>("unité"));
+        elementPrixA.setCellValueFactory(new PropertyValueFactory<>("prixAchat"));
+        elementPrixV.setCellValueFactory(new PropertyValueFactory<>("prixVente"));
+        elementQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
+        elementUnite.setCellValueFactory(new PropertyValueFactory<>("uniteMesure"));
         elementTableView.setItems(listesElements);
     }
 }
