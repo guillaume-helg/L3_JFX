@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.ChaineCommande;
 import toulouse.miage.l3.nyx.core.model.Element;
+import toulouse.miage.l3.nyx.core.service.SceneUtils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,46 +49,30 @@ public class ResultatController implements Initializable {
 
     /**
      *
-     * @param event
      * @throws IOException
      */
-    public void goToAccueil(javafx.event.ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/accueil.css").toExternalForm();
-        scene.getStylesheets().add(css);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    /**
-     *
-     * @param event
-     * @throws IOException
-     */
-    public void goToExportation(javafx.event.ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/exportation-view.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/exportation.css").toExternalForm();
-        scene.getStylesheets().add(css);
-        stage.setScene(scene);
-        stage.show();
+    public void goToAccueil(ActionEvent actionEvent) throws IOException {
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml",
+                "/toulouse/miage/l3/nyx/style/accueil.css", actionEvent);
     }
 
     /**
      *
      * @param actionEvent
      */
+    public void goToConfirmation(ActionEvent actionEvent) throws IOException {
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/confirmation-view.fxml",
+                "/toulouse/miage/l3/nyx/style/confirmation.css", actionEvent);
+    }
+
+
+    /**
+     *
+     * @param actionEvent
+     */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml")));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/chaineproduction.css").toExternalForm();
-        scene.getStylesheets().add(css);
-        stage.setScene(scene);
-        stage.show();
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
+                "/toulouse/miage/l3/nyx/style/chaineproduction.css", actionEvent);
     }
 
     /**
@@ -95,13 +80,8 @@ public class ResultatController implements Initializable {
      * @param actionEvent
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml")));
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/inventaire.css").toExternalForm();
-        scene.getStylesheets().add(css);
-        stage.setScene(scene);
-        stage.show();
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",
+                "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
     }
 
     public void initialize(URL location, ResourceBundle resources) {
