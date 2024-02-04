@@ -3,29 +3,25 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: FAFAFA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toulouse.miage.l3.nyx.controllers.ChaineController">
-    <bottom>
-        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" style="-fx-text-fill: black; -fx-background-color:#65C663;" text="Commander" translateX="550.0" BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets top="20.0" />
-            </BorderPane.margin>
-        </Button>
-    </bottom>
+<BorderPane prefHeight="788.0" prefWidth="1318.0" style="-fx-background-color: FAFAFA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toulouse.miage.l3.nyx.controllers.ChaineController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" />
     </padding>
     <top>
-        <HBox alignment="CENTER" prefWidth="1270.0" spacing="120.0" style="-fx-pref-height: 60; -fx-pref-width: 100%; -fx-background-color: white;" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="1607.0" spacing="120.0" style="-fx-pref-height: 60; -fx-pref-width: 100%; -fx-background-color: white;" BorderPane.alignment="CENTER">
             <children>
                 <ImageView fitHeight="77.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true" styleClass="logo" translateX="-100.0">
                     <image>
@@ -65,27 +61,89 @@
         </HBox>
     </top>
    <center>
-          <HBox alignment="CENTER" fillHeight="false" prefHeight="516.0" prefWidth="1258.0" style="-fx-background-color: FAFAFA;" BorderPane.alignment="CENTER">
-              <children>
-                  <TableView fx:id="chaineTableView" fixedCellSize="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="458.0" prefWidth="1649.0" styleClass="table-view" style="-fx-background-color: FFFFFF">
-                      <columns>
-                          <TableColumn fx:id="chaineCode" prefWidth="25.0" styleClass="table-column" text="Code" />
-                          <TableColumn fx:id="chaineNom" prefWidth="25.0" styleClass="table-column" text="Nom" />
-                          <TableColumn fx:id="chaineEntree" minWidth="250.0" prefWidth="248.20001220703125" styleClass="table-column" text="Liste des éléments en entrée" />
-                          <TableColumn fx:id="chaineSortie" prefWidth="248.20001220703125" styleClass="table-column" text="Liste des éléments en sortie" />
-                          <TableColumn fx:id="qte" prefWidth="248.20001220703125" styleClass="table-column" text="Qte" />
-                      </columns>
-                      <columnResizePolicy>
-                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                      </columnResizePolicy>
-               <styleClass>
-                  <String fx:value="table-row-cell" />
-                  <String fx:value="table-view" />
-                  <String fx:value="table-cell" />
-                  <String fx:value="header" />
-               </styleClass>
-                  </TableView>
-              </children>
-          </HBox>
+       <SplitPane dividerPositions="0.8001561280249805" prefHeight="720.0" prefWidth="1283.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="716.0" prefWidth="1143.0" style="-fx-background-color: FFFFFF; -fx-border-color: none;">
+               <children>
+                      <HBox alignment="CENTER" fillHeight="false" focusTraversable="true" layoutX="-1.0" layoutY="-1.0" prefHeight="716.0" prefWidth="1021.0" style="-fx-background-color: FAFAFA; -fx-border-color: transparent;">
+                          <children>
+                              <TableView fx:id="chaineTableView" fixedCellSize="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="2065.0" prefWidth="1593.0" style="-fx-background-color: FFFFFF" styleClass="table-view">
+                                  <columns>
+                                      <TableColumn fx:id="chaineCode" prefWidth="136.0" styleClass="table-column" text="Code" />
+                                      <TableColumn fx:id="chaineNom" prefWidth="212.0" styleClass="table-column" text="Nom" />
+                                      <TableColumn fx:id="chaineEntree" minWidth="250.0" prefWidth="357.0" styleClass="table-column" text="Liste des éléments en entrée" />
+                                      <TableColumn fx:id="chaineSortie" prefWidth="295.0" styleClass="table-column" text="Liste des éléments en sortie" />
+                                  </columns>
+                           <styleClass>
+                              <String fx:value="table-row-cell" />
+                              <String fx:value="table-view" />
+                              <String fx:value="table-cell" />
+                              <String fx:value="header" />
+                           </styleClass>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                              </TableView>
+                          </children>
+                      </HBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane prefHeight="718.0" prefWidth="335.0">
+               <children>
+                   <VBox alignment="TOP_CENTER" layoutX="-2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="229.0">
+                       <children>
+                           <TextField promptText="Code">
+                               <VBox.margin>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" top="40.0" />
+                               </VBox.margin>
+                           </TextField>
+                           <TextField promptText="Nom">
+                               <VBox.margin>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" />
+                               </VBox.margin>
+                           </TextField>
+                           <TextField promptText="Prix d'achat">
+                               <VBox.margin>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" />
+                               </VBox.margin>
+                           </TextField>
+                           <TextField promptText="Prix de vente">
+                               <VBox.margin>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" />
+                               </VBox.margin>
+                           </TextField>
+                           <TextField promptText="Quantité">
+                               <VBox.margin>
+                                   <Insets bottom="10.0" left="10.0" right="10.0" />
+                               </VBox.margin>
+                           </TextField>
+                           <TextField promptText="Unité">
+                               <VBox.margin>
+                                   <Insets bottom="15.0" left="10.0" right="10.0" />
+                               </VBox.margin>
+                           </TextField>
+                           <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-text-fill: black;" text="Ajouter" />
+                           <VBox alignment="CENTER_LEFT">
+                               <children>
+                                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: white; -fx-text-fill: black;" text="Modifier">
+                                       <VBox.margin>
+                                           <Insets bottom="20.0" left="15.0" />
+                                       </VBox.margin>
+                                   </Button>
+                                   <Button mnemonicParsing="false" style="-fx-background-color: white; -fx-text-fill: black;" text="Supprimer">
+                                       <VBox.margin>
+                                           <Insets left="15.0" />
+                                       </VBox.margin>
+                                   </Button>
+                               </children>
+                               <VBox.margin>
+                                   <Insets top="80.0" />
+                               </VBox.margin>
+                           </VBox>
+                       </children>
+                   </VBox>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
    </center>
 </BorderPane>
