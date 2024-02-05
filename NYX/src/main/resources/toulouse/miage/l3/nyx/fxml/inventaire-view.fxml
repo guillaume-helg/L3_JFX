@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toulouse.miage.l3.nyx.controllers.InventaireController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" />
+    </padding>
+    <center>
+        <SplitPane dividerPositions="0.7353" prefHeight="200.0" prefWidth="1646.0" BorderPane.alignment="CENTER">
+            <items>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <TableView fx:id="elementTableView" fixedCellSize="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="458.0" prefWidth="1649.0" styleClass="table-view">
+                            <columns>
+                                <TableColumn fx:id="elementCode" prefWidth="25.0" styleClass="table-column" text="Code" />
+                                <TableColumn fx:id="elementNom" prefWidth="25.0" styleClass="table-column" text="Nom" />
+                                <TableColumn fx:id="elementPrixA" prefWidth="25.0" styleClass="table-column" text="Prix d'achat" />
+                                <TableColumn fx:id="elementPrixV" prefWidth="248.20001220703125" styleClass="table-column" text="Prix de vente" />
+                                <TableColumn fx:id="elementQuantite" prefWidth="248.20001220703125" styleClass="table-column" text="Qte" />
+                                <TableColumn fx:id="elementUnite" minWidth="0.0" prefWidth="0.0" styleClass="table-column" text="Unité" />
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+                    </children>
+                </HBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="ajoutcode" promptText="Code">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="40.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="ajoutnom" promptText="Nom">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="ajoutprixa" promptText="Prix d'achat">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="ajoutprixv" promptText="Prix de vente">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="ajoutqte" promptText="Quantité">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="ajoutunite" promptText="Unité">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" text="Ajouter" onAction="#addElement" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Modifier">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Supprimer">
+                           <VBox.margin>
+                              <Insets left="15.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+            </items>
+        </SplitPane>
+    </center>
+    <top>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="77.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
+                    <image>
+                        <Image url="@../image/logo.png" />
+                    </image>
+                </ImageView>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToAccueil" prefHeight="50.0" prefWidth="105.0" text="Accueil" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Button contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToInventaire" prefHeight="50.0" prefWidth="157.0" text="Inventaire" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="100.0" prefWidth="241.0">
+                    <children>
+                        <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToChaineProduction" prefHeight="50.0" prefWidth="270.0" text="Chaine de production" wrapText="true" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </top>
+</BorderPane>
