@@ -80,7 +80,7 @@
                               <Insets bottom="20.0" left="15.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Supprimer">
+                        <Button mnemonicParsing="false" text="Supprimer" onAction="#delElement">
                            <VBox.margin>
                               <Insets left="15.0" />
                            </VBox.margin>

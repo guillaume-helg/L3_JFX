@@ -16,6 +16,10 @@ public class Element {
         this.nom = nom;
     }
 
+    public Element() {
+
+    }
+
     public String getCode() {
         return code;
     }

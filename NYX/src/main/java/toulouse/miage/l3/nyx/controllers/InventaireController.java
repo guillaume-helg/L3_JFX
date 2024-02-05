@@ -102,7 +102,15 @@ public class InventaireController implements Initializable {
     }
 
     public void delElement(){
-
+        Element e = elementTableView.getSelectionModel().getSelectedItem();
+        String code = e.getCode();
+        for (Element el : listesElements){
+            if (code == el.getCode()){
+                listesElements.remove(el);
+            }
+        }
     }
+
+
 
 }
