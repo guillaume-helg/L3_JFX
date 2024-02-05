@@ -19,6 +19,7 @@ import java.util.ResourceBundle;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.listesChaines;
 import static toulouse.miage.l3.nyx.core.model.Usine.listesElements;
+import static toulouse.miage.l3.nyx.core.service.Utils.writeElement;
 
 public class InventaireController implements Initializable {
     private Stage stage;
@@ -38,6 +39,29 @@ public class InventaireController implements Initializable {
     private TableColumn<Element, Double> elementQuantite;
     @FXML
     private TableColumn<Element, String> elementUnite;
+    @FXML
+    private TextField ajoutcode;
+    @FXML
+    private TextField ajoutnom;
+    @FXML
+    private TextField ajoutprixa;
+    @FXML
+    private TextField ajoutprixv;
+    @FXML
+    private TextField ajoutqte;
+    @FXML
+    private TextField ajoutunite;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        elementCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        elementNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        elementPrixA.setCellValueFactory(new PropertyValueFactory<>("prixAchat"));
+        elementPrixV.setCellValueFactory(new PropertyValueFactory<>("prixVente"));
+        elementQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
+        elementUnite.setCellValueFactory(new PropertyValueFactory<>("uniteMesure"));
+        elementTableView.setItems(listesElements);
+    }
 
     public void goToAccueil(javafx.event.ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml")));
@@ -69,14 +93,16 @@ public class InventaireController implements Initializable {
         stage.show();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        elementCode.setCellValueFactory(new PropertyValueFactory<>("code"));
-        elementNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        elementPrixA.setCellValueFactory(new PropertyValueFactory<>("prixAchat"));
-        elementPrixV.setCellValueFactory(new PropertyValueFactory<>("prixVente"));
-        elementQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
-        elementUnite.setCellValueFactory(new PropertyValueFactory<>("uniteMesure"));
-        elementTableView.setItems(listesElements);
+    public void addElement(){
+        Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
+                Double.parseDouble(ajoutqte.getText()),ajoutunite.getText(),
+                Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
+        listesElements.add(e);
+        writeElement(listesElements.toArray(new Element[0]));
     }
+
+    public void delElement(){
+
+    }
+
 }

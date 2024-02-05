@@ -50,12 +50,13 @@ public class Utils {
      *
      */
     public static void writeElement(Element[] e) {
-        String nomFichier = "element.csv";
+        String nomFichier = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
         try {
             PrintWriter fichier = new PrintWriter(new FileWriter(nomFichier));
 
             for (Element a : e) {
-                fichier.println(a);
+                fichier.println(a.getCode() +";"+ a.getNom() +";"+ a.getQuantite() +";"+ a.getUniteMesure() +";"+
+                        a.getPrixAchat() +";"+ a.getPrixVente());
             }
 
             fichier.close();
@@ -63,6 +64,8 @@ public class Utils {
             System.out.println("Problème d'accès au fichier");
         }
     }
+
+
 
     /**
      *
