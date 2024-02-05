@@ -8,6 +8,9 @@ Button {
     -fx-font-size: 24px;
     -fx-font-family: Inter;
     -fx-border-radius: 20px;
+    -fx-cursor: hand;
+    -fx-wrap-text: true;
+    -fx-padding: 10px;
 }
 
 .table-view {
