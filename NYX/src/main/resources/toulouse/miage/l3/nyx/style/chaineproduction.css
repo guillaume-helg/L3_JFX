@@ -53,8 +53,7 @@ Button {
 }
 
 .table-cell:filled {
-    -fx-background-color: -fx-my-cell-background;
-
+    -fx-background-color: "#FFF";
 }
 
 .table-view:row-selection .table-row-cell:selected .table-cell {
