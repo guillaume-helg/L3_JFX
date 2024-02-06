@@ -1,13 +1,15 @@
 package toulouse.miage.l3.nyx.core.service;
 
+import javafx.scene.control.IndexRange;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Element;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
+import static toulouse.miage.l3.nyx.core.model.Usine.listesChainesCommandes;
 import static toulouse.miage.l3.nyx.core.model.Usine.listesElements;
 
 public class Utils {
@@ -50,12 +52,13 @@ public class Utils {
      *
      */
     public static void writeElement(Element[] e) {
-        String nomFichier = "element.csv";
+        String nomFichier = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
         try {
             PrintWriter fichier = new PrintWriter(new FileWriter(nomFichier));
 
             for (Element a : e) {
-                fichier.println(a);
+                fichier.println(a.getCode() +";"+ a.getNom() +";"+ a.getQuantite() +";"+ a.getUniteMesure() +";"+
+                        a.getPrixAchat() +";"+ a.getPrixVente());
             }
 
             fichier.close();
@@ -63,6 +66,8 @@ public class Utils {
             System.out.println("Problème d'accès au fichier");
         }
     }
+
+
 
     /**
      *
@@ -159,6 +164,35 @@ public class Utils {
             file.close();
         } catch (IOException ex) {
             System.out.println("File access problem");
+        }
+    }
+
+    public static void writeResultInAFile() {
+        LocalDateTime dateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+        String formattedDate = dateTime.format(formatter);
+
+        String nomFichier = "NYX/src/main/resources/toulouse/miage/l3/nyx/export/Commandetest_" + formattedDate + ".txt";
+
+        try {
+            PrintWriter fichier = new PrintWriter(new FileWriter(nomFichier));
+
+            fichier.println("Date de la commande : " + LocalDateTime.now());
+
+            fichier.println("Le resultat des commandes est de : " ); // mettre la valeur du résultat des commandes
+
+            fichier.println("La liste des commandes : \n");
+
+            for (Map.Entry<Chaine, Integer> entry : listesChainesCommandes) {
+                fichier.println("Chaîne : " + entry.getKey().getCode() + " - " + entry.getKey().getNom());
+                fichier.println("Quantité : " + entry.getValue());
+                fichier.println("Liste d'éléments d'entrée : " + entry.getKey().getListeElementEntree());
+                fichier.println("Liste d'éléments de sortie : " + entry.getKey().getListeElementSortie());
+            }
+
+            fichier.close();
+        } catch (IOException ex) {
+            System.out.println("Problème d'accès au fichier");
         }
     }
 }

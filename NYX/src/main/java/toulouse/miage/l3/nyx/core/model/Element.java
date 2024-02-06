@@ -16,6 +16,10 @@ public class Element {
         this.nom = nom;
     }
 
+    public Element() {
+
+    }
+
     public String getCode() {
         return code;
     }
@@ -36,4 +40,19 @@ public class Element {
         this.prixVente = prixVente;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public Double getQuantite() {
+        return quantite;
+    }
+
+    public String getUniteMesure() {
+        return uniteMesure;
+    }
+
+    public void setQuantite(Double quantite) {
+        this.quantite = quantite;
+    }
 }

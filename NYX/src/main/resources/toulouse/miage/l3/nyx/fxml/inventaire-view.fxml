@@ -92,6 +92,60 @@
                         </VBox>
                     </children>
                 </VBox>
+
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="ajoutcode" promptText="Code">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="40.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="ajoutnom" promptText="Nom">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="ajoutprixa" promptText="Prix d'achat">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="ajoutprixv" promptText="Prix de vente">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="ajoutqte" promptText="Quantité">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="ajoutunite" promptText="Unité">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" text="Ajouter" onAction="#addElement" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Modifier">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Supprimer" onAction="#delElement">
+                           <VBox.margin>
+                              <Insets left="15.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+
             </items>
         </SplitPane>
     </center>
@@ -121,4 +175,6 @@
             </children>
         </HBox>
     </top>
+
+
 </BorderPane>
