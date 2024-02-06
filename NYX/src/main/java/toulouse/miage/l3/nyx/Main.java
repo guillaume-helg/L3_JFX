@@ -21,8 +21,8 @@ public class Main extends Application {
             scene.getStylesheets().add(css);
             stage.setTitle("NYX");
             stage.setScene(scene);
-            stage.setMinHeight(300);
-            stage.setMinWidth(500);
+            stage.setHeight(1000);
+            stage.setWidth(1000);
             stage.show();
 
             Usine usine = new Usine();

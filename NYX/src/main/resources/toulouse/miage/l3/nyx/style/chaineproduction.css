@@ -1,16 +1,19 @@
 * {
-    -fx-font-size: 24px;
+    -fx-color: #000;
+
     -fx-font-family: Inter;
+    -fx-font-size: 20px;
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    line-height: normal;
+
 }
 
 Button {
-    -fx-background-color: white;
     -fx-font-size: 24px;
     -fx-font-family: Inter;
-    -fx-border-radius: 20px;
-    -fx-cursor: hand;
-    -fx-wrap-text: true;
-    -fx-padding: 10px;
+    -fx-border-radius: 30px;
+
 }
 
 .table-view {
@@ -19,16 +22,22 @@ Button {
     -fx-background-color: transparent;
     -fx-end-margin: auto;
     -fx-start-margin: auto;
-
+    -fx-border-color: none;
 }
 
 .table-row-cell {
     -fx-padding: 0.0em;
+
 }
+
 
 .table-column {
     -fx-padding: 0.0em;
     -fx-background-color: -fx-table-cell-border-color, -fx-background;
+    -fx-pref-width: -1;
+    -fx-min-width: -1;
+    -fx-max-width: -1;
+
 }
 
 /* Set the column to fit content */
@@ -36,6 +45,7 @@ Button {
     -fx-pref-width: -1;
     -fx-min-width: -1;
     -fx-max-width: -1;
+
 }
 
 .ImageView {
@@ -44,14 +54,21 @@ Button {
 
 .table-cell:filled {
     -fx-background-color: -fx-my-cell-background;
+
 }
 
 .table-view:row-selection .table-row-cell:selected .table-cell {
     -fx-background-color: null;
+
 }
 
 .table-view:cell-selection .table-cell:selected {
     -fx-background-color: -fx-table-cell-border-color, -fx-background;
+}
+
+.table-view .column-header-background
+{
+    -fx-background-color: transparent;
 }
 
 @media only screen and (max-width: 600px) {

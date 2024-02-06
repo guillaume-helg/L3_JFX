@@ -31,6 +31,7 @@ public class ResultatController implements Initializable {
     private Scene scene;
     private Parent root;
 
+
     @FXML
     private TableView<Map.Entry<Chaine, Integer>> chaineTableView;
     @FXML
