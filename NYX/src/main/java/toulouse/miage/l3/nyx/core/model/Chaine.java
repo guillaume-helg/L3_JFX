@@ -2,6 +2,8 @@ package toulouse.miage.l3.nyx.core.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import static toulouse.miage.l3.nyx.core.model.Usine.listesElements;
+
 public class Chaine {
 
     /** code of chaine */
@@ -15,7 +17,7 @@ public class Chaine {
     /** toString of the Hashmap listeElementEntree */
     private String listeElementEntrees;
     /** toString of the Hashmap listeElementSortie */
-    private String liseElementSorties;
+    private String listeElementSorties;
 
     public Chaine(String code, String nom, HashMap<Element, Double> listeElementEntree, HashMap<Element, Double> listeElementSortie) {
         this.code = code;
@@ -23,7 +25,7 @@ public class Chaine {
         this.listeElementEntree = listeElementEntree;
         this.listeElementSortie = listeElementSortie;
         this.listeElementEntrees = getFormattedListeEntree();
-        this.liseElementSorties = getFormattedListeSortie();
+        this.listeElementSorties = getFormattedListeSortie();
     }
 
     public String getCode() {
@@ -74,16 +76,31 @@ public class Chaine {
         return getFormattedListeSortie();
     }
 
-    public HashMap<Element, Double> getHashlap1() {
-        return this.listeElementEntree;
-    }
-
-    public HashMap<Element, Double> getHashlap2() {
-        return this.listeElementSortie;
-    }
 
     public String toString() {
         String str = this.code + "\n" + this.nom + "\n" + this.getFormattedListeEntree() + "\n" + this.getFormattedListeSortie();
         return str;
+    }
+
+    public boolean isFeasible(int qtt) {
+        boolean feasible = false;
+
+        for (Map.Entry<Element, Double> currentElement : this.listeElementEntree.entrySet()) {
+            Element element = currentElement.getKey();
+            if (listesElements.contains(element)) {
+                int index = listesElements.indexOf(element);
+                listesElements.get(index).setQuantite(element.getQuantite()-(currentElement.getValue() * qtt));
+            } else {
+                System.out.println("Erreur, element inexistant");
+            }
+
+            if (element.getQuantite() >= 0) {
+                feasible = true;
+            } else {
+                return false;
+            }
+
+        }
+        return feasible;
     }
 }

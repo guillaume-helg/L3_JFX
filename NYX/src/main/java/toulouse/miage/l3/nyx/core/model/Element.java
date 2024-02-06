@@ -36,4 +36,11 @@ public class Element {
         this.prixVente = prixVente;
     }
 
+    public Double getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(Double quantite) {
+        this.quantite = quantite;
+    }
 }
