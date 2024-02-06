@@ -52,4 +52,7 @@ public class Element {
         return uniteMesure;
     }
 
+    public void setQuantite(Double quantite) {
+        this.quantite = quantite;
+    }
 }
