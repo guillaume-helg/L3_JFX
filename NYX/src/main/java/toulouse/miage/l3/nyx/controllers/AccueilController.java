@@ -12,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import toulouse.miage.l3.nyx.core.model.Chaine;
-import toulouse.miage.l3.nyx.core.model.ChaineCommande;
 import toulouse.miage.l3.nyx.core.service.SceneUtils;
 
 import java.io.IOException;
@@ -22,7 +21,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
-import static toulouse.miage.l3.nyx.core.service.LoggerTmp.afficherListeCommande;
 
 public class AccueilController implements Initializable {
 
@@ -43,7 +41,7 @@ public class AccueilController implements Initializable {
     private Parent root;
     private int currentQte;
 
-    private HashMap<Chaine, Integer> chaineQuantities = new HashMap<>();
+    private Map<Chaine, Integer> listeCommandeAccueil = new HashMap<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,15 +63,13 @@ public class AccueilController implements Initializable {
                         Button add = new Button("+");
                         Button less = new Button("-");
                         TextFieldTableCell tf = new TextFieldTableCell();
-
                         tf.setText(String.valueOf(currentQte));
                         tf.setStyle(" -fx-cursor: hand ;" + "-glyph-size:50px;" + "-fx-fill:#ff1744;" +
                                     "-fx-cell-size: 80px;" + "-fx-start-margin: 30px;" + "-fx-pref-width: 60px;" +
                                     "-fx-alignment: center;"
                         );
 
-                        add.setStyle("-fx-cursor: hand;" + "-glyph-size:28px;" + "-fx-fill:#ff1744;"+ "-fx-border-radius: 50px;"
-                        );
+                        add.setStyle("-fx-cursor: hand;" + "-glyph-size:28px;" + "-fx-fill:#ff1744;"+ "-fx-border-radius: 50px;");
 
                         less.setStyle(" -fx-cursor: hand ;" + "-glyph-size:28px;" + "-fx-fill:#00E676;" + "-fx-border-radius: 50px;"
                         );
@@ -83,13 +79,13 @@ public class AccueilController implements Initializable {
                         add.setOnAction(e -> {
                             currentQte = Integer.parseInt(tf.getText());
                             tf.setText(Integer.toString(currentQte + 1));
-                            chaineQuantities.put(getTableView().getItems().get(getIndex()), Math.max(0, currentQte + 1));
+                            listeCommandeAccueil.put(getTableView().getItems().get(getIndex()), Math.max(0, currentQte + 1));
                         });
 
                         less.setOnAction(e -> {
                             currentQte = Integer.parseInt(tf.getText());
-                            tf.setText(Integer.toString(Math.max(0, currentQte - 1))); // Ensure the value is non-negative
-                            chaineQuantities.put(getTableView().getItems().get(getIndex()), Math.max(0, currentQte - 1));
+                            tf.setText(Integer.toString(Math.max(0, currentQte - 1)));
+                            listeCommandeAccueil.put(getTableView().getItems().get(getIndex()), Math.max(0, currentQte - 1));
                         });
 
                         HBox managebtn = new HBox();
@@ -108,16 +104,23 @@ public class AccueilController implements Initializable {
         chaineTableView.setItems(listesChaines);
     }
 
-
+    public void afficherListeChainesCommandes() {
+        for (Map.Entry<Chaine, Integer> entry : listesChainesCommandes) {
+            System.out.println("Chaîne : " + entry.getKey().getCode() + " - " + entry.getKey().getNom());
+            System.out.println("Quantité : " + entry.getValue());
+            System.out.println("Liste d'éléments d'entrée : " + entry.getKey().getListeElementEntree());
+            System.out.println("Liste d'éléments de sortie : " + entry.getKey().getListeElementSortie());
+            System.out.println();
+        }
+    }
 
     /**
      *
      * @param actionEvent
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
-        listeCommande = chaineQuantities;
-        afficherListeCommande();
-        doListCommand();
+        listesChainesCommandes.addAll(listeCommandeAccueil.entrySet());
+        afficherListeChainesCommandes();
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml",
                 "/toulouse/miage/l3/nyx/style/resultat.css", actionEvent);
     }
@@ -138,18 +141,5 @@ public class AccueilController implements Initializable {
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",
                 "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
-    }
-
-    public void doListCommand() {
-        System.out.println("okay");
-        for (Map.Entry<Chaine, Integer> entry : listeCommande.entrySet()) {
-            listesChainesCommandes.add(new ChaineCommande(
-                        entry.getKey().getCode(),
-                        entry.getKey().getNom(),
-                        entry.getKey().getHashlap1(),
-                        entry.getKey().getHashlap2(),
-                        entry.getValue()
-                    ));
-        }
     }
 }

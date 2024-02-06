@@ -24,9 +24,11 @@ public class Main extends Application {
             stage.setMinHeight(300);
             stage.setMinWidth(500);
             stage.show();
-            Usine u = new Usine();
-            u.chargerElements();
-            u.chargerChaines();
+
+            Usine usine = new Usine();
+            usine.chargerElements();
+            usine.chargerChaines();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
