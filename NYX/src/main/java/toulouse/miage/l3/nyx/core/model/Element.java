@@ -36,16 +36,4 @@ public class Element {
         this.prixVente = prixVente;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public Double getQuantite() {
-        return quantite;
-    }
-
-    public String getUniteMesure() {
-        return uniteMesure;
-    }
-
 }
