@@ -104,23 +104,12 @@ public class AccueilController implements Initializable {
         chaineTableView.setItems(listesChaines);
     }
 
-    public void afficherListeChainesCommandes() {
-        for (Map.Entry<Chaine, Integer> entry : listesChainesCommandes) {
-            System.out.println("Chaîne : " + entry.getKey().getCode() + " - " + entry.getKey().getNom());
-            System.out.println("Quantité : " + entry.getValue());
-            System.out.println("Liste d'éléments d'entrée : " + entry.getKey().getListeElementEntree());
-            System.out.println("Liste d'éléments de sortie : " + entry.getKey().getListeElementSortie());
-            System.out.println();
-        }
-    }
-
     /**
      *
      * @param actionEvent
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
         listesChainesCommandes.addAll(listeCommandeAccueil.entrySet());
-        afficherListeChainesCommandes();
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml",
                 "/toulouse/miage/l3/nyx/style/resultat.css", actionEvent);
     }
