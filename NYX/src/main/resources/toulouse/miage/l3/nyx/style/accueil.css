@@ -16,10 +16,8 @@ Button {
 .table-view {
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
-    -fx-background-color: transparent;
     -fx-end-margin: auto;
     -fx-start-margin: auto;
-
 }
 
 .table-row-cell {
@@ -28,7 +26,6 @@ Button {
 
 .table-column {
     -fx-padding: 0.0em;
-    -fx-background-color: -fx-table-cell-border-color, -fx-background;
 }
 
 /* Set the column to fit content */
@@ -40,18 +37,6 @@ Button {
 
 .ImageView {
     -fx-border-radius: 20px;
-}
-
-.table-cell:filled {
-    -fx-background-color: -fx-my-cell-background;
-}
-
-.table-view:row-selection .table-row-cell:selected .table-cell {
-    -fx-background-color: null;
-}
-
-.table-view:cell-selection .table-cell:selected {
-    -fx-background-color: -fx-table-cell-border-color, -fx-background;
 }
 
 @media only screen and (max-width: 600px) {

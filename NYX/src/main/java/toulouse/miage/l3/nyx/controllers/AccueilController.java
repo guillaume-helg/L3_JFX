@@ -65,8 +65,8 @@ public class AccueilController implements Initializable {
                         TextFieldTableCell tf = new TextFieldTableCell();
                         tf.setText(String.valueOf(currentQte));
                         tf.setStyle(" -fx-cursor: hand ;" + "-glyph-size:50px;" + "-fx-fill:#ff1744;" +
-                                "-fx-cell-size: 80px;" + "-fx-start-margin: 30px;" + "-fx-pref-width: 60px;" +
-                                "-fx-alignment: center;"
+                                    "-fx-cell-size: 80px;" + "-fx-start-margin: 30px;" + "-fx-pref-width: 60px;" +
+                                    "-fx-alignment: center;"
                         );
 
                         add.setStyle("-fx-cursor: hand;" + "-glyph-size:28px;" + "-fx-fill:#ff1744;"+ "-fx-border-radius: 50px;");
