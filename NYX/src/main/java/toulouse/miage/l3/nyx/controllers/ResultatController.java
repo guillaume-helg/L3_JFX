@@ -47,7 +47,7 @@ public class ResultatController implements Initializable {
     private TableColumn<Map.Entry<Chaine, Integer>, String> faisabilite;
 
     /**
-     *
+     * Enable to change the scene from resultat to accueil
      * @throws IOException
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
@@ -57,7 +57,7 @@ public class ResultatController implements Initializable {
     }
 
     /**
-     *
+     * Enable to change the scene from resultat to confirmation
      * @param actionEvent
      */
     public void goToConfirmation(ActionEvent actionEvent) throws IOException {
@@ -68,7 +68,7 @@ public class ResultatController implements Initializable {
     }
 
     /**
-     *
+     * Enable to change the scene from resultat to chaine de production
      * @param actionEvent
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
@@ -78,7 +78,7 @@ public class ResultatController implements Initializable {
     }
 
     /**
-     *
+     * Enable to change the scene from resultat to inventaire
      * @param actionEvent
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
@@ -88,6 +88,7 @@ public class ResultatController implements Initializable {
     }
 
     /**
+     * At the start of the scene, we display in each column of the tableview a field of Chaine in listeChaineCommande
      *
      * @param location
      * The location used to resolve relative paths for the root object, or
@@ -98,7 +99,6 @@ public class ResultatController implements Initializable {
      * the root object was not localized.
      */
     public void initialize(URL location, ResourceBundle resources) {
-        double[] faisable = {0};
         chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getCode()));
         chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getNom()));
         chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getListeElementEntree()));
@@ -127,7 +127,6 @@ public class ResultatController implements Initializable {
                                 setText("Non Faisable");
                                 setStyle("-fx-text-fill: red;");
                             }
-                            faisable[0] += 1;
                         }
                     }
                 };
@@ -136,7 +135,22 @@ public class ResultatController implements Initializable {
 
         chaineTableView.setItems(listesChainesCommandes);
 
-        double resultat = faisable[0] / listesChainesCommandes.size();
+        double resultat = (double) faisible() / listesChainesCommandes.size();
         resultatCommande.setProgress(resultat);
+    }
+
+    public int faisible () {
+        int countFaisable = 0;
+
+        for (Map.Entry<Chaine, Integer> entry : chaineTableView.getItems()) {
+            Chaine chaine = entry.getKey();
+            int quantity = entry.getValue();
+            boolean isFaisable = chaine.isFeasible(quantity);
+
+            if (isFaisable) {
+                countFaisable++;
+            }
+        }
+        return countFaisable;
     }
 }
