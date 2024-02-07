@@ -3,30 +3,84 @@ package toulouse.miage.l3.nyx.core.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static toulouse.miage.l3.nyx.core.service.Utils.readChaine;
 import static toulouse.miage.l3.nyx.core.service.Utils.readElement;
 
 public class Usine {
-    private String name;
-    private String address;
 
-    public Usine(String name, String address) {
-        this.name = name;
-        this.address = address;
-    }
-
-    public Usine() {}
-
-    public static ObservableList<Chaine> listesChaines = FXCollections.observableArrayList();
-    public static ObservableList<Map.Entry<Chaine, Integer>> listesChainesCommandes = FXCollections.observableArrayList();
-    public static ObservableList<Element> listesElements = FXCollections.observableArrayList();
+    private static ObservableList<Chaine> chaines = FXCollections.observableArrayList();
+    private static ObservableList<Map.Entry<Chaine, Integer>> chainesCommandes = FXCollections.observableArrayList();
+    public static ObservableList<Element> elements = FXCollections.observableArrayList();
 
     public void chargerChaines() {
-        listesChaines.addAll(readChaine());
+        chaines.addAll(readChaine());
     }
     public void chargerElements() {
-        listesElements.addAll(readElement());
+        elements.addAll(readElement());
     }
+
+    /* ===========================================
+     * FUNCTIONS FOR CHAINES
+     * =========================================== */
+
+    public static ObservableList<Chaine> getChaine() {
+        return chaines;
+    }
+
+    /* ===========================================
+     * FUNCTIONS FOR CHAINESCOMMANDES
+     * =========================================== */
+
+    public static void clearChainesCommandes() {
+        chainesCommandes.clear();
+    }
+
+    public static void addAllInChainesCommandes(Set<Map.Entry<Chaine, Integer>> chaines) {
+        chainesCommandes.addAll(chaines);
+    }
+
+    public static ObservableList<Map.Entry<Chaine, Integer>> getChainesCommandes() {
+        return chainesCommandes;
+    }
+
+    public static int getSizeChainesCommande() {
+        return chainesCommandes.size();
+    }
+
+    /* ===========================================
+     * FUNCTIONS FOR ELEMENTS
+     * =========================================== */
+
+    public static ObservableList<Element> getElements() {
+        return elements;
+    }
+
+    public static void addToElements(Element e) {
+        elements.add(e);
+    }
+
+    public static void removeToElement(Element e) {
+        elements.remove(e);
+    }
+
+    public static boolean elementsContains(Element e) {
+        return elements.contains(e);
+    }
+
+    public static int elementIndexOf(Element e) {
+        return elements.indexOf(e);
+    }
+
+    public static Element getElements(int index) {
+        return elements.get(index);
+    }
+
+    public static void addAllElement(List<Element> elementss) {
+        elements.addAll(elementss);
+    }
+
 }

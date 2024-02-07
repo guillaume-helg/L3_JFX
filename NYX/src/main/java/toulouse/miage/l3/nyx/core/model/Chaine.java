@@ -6,19 +6,10 @@ package toulouse.miage.l3.nyx.core.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.listesElements;
+import static toulouse.miage.l3.nyx.core.model.Usine.elements;
 
 /**
  * Class Chaines
- * <ul>
- *     Dans celle-ci on va retrouver :
- *     <ul>
- *          <li>la position du joueur : les positions possible sont 0, 1, 2 ou 3</li>
- *          <li>le nom du joueur</li>
- *          <li>la main du joueur</li>
- *          <li>le score du joueur</li>
- *     </ul>
- * </ul>
  *
  * @author Guillaume Helg
  * @version 1.0
@@ -39,9 +30,9 @@ public class Chaine {
     private String listeElementSorties;
 
     /**
-     *
-     * @param code
-     * @param nom
+     * Constructeur de la chaine (code),(nom),(listeElementEntree),(listeElementSortie)
+     * @param code :
+     * @param nom :
      * @param listeElementEntree
      * @param listeElementSortie
      */
@@ -153,9 +144,9 @@ public class Chaine {
 
         for (Map.Entry<Element, Double> currentElement : this.listeElementEntree.entrySet()) {
             Element element = currentElement.getKey();
-            if (listesElements.contains(element)) {
-                int index = listesElements.indexOf(element);
-                listesElements.get(index).setQuantite(element.getQuantite()-(currentElement.getValue() * qtt));
+            if (elements.contains(element)) {
+                int index = elements.indexOf(element);
+                elements.get(index).setQuantite(element.getQuantite()-(currentElement.getValue() * qtt));
             } else {
                 System.out.println("Erreur, element inexistant");
             }

@@ -11,6 +11,15 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class SceneUtils {
+
+    /**
+     * Manage the travel between each scene and loading the css of each scene
+     *
+     * @param fxmlPath : path of the xml file
+     * @param cssPath : path of the css file
+     * @param actionEvent : action (click)
+     * @throws IOException : exeption
+     */
     public static void goToScene(String fxmlPath, String cssPath, ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(SceneUtils.class.getResource(fxmlPath)));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

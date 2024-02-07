@@ -8,6 +8,13 @@ public class Commande {
 
     public String qtt;
 
+    /**
+     *
+     * @param code
+     * @param prixAchat
+     * @param prixVente
+     * @param quantite
+     */
     public Commande(String code, double prixAchat, double prixVente, double quantite) {
         this.code = code;
         this.prixAchat = prixAchat;
@@ -15,6 +22,11 @@ public class Commande {
         this.quantite = quantite;
     }
 
+    /**
+     *
+     * @param code
+     * @param quantite
+     */
     public Commande(String code, double quantite) {
         this(code, 0, 0, quantite);
     }
