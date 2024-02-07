@@ -51,7 +51,7 @@ public class ResultatController implements Initializable {
      * @throws IOException
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
-        listesChainesCommandes.clear();
+        clearChainesCommandes();
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml",
                 "/toulouse/miage/l3/nyx/style/accueil.css", actionEvent);
     }
@@ -62,7 +62,7 @@ public class ResultatController implements Initializable {
      */
     public void goToConfirmation(ActionEvent actionEvent) throws IOException {
         Utils.writeResultInAFile();
-        listesChainesCommandes.clear();
+        clearChainesCommandes();
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/confirmation-view.fxml",
                 "/toulouse/miage/l3/nyx/style/confirmation.css", actionEvent);
     }
@@ -72,7 +72,7 @@ public class ResultatController implements Initializable {
      * @param actionEvent
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
-        listesChainesCommandes.clear();
+        clearChainesCommandes();
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
                 "/toulouse/miage/l3/nyx/style/chaineproduction.css", actionEvent);
     }
@@ -82,7 +82,7 @@ public class ResultatController implements Initializable {
      * @param actionEvent
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
-        listesChainesCommandes.clear();
+        clearChainesCommandes();
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",
                 "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
     }
@@ -133,12 +133,16 @@ public class ResultatController implements Initializable {
             }
         });
 
-        chaineTableView.setItems(listesChainesCommandes);
+        chaineTableView.setItems(getChainesCommandes());
 
-        double resultat = (double) faisible() / listesChainesCommandes.size();
+        double resultat = (double) faisible() / getSizeChainesCommande();
         resultatCommande.setProgress(resultat);
     }
 
+    /**
+     *
+     * @return
+     */
     public int faisible () {
         int countFaisable = 0;
 

@@ -43,6 +43,19 @@ public class AccueilController implements Initializable {
 
     private Map<Chaine, Integer> listeCommandeAccueil = new HashMap<>();
 
+    /**
+     * The application will load this function at the start when it's called
+     *
+     * The code will display a table view, with custom columns
+     *
+     * @param location
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resources
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         currentQte = 0;
@@ -51,6 +64,7 @@ public class AccueilController implements Initializable {
         chaineEntree.setCellValueFactory(new PropertyValueFactory<>("listeElementEntree"));
         chaineSortie.setCellValueFactory(new PropertyValueFactory<>("listeElementSortie"));
 
+        // custom columns to increase or decrease the quantity wished by the user
         Callback<TableColumn<Chaine, String>, TableCell<Chaine, String>> cellFoctory = (TableColumn<Chaine, String> param) -> {
             final TableCell<Chaine, String> cell = new TableCell<Chaine, String>() {
                 @Override
@@ -101,22 +115,22 @@ public class AccueilController implements Initializable {
             return cell;
         };
         qte.setCellFactory(cellFoctory);
-        chaineTableView.setItems(listesChaines);
+        chaineTableView.setItems(getChaine());
     }
 
     /**
-     *
-     * @param actionEvent
+     * Enable to change the scene from accueil to resultat
+     * @param actionEvent - click
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
-        listesChainesCommandes.addAll(listeCommandeAccueil.entrySet());
+        addAllInChainesCommandes(listeCommandeAccueil.entrySet());
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml",
                 "/toulouse/miage/l3/nyx/style/resultat.css", actionEvent);
     }
 
     /**
-     *
-     * @param actionEvent
+     * Enable to change the scene from accueil to chaine de production
+     * @param actionEvent - click
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
@@ -124,8 +138,8 @@ public class AccueilController implements Initializable {
     }
 
     /**
-     *
-     * @param actionEvent
+     * Enable to change the scene from accueil to inventaire
+     * @param actionEvent - click
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",

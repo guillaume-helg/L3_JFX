@@ -4,16 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import toulouse.miage.l3.nyx.core.service.SceneUtils;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static toulouse.miage.l3.nyx.core.model.Usine.listesChainesCommandes;
 
 public class ConfirmationController implements Initializable {
 
@@ -36,14 +32,29 @@ public class ConfirmationController implements Initializable {
 
     }
 
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml",
                 "/toulouse/miage/l3/nyx/style/accueil.css", actionEvent);
     }
 
+
     /**
-     *
-     * @param actionEvent
+     * Enable to change the scene from accueil to resultat
+     * @param actionEvent - click
+     */
+    public void goToResultat(ActionEvent actionEvent) throws IOException {
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml",
+                "/toulouse/miage/l3/nyx/style/resultat.css", actionEvent);
+    }
+
+    /**
+     * Enable to change the scene from accueil to chaine de production
+     * @param actionEvent - click
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
@@ -51,8 +62,8 @@ public class ConfirmationController implements Initializable {
     }
 
     /**
-     *
-     * @param actionEvent
+     * Enable to change the scene from accueil to inventaire
+     * @param actionEvent - click
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",

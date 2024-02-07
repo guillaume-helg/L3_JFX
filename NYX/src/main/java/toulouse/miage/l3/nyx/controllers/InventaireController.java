@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.listesElements;
+import static toulouse.miage.l3.nyx.core.model.Usine.elements;
 
 public class InventaireController implements Initializable {
     private Stage stage;
@@ -56,7 +56,7 @@ public class InventaireController implements Initializable {
         elementPrixV.setCellValueFactory(new PropertyValueFactory<>("prixVente"));
         elementQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
         elementUnite.setCellValueFactory(new PropertyValueFactory<>("uniteMesure"));
-        elementTableView.setItems(listesElements);
+        elementTableView.setItems(elements);
     }
 
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
@@ -89,7 +89,7 @@ public class InventaireController implements Initializable {
         Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
                 Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
-        listesElements.add(e);
+        elements.add(e);
     }
 
     /**
@@ -97,6 +97,6 @@ public class InventaireController implements Initializable {
      */
     public void delElement(){
         Element e = elementTableView.getSelectionModel().getSelectedItem();
-        listesElements.remove(e);
+        elements.remove(e);
     }
 }

@@ -49,7 +49,7 @@ public class ChaineController implements Initializable {
         chaineNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         chaineEntree.setCellValueFactory(new PropertyValueFactory<>("listeElementEntree"));
         chaineSortie.setCellValueFactory(new PropertyValueFactory<>("listeElementSortie"));
-        chaineTableView.setItems(listesChaines);
+        chaineTableView.setItems(getChaine());
     }
 
     /**
