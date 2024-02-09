@@ -3,13 +3,10 @@ package toulouse.miage.l3.nyx.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.service.SceneUtils;
 
@@ -17,13 +14,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.addToElements;
 import static toulouse.miage.l3.nyx.core.model.Usine.elements;
 
 public class InventaireController implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     @FXML
     private TableView<Element> elementTableView;
     @FXML
@@ -139,6 +132,18 @@ public class InventaireController implements Initializable {
     public void modifyElement() {
         addElement();
         delElement();
+    }
+
+    /**
+     * Clear all text fields
+     */
+    public void clearTextField() {
+        ajoutcode.setText("");
+        ajoutnom.setText("");
+        ajoutqte.setText("");
+        ajoutunite.setText("");
+        ajoutprixa.setText("");
+        ajoutprixv.setText("");
     }
 
 }
