@@ -75,7 +75,7 @@
                   <Button mnemonicParsing="false" text="Ajouter" onAction="#addElement" />
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Modifier">
+                        <Button mnemonicParsing="false" text="Modifier" onAction="#modifyElement">
                            <VBox.margin>
                               <Insets bottom="20.0" left="15.0" />
                            </VBox.margin>

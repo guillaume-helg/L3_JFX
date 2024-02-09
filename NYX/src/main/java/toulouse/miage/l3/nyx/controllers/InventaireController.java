@@ -5,7 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import toulouse.miage.l3.nyx.core.model.Element;
@@ -54,6 +56,8 @@ public class InventaireController implements Initializable {
      *
      * The code will display a table view, with custom columns
      *
+     * It also listens to clicks on table view rows in order to fill text fields
+     *
      * @param url
      * The location used to resolve relative paths for the root object, or
      * {@code null} if the location is not known.
@@ -71,6 +75,17 @@ public class InventaireController implements Initializable {
         elementQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
         elementUnite.setCellValueFactory(new PropertyValueFactory<>("uniteMesure"));
         elementTableView.setItems(elements);
+
+        elementTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                ajoutcode.setText(newSelection.getCode());
+                ajoutnom.setText(newSelection.getNom());
+                ajoutqte.setText(String.valueOf(newSelection.getQuantite()));
+                ajoutunite.setText(newSelection.getUniteMesure());
+                ajoutprixa.setText(String.valueOf(newSelection.getPrixAchat()));
+                ajoutprixv.setText(String.valueOf(newSelection.getPrixVente()));
+            }
+        });
     }
 
     /**
@@ -107,7 +122,7 @@ public class InventaireController implements Initializable {
         Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
                 Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
-        addToElements(e);
+        elements.add(e);
     }
 
     /**
@@ -117,4 +132,13 @@ public class InventaireController implements Initializable {
         Element e = elementTableView.getSelectionModel().getSelectedItem();
         elements.remove(e);
     }
+
+    /**
+     * Modify the selected element from the table view
+     */
+    public void modifyElement() {
+        addElement();
+        delElement();
+    }
+
 }
