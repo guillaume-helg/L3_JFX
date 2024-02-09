@@ -6,9 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import toulouse.miage.l3.nyx.core.model.Usine;
+import toulouse.miage.l3.nyx.core.service.Utils;
 
 import java.io.IOException;
 import java.util.Objects;
+
+import static toulouse.miage.l3.nyx.core.model.Usine.elements;
 
 public class Main extends Application {
 
@@ -36,5 +39,11 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        Utils.writeElement(elements);
+        super.stop();
     }
 }

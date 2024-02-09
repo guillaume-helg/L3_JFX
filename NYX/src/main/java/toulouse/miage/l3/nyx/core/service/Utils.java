@@ -1,5 +1,6 @@
 package toulouse.miage.l3.nyx.core.service;
 
+import javafx.collections.ObservableList;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.model.Usine;
@@ -54,7 +55,7 @@ public class Utils {
      * Write on object Element into a file elements.csv
      * @param e : table with every Element of the application
      */
-    public static void writeElement(Element[] e) {
+    public static void writeElement(ObservableList<Element> e) {
         String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
         try {
             PrintWriter file = new PrintWriter(new FileWriter(fileName));
