@@ -61,6 +61,7 @@ public class ResultatController implements Initializable {
      * @param actionEvent
      */
     public void goToConfirmation(ActionEvent actionEvent) throws IOException {
+        Utils.writeElement(getElements());
         Utils.writeResultInAFile();
         clearChainesCommandes();
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/confirmation-view.fxml",

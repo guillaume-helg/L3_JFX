@@ -6,7 +6,7 @@ package toulouse.miage.l3.nyx.core.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.elements;
+import static toulouse.miage.l3.nyx.core.model.Usine.*;
 
 /**
  * Class Chaines
@@ -144,19 +144,22 @@ public class Chaine {
 
         for (Map.Entry<Element, Double> currentElement : this.listeElementEntree.entrySet()) {
             Element element = currentElement.getKey();
-            if (elements.contains(element)) {
-                int index = elements.indexOf(element);
-                elements.get(index).setQuantite(element.getQuantite()-(currentElement.getValue() * qtt));
-            } else {
-                System.out.println("Erreur, element inexistant");
-            }
+            double quantity = element.getQuantite();
+            if (elementsContains(element)) {
+                int index = elementIndexOf(element);
+                quantity -= (currentElement.getValue() * qtt);
 
-            if (element.getQuantite() >= 0) {
-                feasible = true;
+                if (quantity >= 0) {
+                    getElements(index).setQuantite(element.getQuantite()-(currentElement.getValue() * qtt));
+                    feasible = true;
+                } else {
+                    return false;
+                }
+
             } else {
+                System.err.println("This Element does not exist");
                 return false;
             }
-
         }
         return feasible;
     }

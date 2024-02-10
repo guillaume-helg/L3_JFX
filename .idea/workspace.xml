@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="NYX_Project:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bb6732f-b27c-47e3-a6ce-57fb53063b45" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/NYX_Project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/NYX_Project_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/NYX_Project_jar2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NYX/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projet.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2024_12_18__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2024_12_18__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/AccueilController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/AccueilController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/InventaireController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/InventaireController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Chaine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Usine.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Usine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/service/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/service/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +63,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -63,20 +88,33 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.NYX/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.NYX [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.NYX [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.NYX [deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.NYX [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.NYX [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.NYX [site].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.NYX [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.NYX [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.NYX [verify].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/GuillaumeHelg/IdeaProjects/NYX_Project/NYX/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/GuillaumeHelg/.openjfx&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -86,17 +124,17 @@
       <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\GuillaumeHelg\Documents\project_docker\NYX_Project" />
       <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src\main\java\toulouse\miage\l3\nyx\controllers" />
       <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src\main\resources\toulouse\miage\l3\nyx\style" />
       <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src\main\resources\toulouse\miage\l3\nyx\fxml" />
       <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src\main\resources\toulouse\miage\l3\nyx\image" />
-      <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src\main\resources\toulouse\miage\l3\nyx" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="toulouse.miage.l3.nyx.controllers" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="toulouse.miage.l3.nyx.Main" />
       <module name="NYX" />
@@ -110,16 +148,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="JarApplication" nameIsGenerated="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/NYX_Project_jar/NYX_Project.jar" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\jdk-21\lib&quot;" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\GuillaumeHelg\Documents\project_docker\NYX_Project" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <module name="NYX_Project" />
+      <method v="2">
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="NYX_Project:jar" />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="NYX/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="containerName" value="" />
+          <option name="sourceFilePath" value="NYX/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Docker.NYX/Dockerfile" />
+      <item itemvalue="JAR Application.Unnamed" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Docker.NYX/Dockerfile" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-11.0.22-corretto-11.0.22-f644763e9732-4a89cc43" />
         <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-8f899f12" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-c0c073db" />
       </set>
     </attachedChunks>
   </component>
@@ -170,6 +243,10 @@
       <workItem from="1707217025589" duration="1232000" />
       <workItem from="1707218311300" duration="2124000" />
       <workItem from="1707225599814" duration="2047000" />
+      <workItem from="1707339248930" duration="4085000" />
+      <workItem from="1707387232471" duration="3096000" />
+      <workItem from="1707400209580" duration="1329000" />
+      <workItem from="1707588643947" duration="654000" />
     </task>
     <servers />
   </component>

@@ -137,7 +137,7 @@ public class Utils {
             String code = elements[i].replaceAll("[(]", "");
             Double value = Double.parseDouble(elements[i + 1].replaceAll("[)]", ""));
 
-            Element existingElement = findElementByCode(Usine.elements, code);
+            Element existingElement = findElementByCode(Usine.getElements(), code);
 
             if (existingElement != null) {
                 elementMap.put(existingElement, value);

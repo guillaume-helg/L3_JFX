@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.service.SceneUtils;
+import javafx.application.Application.Parameters;
 
 import java.io.IOException;
 import java.net.URL;

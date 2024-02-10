@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.elements;
+import static toulouse.miage.l3.nyx.core.model.Usine.*;
 
 public class InventaireController implements Initializable {
     @FXML
@@ -67,7 +67,7 @@ public class InventaireController implements Initializable {
         elementPrixV.setCellValueFactory(new PropertyValueFactory<>("prixVente"));
         elementQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
         elementUnite.setCellValueFactory(new PropertyValueFactory<>("uniteMesure"));
-        elementTableView.setItems(elements);
+        elementTableView.setItems(getElements());
 
         elementTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -115,7 +115,7 @@ public class InventaireController implements Initializable {
         Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
                 Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
-        elements.add(e);
+        addToElements(e);
     }
 
     /**
@@ -123,7 +123,7 @@ public class InventaireController implements Initializable {
      */
     public void delElement(){
         Element e = elementTableView.getSelectionModel().getSelectedItem();
-        elements.remove(e);
+        removeToElement(e);
     }
 
     /**

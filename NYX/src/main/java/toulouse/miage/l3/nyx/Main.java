@@ -11,9 +11,11 @@ import toulouse.miage.l3.nyx.core.service.Utils;
 import java.io.IOException;
 import java.util.Objects;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.elements;
+import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 public class Main extends Application {
+
+    public Usine usine;
 
     @Override
     public void start(Stage stage) {
@@ -28,7 +30,7 @@ public class Main extends Application {
             stage.setMinWidth(500);
             stage.show();
 
-            Usine usine = new Usine();
+            usine = new Usine();
             usine.chargerElements();
             usine.chargerChaines();
 
@@ -43,7 +45,7 @@ public class Main extends Application {
 
     @Override
     public void stop() throws Exception {
-        Utils.writeElement(elements);
+        Utils.writeElement(getElements());
         super.stop();
     }
 }

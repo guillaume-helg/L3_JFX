@@ -2,10 +2,10 @@
 
 Element missing : 
 - [] information in the file wrote : price buy, price cell, feasible or not, percentage of success
-- [] error of decreasing element quantity even if it's not feasible
+- [X] error of decreasing element quantity even if it's not feasible
 - [] javadoc and documentation
 - [] design cohérent entre les multiples interfaces
-- [] write in text file when app is closed
+- [X] write in text file when app is closed
 - [] check input when we add (inventory, chaine)
 - [] clean code (class Usine)
 - [] display notification on the confirmation controller
