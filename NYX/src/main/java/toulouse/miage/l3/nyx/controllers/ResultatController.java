@@ -31,6 +31,8 @@ public class ResultatController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    protected static boolean isCommandeWritten = false;
+
     @FXML
     private TableView<Map.Entry<Chaine, Integer>> chaineTableView;
     @FXML
@@ -62,7 +64,7 @@ public class ResultatController implements Initializable {
      */
     public void goToConfirmation(ActionEvent actionEvent) throws IOException {
         Utils.writeElement(getElements());
-        Utils.writeResultInAFile();
+        isCommandeWritten = Utils.writeResultInAFile();
         clearChainesCommandes();
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/confirmation-view.fxml",
                 "/toulouse/miage/l3/nyx/style/confirmation.css", actionEvent);

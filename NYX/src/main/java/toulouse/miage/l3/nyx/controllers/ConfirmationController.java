@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import toulouse.miage.l3.nyx.core.service.SceneUtils;
-
+import javafx.scene.image.Image;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +29,19 @@ public class ConfirmationController implements Initializable {
      * the root object was not localized.
      */
     public void initialize(URL location, ResourceBundle resources) {
+        String imageAdress;
+        String text;
 
+        if(ResultatController.isCommandeWritten) {
+            imageAdress = "/toulouse/miage/l3/nyx/image/like.png";
+            text = "Votre commande à bien été réalisée";
+        } else {
+            imageAdress = "/toulouse/miage/l3/nyx/image/dislike.png";
+            text = "Votre commande n'a pas pu être réalisée";
+        }
+        annonceConfirmation.setText(text);
+        Image newImage = new Image(getClass().getResource(imageAdress).toExternalForm());
+        imageConfirmation.setImage(newImage);
     }
 
     /**

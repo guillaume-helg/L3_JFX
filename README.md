@@ -7,8 +7,8 @@ Element missing :
 - [] design cohérent entre les multiples interfaces
 - [X] write in text file when app is closed
 - [] check input when we add (inventory, chaine)
-- [] clean code (class Usine)
-- [] display notification on the confirmation controller
+- [X] clean code (class Usine)
+- [X] display notification on the confirmation controller
 
 # Gestionnaire de production
 

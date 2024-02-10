@@ -193,7 +193,7 @@ public class Utils {
      * It contains : the date of the commande, the content of the command and his quantity
      * and the total price of the command with is percentage of result.
      */
-    public static void writeResultInAFile() {
+    public static boolean writeResultInAFile() {
         LocalDateTime dateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
         String formattedDate = dateTime.format(formatter);
@@ -217,7 +217,9 @@ public class Utils {
 
             fichier.close();
         } catch (IOException ex) {
-            System.out.println("File access problem");
+            System.err.println("File access problem");
+            return false;
         }
+        return true;
     }
 }

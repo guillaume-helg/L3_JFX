@@ -1,0 +1,44 @@
+* {
+    -fx-font-size: 24px;
+    -fx-font-family: Inter;
+}
+
+Button {
+    -fx-background-color: white;
+    -fx-font-size: 24px;
+    -fx-font-family: Inter;
+    -fx-border-radius: 20px;
+    -fx-cursor: hand;
+    -fx-wrap-text: true;
+    -fx-padding: 10px;
+}
+
+.table-view {
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-end-margin: auto;
+    -fx-start-margin: auto;
+}
+
+.table-row-cell {
+    -fx-padding: 0.0em;
+}
+
+.table-column {
+    -fx-padding: 0.0em;
+}
+
+/* Set the column to fit content */
+.table-column {
+    -fx-pref-width: -1;
+    -fx-min-width: -1;
+    -fx-max-width: -1;
+}
+
+.ImageView {
+    -fx-border-radius: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+
+}

@@ -10,13 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bb6732f-b27c-47e3-a6ce-57fb53063b45" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/NYX/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ConfirmationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ConfirmationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ResultatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ResultatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/service/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/service/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/NYX_Project_jar/NYX_Project.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +233,7 @@
       <workItem from="1707339248930" duration="4085000" />
       <workItem from="1707387232471" duration="3096000" />
       <workItem from="1707400209580" duration="1329000" />
-      <workItem from="1707588643947" duration="1483000" />
+      <workItem from="1707588643947" duration="3276000" />
     </task>
     <servers />
   </component>
