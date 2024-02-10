@@ -76,7 +76,7 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="150.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clearTextField" prefHeight="29.0" prefWidth="200.0" text="Nettoyer">
+                              <Button mnemonicParsing="false" onAction="#clearTextField" prefHeight="29.0" prefWidth="200.0" text="Réinitialiser">
                                  <VBox.margin>
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
