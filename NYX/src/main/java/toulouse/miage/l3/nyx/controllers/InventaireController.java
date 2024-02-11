@@ -120,29 +120,40 @@ public class InventaireController implements Initializable {
         Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
                 Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
-        if (isAddValidated(e)) elements.add(e);
-        message.setStyle("-fx-text-fill: green");
-        message.setText("Element ajouté");
+        if (isAddValidated(e)) {
+            elements.add(e);
+            message.setStyle("-fx-text-fill: green");
+            message.setText("Element ajouté");
+        }
+        else {
+            message.setStyle("-fx-text-fill: red");
+            message.setText("Ce code est déjà utilisé");
+        }
+
     }
 
     /**
      * Remove the selected element from the table view
      */
-    public void delElement(){
+    public Element delElement(){
         Element e = elementTableView.getSelectionModel().getSelectedItem();
         elements.remove(e);
         message.setStyle("-fx-text-fill: red");
         message.setText("Element supprimé");
+        return e;
     }
 
     /**
      * Modify the selected element from the table view
      */
     public void modifyElement() {
+        Element e = new Element();
         addElement();
-        delElement();
-        message.setStyle("-fx-text-fill: green");
-        message.setText("Element modifié");
+        e = delElement();
+        if (isAddValidated(e)){
+            message.setStyle("-fx-text-fill: green");
+            message.setText("Element modifié");
+        }
     }
 
     /**
