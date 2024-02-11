@@ -147,10 +147,10 @@ public class InventaireController implements Initializable {
      * Modify the selected element from the table view
      */
     public void modifyElement() {
-        Element e = new Element();
+        Element e = elementTableView.getSelectionModel().getSelectedItem();
         addElement();
-        e = delElement();
         if (isAddValidated(e)){
+            e = delElement();
             message.setStyle("-fx-text-fill: green");
             message.setText("Element modifié");
         }
