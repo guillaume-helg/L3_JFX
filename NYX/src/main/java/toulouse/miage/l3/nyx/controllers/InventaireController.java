@@ -3,6 +3,7 @@ package toulouse.miage.l3.nyx.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -45,6 +46,8 @@ public class InventaireController implements Initializable {
     private TextField ajoutqte;
     @FXML
     private TextField ajoutunite;
+    @FXML
+    private Label message;
 
     /**
      * The application will load this function at the start when it's called
@@ -118,6 +121,8 @@ public class InventaireController implements Initializable {
                 Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
         if (isAddValidated(e)) elements.add(e);
+        message.setStyle("-fx-text-fill: green");
+        message.setText("Element ajouté");
     }
 
     /**
@@ -126,6 +131,8 @@ public class InventaireController implements Initializable {
     public void delElement(){
         Element e = elementTableView.getSelectionModel().getSelectedItem();
         elements.remove(e);
+        message.setStyle("-fx-text-fill: red");
+        message.setText("Element supprimé");
     }
 
     /**
@@ -134,6 +141,8 @@ public class InventaireController implements Initializable {
     public void modifyElement() {
         addElement();
         delElement();
+        message.setStyle("-fx-text-fill: green");
+        message.setText("Element modifié");
     }
 
     /**
@@ -146,6 +155,8 @@ public class InventaireController implements Initializable {
         ajoutunite.setText("");
         ajoutprixa.setText("");
         ajoutprixv.setText("");
+        message.setText("");
+
     }
 
 }

@@ -69,9 +69,14 @@
                   </TextField>
                   <TextField fx:id="ajoutunite" promptText="Unité">
                      <VBox.margin>
-                        <Insets bottom="20.0" left="10.0" right="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
                      </VBox.margin>
                   </TextField>
+                  <Label fx:id="message" text="" styleClass="message">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="150.0">
