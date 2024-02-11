@@ -1,5 +1,7 @@
 package toulouse.miage.l3.nyx.core.model;
 
+import java.util.Objects;
+
 /**
  * Class Element
  *
@@ -36,6 +38,18 @@ public class Element {
         this.prixVente = prixVente;
         this.quantite = quantite;
         this.nom = nom;
+    }
+
+    public Element() {
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Element element = (Element) o;
+        return Objects.equals(code, element.code);
     }
 
     /**

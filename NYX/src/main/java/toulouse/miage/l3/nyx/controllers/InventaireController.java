@@ -3,6 +3,7 @@ package toulouse.miage.l3.nyx.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -45,6 +46,8 @@ public class InventaireController implements Initializable {
     private TextField ajoutqte;
     @FXML
     private TextField ajoutunite;
+    @FXML
+    private Label message;
 
     /**
      * The application will load this function at the start when it's called
@@ -117,23 +120,40 @@ public class InventaireController implements Initializable {
         Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
                 Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
-        if (isAddValidated(e)) elements.add(e);
+        if (isAddValidated(e)) {
+            elements.add(e);
+            message.setStyle("-fx-text-fill: green");
+            message.setText("Element ajouté");
+        }
+        else {
+            message.setStyle("-fx-text-fill: red");
+            message.setText("Ce code est déjà utilisé");
+        }
+
     }
 
     /**
      * Remove the selected element from the table view
      */
-    public void delElement(){
+    public Element delElement(){
         Element e = elementTableView.getSelectionModel().getSelectedItem();
         elements.remove(e);
+        message.setStyle("-fx-text-fill: red");
+        message.setText("Element supprimé");
+        return e;
     }
 
     /**
      * Modify the selected element from the table view
      */
     public void modifyElement() {
+        Element e = new Element();
         addElement();
-        delElement();
+        e = delElement();
+        if (isAddValidated(e)){
+            message.setStyle("-fx-text-fill: green");
+            message.setText("Element modifié");
+        }
     }
 
     /**
@@ -146,6 +166,8 @@ public class InventaireController implements Initializable {
         ajoutunite.setText("");
         ajoutprixa.setText("");
         ajoutprixv.setText("");
+        message.setText("");
+
     }
 
 }

@@ -83,8 +83,7 @@ public class Utils {
      * @return
      */
     public static boolean isAddValidated(Element e){
-        if (elements.contains(e.getCode())) return false;
-        else return true;
+        return !elements.contains(e);
     }
 
     /**
