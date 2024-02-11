@@ -82,6 +82,7 @@ public class InventaireController implements Initializable {
                 ajoutunite.setText(newSelection.getUniteMesure());
                 ajoutprixa.setText(String.valueOf(newSelection.getPrixAchat()));
                 ajoutprixv.setText(String.valueOf(newSelection.getPrixVente()));
+                message.setText("");
             }
         });
     }
