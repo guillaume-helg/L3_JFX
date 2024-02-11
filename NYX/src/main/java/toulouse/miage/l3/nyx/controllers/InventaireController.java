@@ -9,12 +9,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.service.SceneUtils;
+import toulouse.miage.l3.nyx.core.service.Utils;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.elements;
+import static toulouse.miage.l3.nyx.core.service.Utils.isAddValidated;
 
 public class InventaireController implements Initializable {
     @FXML
@@ -115,7 +117,7 @@ public class InventaireController implements Initializable {
         Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
                 Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
-        elements.add(e);
+        if (isAddValidated(e)) elements.add(e);
     }
 
     /**

@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import static toulouse.miage.l3.nyx.core.model.Usine.elements;
 import static toulouse.miage.l3.nyx.core.model.Usine.getChainesCommandes;
 
 public class Utils {
@@ -73,6 +74,17 @@ public class Utils {
         } catch (IOException ex) {
             System.out.println("File access problem");
         }
+    }
+
+    /**
+     * Checks to see if the item's code is in the elements array
+     *
+     * @param e
+     * @return
+     */
+    public static boolean isAddValidated(Element e){
+        if (elements.contains(e.getCode())) return false;
+        else return true;
     }
 
     /**
