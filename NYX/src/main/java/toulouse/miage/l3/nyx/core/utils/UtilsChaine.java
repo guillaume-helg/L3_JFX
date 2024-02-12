@@ -1,79 +1,15 @@
-package toulouse.miage.l3.nyx.core.service;
+package toulouse.miage.l3.nyx.core.utils;
 
-import javafx.collections.ObservableList;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.model.Usine;
 
 import java.io.*;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.getChainesCommandes;
-
-public class Utils {
-
-    /**
-     * Read every line of a file of element, parse these lines into Element,
-     * and add them to an ArrayList
-     * @return a table of elements read from the file element.csv
-     */
-    public static ArrayList<Element> readElement() {
-        String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
-        String line;
-        ArrayList<Element> element = new ArrayList<>();
-
-        try {
-            BufferedReader file = new BufferedReader(new FileReader(fileName));
-
-            while ((line = file.readLine()) != null) {
-                element.add(parseElement(line));
-            }
-
-            file.close();
-        } catch (IOException ex) {
-            System.out.println("Acces problem");
-        }
-        return element;
-    }
-
-    /**
-     * Parse a line in parameter with the format : code, name, quantity, unity, buy price, sell price
-     * into a new Element
-     *
-     * @param line : Here is an example of line : E001;Circuit principal;200;pieces;50;20
-     * @return : Return a new Element create with content of this line
-     */
-    private static Element parseElement(String line) {
-        String[] l = line.split(";");
-        return new Element(l[0], l[1], Double.parseDouble(l[2]), l[3], Double.parseDouble(l[4]), Double.parseDouble(l[5]));
-    }
-
-    /**
-     * Write on object Element into a file elements.csv
-     * @param e : table with every Element of the application
-     */
-    public static void writeElement(ObservableList<Element> e) {
-        String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
-        try {
-            PrintWriter file = new PrintWriter(new FileWriter(fileName));
-
-            for (Element a : e) {
-                file.println(a.getCode() + ";"
-                              + a.getNom() + ";"
-                              + a.getQuantite() + ";"
-                              + a.getUniteMesure() + ";"
-                              + a.getPrixAchat() + ";"
-                              + a.getPrixVente());
-            }
-
-            file.close();
-        } catch (IOException ex) {
-            System.out.println("File access problem");
-        }
-    }
+public class UtilsChaine {
 
     /**
      * Read line of a file named chaines.csv, and transform these line into an object Chaine,
@@ -175,7 +111,7 @@ public class Utils {
 
             for (Chaine chaine : chaines) {
                 file.println(chaine.getCode() + ";"
-                           + chaine.getNom() + ";"
+                                + chaine.getNom() + ";"
 //                           + parseElementListIntoText(chaine.getFormattedListeEntree() + ";"
 //                           + parseElementListIntoText(chaine.getFormattedListeSortie() + ";"
                 );
@@ -185,41 +121,5 @@ public class Utils {
         } catch (IOException ex) {
             System.out.println("File access problem");
         }
-    }
-
-    /**
-     * Create new file, in which you can read every chaine in the arrayList listesCommande
-     * The file is in the repertory export
-     * It contains : the date of the commande, the content of the command and his quantity
-     * and the total price of the command with is percentage of result.
-     */
-    public static boolean writeResultInAFile() {
-        LocalDateTime dateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
-        String formattedDate = dateTime.format(formatter);
-
-        String nomFichier = Paths.get("NYX", "src", "main", "resources", "toulouse", "miage", "l3", "nyx", "save", "commande", "commande_" + formattedDate + ".txt").toString();
-
-
-        try {
-            PrintWriter fichier = new PrintWriter(new FileWriter(nomFichier));
-
-            fichier.println("Date de la commande : " + LocalDateTime.now());
-            fichier.println("Le resultat des commandes est de : " ); // mettre la valeur du résultat des commandes
-            fichier.println("La liste des commandes : \n");
-
-            for (Map.Entry<Chaine, Integer> entry : getChainesCommandes()) {
-                fichier.println("Chaîne : " + entry.getKey().getCode() + " - " + entry.getKey().getNom());
-                fichier.println("Quantité : " + entry.getValue());
-                fichier.println("Liste d'éléments d'entrée : " + entry.getKey().getListeElementEntree());
-                fichier.println("Liste d'éléments de sortie : " + entry.getKey().getListeElementSortie());
-            }
-
-            fichier.close();
-        } catch (IOException ex) {
-            System.err.println("File access problem");
-            return false;
-        }
-        return true;
     }
 }

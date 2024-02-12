@@ -7,15 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import toulouse.miage.l3.nyx.core.model.Chaine;
-import toulouse.miage.l3.nyx.core.service.SceneUtils;
-import toulouse.miage.l3.nyx.core.service.Utils;
+import toulouse.miage.l3.nyx.core.utils.SceneUtils;
+import toulouse.miage.l3.nyx.core.utils.UtilsCommande;
+import toulouse.miage.l3.nyx.core.utils.UtilsElement;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +23,7 @@ import static toulouse.miage.l3.nyx.core.model.Usine.*;
 
 public class ResultatController implements Initializable {
 
+    public Label stat;
     @FXML
     private ProgressBar resultatCommande;
     private Stage stage;
@@ -63,8 +62,8 @@ public class ResultatController implements Initializable {
      * @param actionEvent
      */
     public void goToConfirmation(ActionEvent actionEvent) throws IOException {
-        Utils.writeElement(getElements());
-        isCommandeWritten = Utils.writeResultInAFile();
+        UtilsElement.writeElement(getElements());
+        isCommandeWritten = UtilsCommande.writeResultInAFile();
         clearChainesCommandes();
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/confirmation-view.fxml",
                 "/toulouse/miage/l3/nyx/style/confirmation.css", actionEvent);
@@ -140,6 +139,7 @@ public class ResultatController implements Initializable {
 
         double resultat = (double) faisible() / getSizeChainesCommande();
         resultatCommande.setProgress(resultat);
+        stat.setText(faisible() + " " + "/" + " " + getSizeChainesCommande() + " commandes réalisables !");
     }
 
     /**

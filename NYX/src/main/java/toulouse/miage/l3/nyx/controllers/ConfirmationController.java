@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import toulouse.miage.l3.nyx.core.service.SceneUtils;
+import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 import javafx.scene.image.Image;
 import java.io.IOException;
 import java.net.URL;

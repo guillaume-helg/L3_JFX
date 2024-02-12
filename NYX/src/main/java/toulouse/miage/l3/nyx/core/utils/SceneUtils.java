@@ -1,4 +1,4 @@
-package toulouse.miage.l3.nyx.core.service;
+package toulouse.miage.l3.nyx.core.utils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

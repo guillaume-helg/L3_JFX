@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javafx.stage.Stage;
 import toulouse.miage.l3.nyx.core.model.Chaine;
-import toulouse.miage.l3.nyx.core.service.SceneUtils;
+import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 
 import java.io.IOException;
 import java.net.URL;

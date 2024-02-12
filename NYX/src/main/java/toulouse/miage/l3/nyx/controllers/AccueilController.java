@@ -12,8 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import toulouse.miage.l3.nyx.core.model.Chaine;
-import toulouse.miage.l3.nyx.core.service.SceneUtils;
-import javafx.application.Application.Parameters;
+import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -78,6 +77,7 @@ public class AccueilController implements Initializable {
                         Button add = new Button("+");
                         Button less = new Button("-");
                         TextFieldTableCell tf = new TextFieldTableCell();
+
                         tf.setText(String.valueOf(currentQte));
                         tf.setStyle(" -fx-cursor: hand ;" + "-glyph-size:50px;" + "-fx-fill:#ff1744;" +
                                     "-fx-cell-size: 80px;" + "-fx-start-margin: 30px;" + "-fx-pref-width: 60px;" +
@@ -113,8 +113,10 @@ public class AccueilController implements Initializable {
                     }
                 }
             };
+
             return cell;
         };
+
         qte.setCellFactory(cellFoctory);
         chaineTableView.setItems(getChaine());
     }

@@ -30,9 +30,7 @@
                 <HBox alignment="CENTER" prefHeight="266.0" prefWidth="1258.0">
                     <children>
                         <ImageView fitHeight="100.0" fitWidth="460.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../image/step2.png" />
-                            </image>
+                            <Image url="@../image/step2.png"/>
                         </ImageView>
                     </children>
                 </HBox>
@@ -61,6 +59,7 @@
                      <children>
                         <Label text="Résultat : " />
                         <ProgressBar fx:id="resultatCommande" prefWidth="200.0" progress="0.0" />
+                         <Label fx:id="stat"/>
                      </children>
                   </HBox>
                </top>

@@ -3,14 +3,28 @@ package toulouse.miage.l3.nyx.core.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static toulouse.miage.l3.nyx.core.service.Utils.readChaine;
-import static toulouse.miage.l3.nyx.core.service.Utils.readElement;
+import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.readChaine;
+import static toulouse.miage.l3.nyx.core.utils.UtilsElement.readElement;
 
 public class Usine {
+
+    private static Map<Integer,Usine> instance = new HashMap<>();
+
+    public static Usine getInstance(Integer usineId) {
+        if (instance.get(usineId) == null) {
+            instance.put(usineId,new Usine());
+        }
+        return instance.get(usineId);
+    }
+
+    private Usine(){
+
+    }
 
     private static ObservableList<Chaine> chaines = FXCollections.observableArrayList();
     private static ObservableList<Map.Entry<Chaine, Integer>> chainesCommandes = FXCollections.observableArrayList();
