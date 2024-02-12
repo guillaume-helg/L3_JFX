@@ -28,7 +28,7 @@ public class Usine {
 
     private static ObservableList<Chaine> chaines = FXCollections.observableArrayList();
     private static ObservableList<Map.Entry<Chaine, Integer>> chainesCommandes = FXCollections.observableArrayList();
-    private static ObservableList<Element> elements = FXCollections.observableArrayList();
+    public static ObservableList<Element> elements = FXCollections.observableArrayList();
 
     public void chargerChaines() {
         chaines.addAll(readChaine());
