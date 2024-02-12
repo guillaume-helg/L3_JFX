@@ -9,18 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bb6732f-b27c-47e3-a6ce-57fb53063b45" name="Changes" comment="ajout fonctionnalités affichage classe ConfirmationController.java">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/AccueilController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/AccueilController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ResultatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ResultatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Commande.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Production.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Usine.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Usine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/fxml/confirmation-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/fxml/confirmation-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/fxml/resultat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/fxml/resultat-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv" afterDir="false" />
-    </list>
+    <list default="true" id="4bb6732f-b27c-47e3-a6ce-57fb53063b45" name="Changes" comment="ajout fonctionnalités affichage classe ConfirmationController.java" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -248,6 +237,7 @@
       <workItem from="1707748157359" duration="601000" />
       <workItem from="1707752283876" duration="86000" />
       <workItem from="1707754818755" duration="152000" />
+      <workItem from="1707767440211" duration="667000" />
     </task>
     <task id="LOCAL-00001" summary="ajout fonctionnalités affichage classe ConfirmationController.java">
       <option name="closed" value="true" />
