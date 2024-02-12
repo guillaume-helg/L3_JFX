@@ -10,14 +10,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.service.SceneUtils;
-import toulouse.miage.l3.nyx.core.service.Utils;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.elements;
-import static toulouse.miage.l3.nyx.core.service.Utils.isAddValidated;
+import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
+import static toulouse.miage.l3.nyx.core.service.Utils.isTheCodeInArray;
 
 public class InventaireController implements Initializable {
     @FXML
@@ -72,7 +71,7 @@ public class InventaireController implements Initializable {
         elementPrixV.setCellValueFactory(new PropertyValueFactory<>("prixVente"));
         elementQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
         elementUnite.setCellValueFactory(new PropertyValueFactory<>("uniteMesure"));
-        elementTableView.setItems(elements);
+        elementTableView.setItems(getElements());
 
         elementTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -120,14 +119,17 @@ public class InventaireController implements Initializable {
         Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
                 Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
-        if (isAddValidated(e)) {
-            elements.add(e);
+        if (isTheCodeInArray(e)) {
+            getElements().get(getElements().indexOf(e)).setQuantite(getElements().get(getElements().indexOf(e)).getQuantite() + e.getQuantite());
             message.setStyle("-fx-text-fill: green");
-            message.setText("Element ajouté");
+            message.setText("Quantité mise à jour");
+            elementTableView.refresh();
+            ajoutqte.setText(String.valueOf(getElements(getElements().indexOf(e)).getQuantite()));
         }
         else {
-            message.setStyle("-fx-text-fill: red");
-            message.setText("Ce code est déjà utilisé");
+            getElements().add(e);
+            message.setStyle("-fx-text-fill: green");
+            message.setText("Element ajouté");
         }
 
     }
@@ -137,7 +139,7 @@ public class InventaireController implements Initializable {
      */
     public Element delElement(){
         Element e = elementTableView.getSelectionModel().getSelectedItem();
-        elements.remove(e);
+        getElements().remove(e);
         message.setStyle("-fx-text-fill: red");
         message.setText("Element supprimé");
         return e;
@@ -147,13 +149,21 @@ public class InventaireController implements Initializable {
      * Modify the selected element from the table view
      */
     public void modifyElement() {
+        Element a = new Element(ajoutcode.getText(),ajoutnom.getText(),
+                Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
+                Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
         Element e = elementTableView.getSelectionModel().getSelectedItem();
-        addElement();
-        if (isAddValidated(e)){
-            e = delElement();
-            message.setStyle("-fx-text-fill: green");
-            message.setText("Element modifié");
+        if (isTheCodeInArray(e)){
+            getElements().set(getElements().indexOf(e),a);
+            elementTableView.refresh();
+
         }
+        else{
+            Element b = delElement();
+            getElements().add(e);
+        }
+        message.setStyle("-fx-text-fill: green");
+        message.setText("Element modifié");
     }
 
     /**
@@ -167,7 +177,5 @@ public class InventaireController implements Initializable {
         ajoutprixa.setText("");
         ajoutprixv.setText("");
         message.setText("");
-
     }
-
 }

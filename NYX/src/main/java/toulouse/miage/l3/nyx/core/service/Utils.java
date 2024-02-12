@@ -11,8 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.elements;
-import static toulouse.miage.l3.nyx.core.model.Usine.getChainesCommandes;
+import static toulouse.miage.l3.nyx.core.model.Usine.*;
 
 public class Utils {
 
@@ -82,8 +81,8 @@ public class Utils {
      * @param e
      * @return
      */
-    public static boolean isAddValidated(Element e){
-        return !elements.contains(e);
+    public static boolean isTheCodeInArray(Element e){
+        return getElements().contains(e);
     }
 
     /**
@@ -148,7 +147,7 @@ public class Utils {
             String code = elements[i].replaceAll("[(]", "");
             Double value = Double.parseDouble(elements[i + 1].replaceAll("[)]", ""));
 
-            Element existingElement = findElementByCode(Usine.elements, code);
+            Element existingElement = findElementByCode(Usine.getElements(), code);
 
             if (existingElement != null) {
                 elementMap.put(existingElement, value);
