@@ -39,6 +39,10 @@ Button {
     -fx-border-radius: 20px;
 }
 
+.label {
+    -fx-text-alignment: center;
+}
+
 @media only screen and (max-width: 600px) {
 
 }

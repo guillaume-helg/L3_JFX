@@ -58,21 +58,21 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="ajoutprixv" prefHeight="39.0" prefWidth="294.0" promptText="Prix de vente">
+                  <TextField fx:id="ajoutprixv" promptText="Prix de vente">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="ajoutqte" prefHeight="39.0" prefWidth="394.0" promptText="Quantité">
+                  <TextField fx:id="ajoutqte" promptText="Quantité">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="ajoutunite" promptText="Unité">
+                  <ComboBox fx:id="ajoutunite" prefHeight="29.0" prefWidth="328.0" promptText="Unité">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
                      </VBox.margin>
-                  </TextField>
+                  </ComboBox>
                   <Label fx:id="message" styleClass="message" text="">
                      <VBox.margin>
                         <Insets bottom="10.0" />

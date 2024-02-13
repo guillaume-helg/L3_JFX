@@ -10,6 +10,7 @@ public class UtilsElement {
     /**
      * Read every line of a file of element, parse these lines into Element,
      * and add them to an ArrayList
+     *
      * @return a table of elements read from the file element.csv
      */
     public static ArrayList<Element> readElement() {
@@ -45,6 +46,7 @@ public class UtilsElement {
 
     /**
      * Write on object Element into a file elements.csv
+     *
      * @param e : table with every Element of the application
      */
     public static void writeElement(ObservableList<Element> e) {
@@ -67,7 +69,23 @@ public class UtilsElement {
         }
     }
 
-    public static boolean isTheCodeInArray(Element e) {
+    public static boolean checkFormatCode(String code){
+        if (code.matches("E\\d{3}")) return true;
         return false;
+    }
+
+    public static boolean checkQuantite(Double qte){
+        if (qte <= 0) return false;
+        return true;
+    }
+
+    public static boolean checkPurchasePrice(Double pp){
+        if (pp <= 0) return false;
+        return true;
+    }
+
+    public static boolean checkSalePrice(Double sp){
+        if (sp <= 0) return false;
+        return true;
     }
 }
