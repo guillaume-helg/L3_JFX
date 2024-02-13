@@ -139,7 +139,7 @@ public class Utils {
      * @param input : Here is an example of line : (E004,1),(E002,0.5),(E003,0.1)
      * @return Hashmap which contains a list of Element and quantity attributed
      */
-    private static HashMap<Element, Double> parseElementList(String input) {
+    public static HashMap<Element, Double> parseElementList(String input) {
         HashMap<Element, Double> elementMap = new HashMap<>();
         String[] elements = input.split(",");
 

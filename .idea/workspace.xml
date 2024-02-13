@@ -9,7 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bb6732f-b27c-47e3-a6ce-57fb53063b45" name="Changes" comment="ajout fonctionnalités affichage classe ConfirmationController.java" />
+    <list default="true" id="4bb6732f-b27c-47e3-a6ce-57fb53063b45" name="Changes" comment="ajout fonctionnalités affichage classe ConfirmationController.java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ChaineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ChaineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/service/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/service/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/style/chaineproduction.css" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/style/chaineproduction.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
