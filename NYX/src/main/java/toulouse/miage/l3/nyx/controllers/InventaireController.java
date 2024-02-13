@@ -13,12 +13,18 @@ import toulouse.miage.l3.nyx.core.service.SceneUtils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 import static toulouse.miage.l3.nyx.core.service.Utils.isTheCodeInArray;
 
 public class InventaireController implements Initializable {
+    public static final List<Character> verifcode =
+            Collections.unmodifiableList(Arrays.asList('0','1','2','3','4','5','6','7','8','0'));
+
     @FXML
     private TableView<Element> elementTableView;
     @FXML
@@ -112,6 +118,15 @@ public class InventaireController implements Initializable {
                 "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
     }
 
+    public boolean isNiceFormatCode(String code){
+        if (code.length() > 2) return false;
+        if (code.charAt(0) != 'E') return false;
+        for (int i = 1; i < code.length(); i++){
+            if (!verifcode.contains(code.charAt(i))) return false;
+        }
+        return true;
+    }
+
     /**
      * Create an element and add it in the table view
      */
@@ -131,7 +146,6 @@ public class InventaireController implements Initializable {
             message.setStyle("-fx-text-fill: green");
             message.setText("Element ajouté");
         }
-
     }
 
     /**
