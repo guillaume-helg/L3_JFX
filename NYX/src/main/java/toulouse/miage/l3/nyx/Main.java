@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import toulouse.miage.l3.nyx.core.model.Usine;
-import toulouse.miage.l3.nyx.core.utils.UtilsElement;
+import toulouse.miage.l3.nyx.core.service.Utils;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -14,8 +14,6 @@ import java.util.Objects;
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 public class Main extends Application {
-
-    public Usine usine;
 
     @Override
     public void start(Stage stage) {
@@ -30,7 +28,7 @@ public class Main extends Application {
             stage.setMinWidth(500);
             stage.show();
 
-            usine = Usine.getInstance(0);
+            Usine usine = new Usine();
             usine.chargerElements();
             usine.chargerChaines();
 
@@ -45,7 +43,7 @@ public class Main extends Application {
 
     @Override
     public void stop() throws Exception {
-        UtilsElement.writeElement(getElements());
+        Utils.writeElement(getElements());
         super.stop();
     }
 }

@@ -1,6 +1,6 @@
 package toulouse.miage.l3.nyx.core.model;
 
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Class Element
@@ -9,7 +9,6 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Element {
-    /** code of the element */
     private String code;
     /** name of the element */
     private String nom;
