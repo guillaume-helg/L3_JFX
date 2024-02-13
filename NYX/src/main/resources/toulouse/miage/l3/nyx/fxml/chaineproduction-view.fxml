@@ -40,12 +40,12 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" />
                             </VBox.margin>
                         </TextField>
-                        <TextField fx:id="ajoutListeEntree" promptText="Liste des éléments en entrée">
+                        <TextField fx:id="ajoutListeEntree" promptText="Eléments en entrée">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" />
                             </VBox.margin>
                         </TextField>
-                        <TextField fx:id="ajoutListeSortie" promptText="Liste des éléments en sortie">
+                        <TextField fx:id="ajoutListeSortie" promptText="Eléments en sortie">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" />
                             </VBox.margin>

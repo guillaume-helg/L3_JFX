@@ -101,6 +101,9 @@ public class AccueilController implements Initializable {
                             currentQte = Integer.parseInt(tf.getText());
                             tf.setText(Integer.toString(Math.max(0, currentQte - 1)));
                             listeCommandeAccueil.put(getTableView().getItems().get(getIndex()), Math.max(0, currentQte - 1));
+                            if (currentQte - 1 == 0) {
+                                listeCommandeAccueil.remove(getTableView().getItems().get(getIndex()));
+                            }
                         });
 
                         HBox managebtn = new HBox();

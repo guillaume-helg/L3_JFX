@@ -22,13 +22,29 @@ public class Chaine {
     /** name of the chain */
     private String nom;
     /** list of each element and his quantity needed by the chaine to create something */
-    protected HashMap<Element, Double> listeElementEntree;
+    protected HashMap<Element, Double> listeElementEntreeH;
     /** list of each element we make by using this chaine */
-    private HashMap<Element, Double> listeElementSortie;
+    private HashMap<Element, Double> listeElementSortieH;
     /** toString of the Hashmap listeElementEntree */
     private String listeElementEntrees;
     /** toString of the Hashmap listeElementSortie */
     private String listeElementSorties;
+
+    public String getListeElementEntrees() {
+        return listeElementEntrees;
+    }
+
+    public String getListeElementSorties() {
+        return listeElementSorties;
+    }
+
+    public HashMap<Element, Double> getListeElementEntreeH() {
+        return this.listeElementEntreeH;
+    }
+
+    public HashMap<Element, Double> getListeElementSortieH() {
+        return this.listeElementSortieH;
+    }
 
     /**
      * Constructeur de la chaine (code),(nom),(listeElementEntree),(listeElementSortie)
@@ -40,8 +56,8 @@ public class Chaine {
     public Chaine(String code, String nom, HashMap<Element, Double> listeElementEntree, HashMap<Element, Double> listeElementSortie) {
         this.code = code;
         this.nom = nom;
-        this.listeElementEntree = listeElementEntree;
-        this.listeElementSortie = listeElementSortie;
+        this.listeElementEntreeH = listeElementEntree;
+        this.listeElementSortieH = listeElementSortie;
         this.listeElementEntrees = getFormattedListeEntree();
         this.listeElementSorties = getFormattedListeSortie();
     }
@@ -84,7 +100,7 @@ public class Chaine {
      */
     public String getFormattedListeEntree() {
         StringBuilder str = new StringBuilder();
-        for (Map.Entry<Element, Double> entry : listeElementEntree.entrySet()) {
+        for (Map.Entry<Element, Double> entry : listeElementEntreeH.entrySet()) {
             str.append(entry.getKey().getCode());
             str.append(" * ");
             str.append(entry.getValue());
@@ -100,7 +116,7 @@ public class Chaine {
      */
     public String getFormattedListeSortie() {
         StringBuilder str = new StringBuilder();
-        for (Map.Entry<Element, Double> entry : listeElementSortie.entrySet()) {
+        for (Map.Entry<Element, Double> entry : listeElementSortieH.entrySet()) {
             str.append(entry.getKey().getCode());
             str.append(" * ");
             str.append(entry.getValue());
@@ -143,7 +159,7 @@ public class Chaine {
     public boolean isFeasible(int qtt) {
         boolean feasible = false;
 
-        for (Map.Entry<Element, Double> currentElement : this.listeElementEntree.entrySet()) {
+        for (Map.Entry<Element, Double> currentElement : this.listeElementEntreeH.entrySet()) {
             Element element = currentElement.getKey();
             if (getElements().contains(element)) {
                 int index = getElements().indexOf(element);

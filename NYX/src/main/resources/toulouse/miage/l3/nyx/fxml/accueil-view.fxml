@@ -40,8 +40,8 @@
                     <columns>
                       <TableColumn fx:id="chaineCode" prefWidth="25.0" styleClass="table-column" text="Code" />
                       <TableColumn fx:id="chaineNom" prefWidth="25.0" styleClass="table-column" text="Nom" />
-                      <TableColumn fx:id="chaineEntree" minWidth="250.0" prefWidth="248.20001220703125" styleClass="table-column" text="Liste des éléments en entrée" />
-                      <TableColumn fx:id="chaineSortie" prefWidth="248.20001220703125" styleClass="table-column" text="Liste des éléments en sortie" />
+                      <TableColumn fx:id="chaineEntree" minWidth="250.0" prefWidth="248.20001220703125" styleClass="table-column" text="Eléments en entrée" />
+                      <TableColumn fx:id="chaineSortie" prefWidth="248.20001220703125" styleClass="table-column" text="Eléments en sortie" />
                       <TableColumn fx:id="qte" prefWidth="248.20001220703125" styleClass="table-column" text="Qte" />
                     </columns>
                      <columnResizePolicy>
