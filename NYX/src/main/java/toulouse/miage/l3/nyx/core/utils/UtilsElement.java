@@ -66,4 +66,8 @@ public class UtilsElement {
             System.out.println("File access problem");
         }
     }
+
+    public static boolean isTheCodeInArray(Element e) {
+        return false;
+    }
 }

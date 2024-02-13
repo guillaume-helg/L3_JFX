@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
-import static toulouse.miage.l3.nyx.core.service.Utils.isTheCodeInArray;
+import static toulouse.miage.l3.nyx.core.utils.UtilsElement.*;
 
 public class InventaireController implements Initializable {
     public static final List<Character> verifcode =

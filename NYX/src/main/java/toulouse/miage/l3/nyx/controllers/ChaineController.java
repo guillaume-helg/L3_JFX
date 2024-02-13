@@ -26,7 +26,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
-import static toulouse.miage.l3.nyx.core.service.Utils.*;
+import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.parseElementList;
 
 public class ChaineController implements Initializable {
 
@@ -96,11 +96,10 @@ public class ChaineController implements Initializable {
             if(!isInChaine){
                 getChaine().add(c);
             }
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Entrer vos chaines dans le format suivant :"+'\n'+"(Code Element,Nombre Element),...");
             alert.showAndWait();
-
         }
 
     }

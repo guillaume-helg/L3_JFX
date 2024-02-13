@@ -1,0 +1,8 @@
+Date de la commande : 2024-02-13T12:46:48.484931
+Le resultat des commandes est de : 
+La liste des commandes : 
+
+Chaîne : C001 - Propulsion
+Quantité : 2
+Liste d'éléments d'entrée : E004 * 1.0, E002 * 0.5, E003 * 0.1
+Liste d'éléments de sortie : E005 * 1.0

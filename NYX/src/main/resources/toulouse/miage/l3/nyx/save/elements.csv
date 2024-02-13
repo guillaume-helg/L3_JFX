@@ -1,7 +1,7 @@
 E001;Circuit principal;128.0;pieces;50.0;20.0
-E002;Plastique;301.0;kilogrammes;3.0;1.0
-E003;Plaques aluminium;60.20000000000002;pieces;20.0;10.0
-E004;Servomoteurs;162.0;pieces;15.0;10.0
+E002;Plastique;293.0;kilogrammes;3.0;1.0
+E003;Plaques aluminium;58.60000000000002;pieces;20.0;10.0
+E004;Servomoteurs;146.0;pieces;15.0;10.0
 E005;Propulsions;0.0;pieces;10.0;15.0
 E006;Coques;0.0;pieces;10.0;20.0
 E007;Drones;0.0;pieces;10.0;150.0
