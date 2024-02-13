@@ -14,6 +14,7 @@ import java.util.Objects;
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 public class Main extends Application {
+    public Usine usine;
 
     @Override
     public void start(Stage stage) {
@@ -28,7 +29,7 @@ public class Main extends Application {
             stage.setMinWidth(500);
             stage.show();
 
-            Usine usine = new Usine();
+            usine = Usine.getInstance(0);
             usine.chargerElements();
             usine.chargerChaines();
 

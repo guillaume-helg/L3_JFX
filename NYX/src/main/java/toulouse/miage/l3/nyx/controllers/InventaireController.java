@@ -3,6 +3,7 @@ package toulouse.miage.l3.nyx.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -12,11 +13,18 @@ import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.*;
+import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
+import static toulouse.miage.l3.nyx.core.service.Utils.isTheCodeInArray;
 
 public class InventaireController implements Initializable {
+    public static final List<Character> verifcode =
+            Collections.unmodifiableList(Arrays.asList('0','1','2','3','4','5','6','7','8','0'));
+
     @FXML
     private TableView<Element> elementTableView;
     @FXML
@@ -43,6 +51,8 @@ public class InventaireController implements Initializable {
     private TextField ajoutqte;
     @FXML
     private TextField ajoutunite;
+    @FXML
+    private Label message;
 
     /**
      * The application will load this function at the start when it's called
@@ -108,6 +118,15 @@ public class InventaireController implements Initializable {
                 "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
     }
 
+    public boolean isNiceFormatCode(String code){
+        if (code.length() > 2) return false;
+        if (code.charAt(0) != 'E') return false;
+        for (int i = 1; i < code.length(); i++){
+            if (!verifcode.contains(code.charAt(i))) return false;
+        }
+        return true;
+    }
+
     /**
      * Create an element and add it in the table view
      */
@@ -115,23 +134,50 @@ public class InventaireController implements Initializable {
         Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
                 Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
-        addToElements(e);
+        if (isTheCodeInArray(e)) {
+            getElements().get(getElements().indexOf(e)).setQuantite(getElements().get(getElements().indexOf(e)).getQuantite() + e.getQuantite());
+            message.setStyle("-fx-text-fill: green");
+            message.setText("Quantité mise à jour");
+            elementTableView.refresh();
+            ajoutqte.setText(String.valueOf(getElements(getElements().indexOf(e)).getQuantite()));
+        }
+        else {
+            getElements().add(e);
+            message.setStyle("-fx-text-fill: green");
+            message.setText("Element ajouté");
+        }
     }
 
     /**
      * Remove the selected element from the table view
      */
-    public void delElement(){
+    public Element delElement(){
         Element e = elementTableView.getSelectionModel().getSelectedItem();
-        removeToElement(e);
+        getElements().remove(e);
+        message.setStyle("-fx-text-fill: red");
+        message.setText("Element supprimé");
+        return e;
     }
 
     /**
      * Modify the selected element from the table view
      */
     public void modifyElement() {
-        addElement();
-        delElement();
+        Element a = new Element(ajoutcode.getText(),ajoutnom.getText(),
+                Double.parseDouble(ajoutqte.getText()), ajoutunite.getText(),
+                Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
+        Element e = elementTableView.getSelectionModel().getSelectedItem();
+        if (isTheCodeInArray(e)){
+            getElements().set(getElements().indexOf(e),a);
+            elementTableView.refresh();
+
+        }
+        else{
+            Element b = delElement();
+            getElements().add(e);
+        }
+        message.setStyle("-fx-text-fill: green");
+        message.setText("Element modifié");
     }
 
     /**
@@ -144,6 +190,6 @@ public class InventaireController implements Initializable {
         ajoutunite.setText("");
         ajoutprixa.setText("");
         ajoutprixv.setText("");
+        message.setText("");
     }
-
 }
