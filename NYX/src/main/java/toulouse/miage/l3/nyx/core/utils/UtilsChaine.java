@@ -105,15 +105,15 @@ public class UtilsChaine {
      * @param chaines : table with every chaine of use by the application
      */
     public static void writeChaine(Chaine[] chaines) {
-        String fileName = "chaine.csv";
+        String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv";
         try {
             PrintWriter file = new PrintWriter(new FileWriter(fileName));
 
             for (Chaine chaine : chaines) {
                 file.println(chaine.getCode() + ";"
                                 + chaine.getNom() + ";"
-//                           + parseElementListIntoText(chaine.getFormattedListeEntree() + ";"
-//                           + parseElementListIntoText(chaine.getFormattedListeSortie() + ";"
+                                + chaine.getListeEntreeCSVType()+";"
+                                + chaine.getListeSortieCSVType()+";"
                 );
             }
 

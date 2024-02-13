@@ -110,6 +110,34 @@ public class Chaine {
         return str.toString();
     }
 
+    public String getListeEntreeCSVType(){
+        StringBuilder str = new StringBuilder();
+        for (Map.Entry<Element, Double> entry : listeElementEntree.entrySet()) {
+            str.append("(");
+            str.append(entry.getKey().getCode());
+            str.append(",");
+            str.append(entry.getValue());
+            str.append(")");
+            str.append(",");
+        }
+        return str.toString();
+
+    }
+
+    public String getListeSortieCSVType(){
+        StringBuilder str = new StringBuilder();
+        for (Map.Entry<Element, Double> entry : listeElementSortie.entrySet()) {
+            str.append("(");
+            str.append(entry.getKey().getCode());
+            str.append(",");
+            str.append(entry.getValue());
+            str.append(")");
+
+        }
+        return str.toString();
+
+    }
+
     /**
      *
      * @return

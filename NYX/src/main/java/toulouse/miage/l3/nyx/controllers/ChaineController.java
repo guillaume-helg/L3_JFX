@@ -96,6 +96,7 @@ public class ChaineController implements Initializable {
             if(!isInChaine){
                 getChaine().add(c);
             }
+            getChaine().add(c);
         } catch (ArrayIndexOutOfBoundsException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Entrer vos chaines dans le format suivant :"+'\n'+"(Code Element,Nombre Element),...");

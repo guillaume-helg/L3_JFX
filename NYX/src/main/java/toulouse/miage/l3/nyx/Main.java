@@ -5,12 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Usine;
+import toulouse.miage.l3.nyx.core.utils.UtilsChaine;
 import toulouse.miage.l3.nyx.core.utils.UtilsElement;
 
 import java.io.IOException;
 import java.util.Objects;
 
+import static toulouse.miage.l3.nyx.core.model.Usine.getChaine;
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 public class Main extends Application {
@@ -45,6 +48,7 @@ public class Main extends Application {
     @Override
     public void stop() throws Exception {
         UtilsElement.writeElement(getElements());
+        UtilsChaine.writeChaine(getChaine().toArray(new Chaine[0]));
         super.stop();
     }
 }
