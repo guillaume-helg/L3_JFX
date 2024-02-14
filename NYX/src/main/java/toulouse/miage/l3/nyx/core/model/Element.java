@@ -15,7 +15,7 @@ public class Element {
     /** quantity of the element */
     private Double quantite;
     /** unit of the element */
-    private String uniteMesure;
+    private Unite uniteMesure;
     /** purchase price of element */
     private Double prixAchat;
     /** selling price of element */
@@ -30,7 +30,7 @@ public class Element {
      * @param prixAchat
      * @param prixVente
      */
-    public Element(String code, String nom, Double quantite, String uniteMesure, Double prixAchat, Double prixVente) {
+    public Element(String code, String nom, Double quantite, Unite uniteMesure, Double prixAchat, Double prixVente) {
         this.code = code;
         this.uniteMesure = uniteMesure;
         this.prixAchat = prixAchat;
@@ -112,7 +112,7 @@ public class Element {
      * @return uniteMesure
      */
     public String getUniteMesure() {
-        return uniteMesure;
+        return uniteMesure.name();
     }
 
     /**

@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import toulouse.miage.l3.nyx.core.model.Element;
+import toulouse.miage.l3.nyx.core.model.Unite;
 import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 import toulouse.miage.l3.nyx.core.utils.UtilsElement;
 
@@ -22,8 +23,6 @@ import static toulouse.miage.l3.nyx.core.utils.UtilsElement.*;
 public class InventaireController implements Initializable {
     public static final List<Character> verifcode =
             Collections.unmodifiableList(Arrays.asList('0','1','2','3','4','5','6','7','8','0'));
-
-    public enum unite {pieces, kilogrammes, litres}
 
     @FXML
     private TableView<Element> elementTableView;
@@ -86,10 +85,11 @@ public class InventaireController implements Initializable {
                 ajoutqte.setText(String.valueOf(newSelection.getQuantite()));
                 ajoutprixa.setText(String.valueOf(newSelection.getPrixAchat()));
                 ajoutprixv.setText(String.valueOf(newSelection.getPrixVente()));
+                ajoutunite.setValue(newSelection.getUniteMesure());
             }
         });
 
-        ajoutunite.getItems().addAll(unite.values());
+        ajoutunite.getItems().addAll(Unite.values());
     }
 
     /**
@@ -149,7 +149,7 @@ public class InventaireController implements Initializable {
     public void addElement(){
         if (checkAll()){
             Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
-                    Double.parseDouble(ajoutqte.getText()), ajoutunite.getSelectionModel().toString(),
+                    Double.parseDouble(ajoutqte.getText()), (Unite) ajoutunite.getValue(),
                     Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
             if (elementsContains(e)) {
                 getElements().get(getElements().indexOf(e)).setQuantite(getElements().get(getElements().indexOf(e)).getQuantite() + e.getQuantite());
@@ -182,7 +182,7 @@ public class InventaireController implements Initializable {
      */
     public void modifyElement() {
         Element a = new Element(ajoutcode.getText(),ajoutnom.getText(),
-                Double.parseDouble(ajoutqte.getText()), ajoutunite.getItems().toString(),
+                Double.parseDouble(ajoutqte.getText()),(Unite)ajoutunite.getValue(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
         Element e = elementTableView.getSelectionModel().getSelectedItem();
         if (elementsContains(e)){
@@ -209,6 +209,7 @@ public class InventaireController implements Initializable {
         ajoutqte.setText("");
         ajoutprixa.setText("");
         ajoutprixv.setText("");
+        ajoutunite.setValue("");
         message.setText("");
     }
 }

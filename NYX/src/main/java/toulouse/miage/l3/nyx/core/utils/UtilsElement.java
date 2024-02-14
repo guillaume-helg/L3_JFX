@@ -2,6 +2,7 @@ package toulouse.miage.l3.nyx.core.utils;
 
 import javafx.collections.ObservableList;
 import toulouse.miage.l3.nyx.core.model.Element;
+import toulouse.miage.l3.nyx.core.model.Unite;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class UtilsElement {
      */
     private static Element parseElement(String line) {
         String[] l = line.split(";");
-        return new Element(l[0], l[1], Double.parseDouble(l[2]), l[3], Double.parseDouble(l[4]), Double.parseDouble(l[5]));
+        return new Element(l[0], l[1], Double.parseDouble(l[2]), Unite.valueOf(l[3]), Double.parseDouble(l[4]), Double.parseDouble(l[5]));
     }
 
     /**
