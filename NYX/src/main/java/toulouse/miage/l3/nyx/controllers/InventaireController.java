@@ -158,7 +158,7 @@ public class InventaireController implements Initializable {
      */
     public Element textfieldsToElement(){
         return new Element(ajoutcode.getText(),ajoutnom.getText(),
-                Double.parseDouble(ajoutqte.getText()), (Unite)ajoutunite.getValue(),
+                Double.parseDouble(ajoutqte.getText()), ajoutunite.getValue(),
                 Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
     }
 

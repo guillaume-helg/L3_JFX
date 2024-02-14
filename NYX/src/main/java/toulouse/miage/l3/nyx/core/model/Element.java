@@ -22,22 +22,22 @@ public class Element {
     private Double quantite;
     /** unit of the element */
     private Unite uniteMesure;
-    /** purchase price of element */
+    /** purchase price of the element */
     private Double prixAchat;
-    /** selling price of element */
+    /** selling price of the element */
     private Double prixVente;
 
     /* ===========================================
      * CONSTRUCTOR AND NATIVE FUNCTIONS
      * =========================================== */
     /**
-     * Constructeur of element
-     * @param code
-     * @param nom
-     * @param quantite
-     * @param uniteMesure
-     * @param prixAchat
-     * @param prixVente
+     * Constructor for element
+     * @param code : code of an element
+     * @param nom : name of an element
+     * @param quantite : quantities of an element
+     * @param uniteMesure : unit of an element
+     * @param prixAchat : purchase price of an element
+     * @param prixVente : selling price of an element
      */
     public Element(String code, String nom, Double quantite, Unite uniteMesure, Double prixAchat, Double prixVente) {
         this.code = code;
@@ -49,15 +49,13 @@ public class Element {
     }
 
     /**
-     * Empty constructor of element
+     * Empty constructor for element
      */
-    public Element() {
-
-    }
+    public Element() {}
 
     /**
-     * Comparison points between elements
-     * @param o
+     * Define comparison points between elements
+     * @param o : another element
      * @return boolean
      */
     @Override
@@ -126,7 +124,7 @@ public class Element {
      * =========================================== */
     /**
      * Set the element's purchase price
-     * @param prixAchat
+     * @param prixAchat : purchase price of an element
      */
     public void setPrixAchat(Double prixAchat) {
         this.prixAchat = prixAchat;
@@ -134,7 +132,7 @@ public class Element {
 
     /**
      * Set the element's selling price
-     * @param prixVente
+     * @param prixVente : selling price of an element
      */
     public void setPrixVente(Double prixVente) {
         this.prixVente = prixVente;
@@ -142,7 +140,7 @@ public class Element {
 
     /**
      * Set the element's unit
-     * @param quantite
+     * @param quantite : quantities of an element
      */
     public void setQuantite(Double quantite) {
         this.quantite = quantite;
