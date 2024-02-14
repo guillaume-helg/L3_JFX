@@ -79,33 +79,60 @@ public class ChaineController implements Initializable {
     }
 
 
-    public void createListEntre(){createList(ajoutListeEntree,comboBoxElemE,comboBoxQttE);}
-
-    public void createListSortie(){createList(ajoutListeSortie,comboBoxElemS,comboBoxQttS);}
+    /**
+     * Enable to change the scene from chaine de production to accueil
+     * @param liste
+     * the type of liste to create
+     * @param cbe
+     * Combobox for the element
+     * @param cbq
+     * Combobox for the quantity
+     */
 
     public void createList(TextField liste,ComboBox cbe,ComboBox cbq){
         if (!liste.getText().isEmpty()) {
             liste.setText(liste.getText() + ",");
         }
-        liste.setText("("+liste.getText()+cbe.getSelectionModel().getSelectedItem().toString()+",");
+        liste.setText(liste.getText()+"("+cbe.getSelectionModel().getSelectedItem().toString()+",");
         liste.setText(liste.getText()+cbq.getSelectionModel().getSelectedItem().toString()+")");
     }
+    /**
+     * two methods called by the button add
+     */
+    public void createListEntre(){createList(ajoutListeEntree,comboBoxElemE,comboBoxQttE);}
+
+    public void createListSortie(){createList(ajoutListeSortie,comboBoxElemS,comboBoxQttS);}
 
     /**
      * Add chaine to Table and to .csv file
      */
     public void addChaine() throws IOException {
-        boolean isInChaine = false;
+        boolean codeIsInChaine = false;
+        boolean nameIsInChaine =false;
         try{Chaine c = new Chaine(ajoutcode.getText(), ajoutnom.getText(),
-                parseElementList(ajoutListeEntree.getText()),
-                parseElementList(ajoutListeSortie.getText()));
-            for(Chaine i: getChaine())
-                if(c.getCode().equals(i.getCode())) {
-                    isInChaine=false;
-                }else{
-                    isInChaine=true;
+                        parseElementList(ajoutListeEntree.getText()),
+                        parseElementList(ajoutListeSortie.getText()));
+            for(Chaine i: getChaine()) {
+                if (c.getCode().equals(i.getCode())) {
+                    codeIsInChaine = false;
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Code Chaine déja existant");
+                    alert.showAndWait();
+                    break;
+                } else {
+                    codeIsInChaine = true;
                 }
-            if(!isInChaine){
+                if (c.getNom().equals(i.getNom())){
+                    nameIsInChaine = false;
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Nom Chaine déja existant");
+                    alert.showAndWait();
+                    break;
+                }else{
+                    nameIsInChaine = true;
+                }
+            }
+            if (nameIsInChaine && codeIsInChaine){
                 getChaine().add(c);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
