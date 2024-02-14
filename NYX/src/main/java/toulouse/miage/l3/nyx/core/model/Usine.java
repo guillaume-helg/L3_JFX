@@ -81,6 +81,14 @@ public class Usine {
         elements.remove(e);
     }
 
+    public static void modifyToElement(Element elpre, Element elpost) {elements.set(elementIndexOf(elpre),elpost);}
+
+    public static Double addQuantitiesOfElement(Element e) {
+        Double totqte = elements.get(elementIndexOf(e)).getQuantite() + e.getQuantite();
+        elements.get(elementIndexOf(e)).setQuantite(totqte);
+        return totqte;
+    }
+
     public static boolean elementsContains(Element e) {
         return elements.contains(e);
     }

@@ -2,6 +2,7 @@ package toulouse.miage.l3.nyx.core.model;
 
 import java.util.*;
 
+
 /**
  * Class Element
  *
@@ -9,6 +10,11 @@ import java.util.*;
  * @version 1.0
  */
 public class Element {
+
+    /* ===========================================
+     * DECLARATION OF ATTRIBUTES
+     * =========================================== */
+    /** code of the element */
     private String code;
     /** name of the element */
     private String nom;
@@ -21,8 +27,11 @@ public class Element {
     /** selling price of element */
     private Double prixVente;
 
+    /* ===========================================
+     * CONSTRUCTOR AND NATIVE FUNCTIONS
+     * =========================================== */
     /**
-     * Constructeur de l'element
+     * Constructeur of element
      * @param code
      * @param nom
      * @param quantite
@@ -32,17 +41,25 @@ public class Element {
      */
     public Element(String code, String nom, Double quantite, Unite uniteMesure, Double prixAchat, Double prixVente) {
         this.code = code;
+        this.nom = nom;
+        this.quantite = quantite;
         this.uniteMesure = uniteMesure;
         this.prixAchat = prixAchat;
         this.prixVente = prixVente;
-        this.quantite = quantite;
-        this.nom = nom;
     }
 
+    /**
+     * Empty constructor of element
+     */
     public Element() {
 
     }
 
+    /**
+     * Comparison points between elements
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,44 +68,16 @@ public class Element {
         return Objects.equals(code, element.code);
     }
 
+
+    /* ===========================================
+     * GETTER
+     * =========================================== */
     /**
      * Get the element's code
      * @return code
      */
     public String getCode() {
         return code;
-    }
-
-    /**
-     * Get the element's purchase price
-     * @return prixAchat
-     */
-    public Double getPrixAchat() {
-        return prixAchat;
-    }
-
-    /**
-     * Set the element's purchase price
-     * @param prixAchat
-     */
-    public void setPrixAchat(Double prixAchat) {
-        this.prixAchat = prixAchat;
-    }
-
-    /**
-     * Get the element's selling price
-     * @return prixVente
-     */
-    public Double getPrixVente() {
-        return prixVente;
-    }
-
-    /**
-     * Set the element's selling price
-     * @param prixVente
-     */
-    public void setPrixVente(Double prixVente) {
-        this.prixVente = prixVente;
     }
 
     /**
@@ -111,8 +100,44 @@ public class Element {
      * Get the element's unit
      * @return uniteMesure
      */
-    public String getUniteMesure() {
-        return uniteMesure.name();
+    public Unite getUniteMesure() {
+        return uniteMesure;
+    }
+
+    /**
+     * Get the element's purchase price
+     * @return prixAchat
+     */
+    public Double getPrixAchat() {
+        return prixAchat;
+    }
+
+    /**
+     * Get the element's selling price
+     * @return prixVente
+     */
+    public Double getPrixVente() {
+        return prixVente;
+    }
+
+
+    /* ===========================================
+     * SETTER
+     * =========================================== */
+    /**
+     * Set the element's purchase price
+     * @param prixAchat
+     */
+    public void setPrixAchat(Double prixAchat) {
+        this.prixAchat = prixAchat;
+    }
+
+    /**
+     * Set the element's selling price
+     * @param prixVente
+     */
+    public void setPrixVente(Double prixVente) {
+        this.prixVente = prixVente;
     }
 
     /**

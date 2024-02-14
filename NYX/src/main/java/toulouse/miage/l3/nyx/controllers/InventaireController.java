@@ -8,62 +8,78 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.model.Unite;
 import toulouse.miage.l3.nyx.core.utils.SceneUtils;
-import toulouse.miage.l3.nyx.core.utils.UtilsElement;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.ResourceBundle;
-
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsElement.*;
 
-public class InventaireController implements Initializable {
-    public static final List<Character> verifcode =
-            Collections.unmodifiableList(Arrays.asList('0','1','2','3','4','5','6','7','8','0'));
 
+/**
+ * Class InventaireController
+ *
+ * @author Lucas Godard
+ * @version 1.0
+ */
+public class InventaireController implements Initializable {
+
+    /* ===========================================
+     * DECLARATION OF ATTRIBUTES
+     * =========================================== */
+    /** tableView of elements */
     @FXML
     private TableView<Element> elementTableView;
+    /** column for element's code */
     @FXML
     private TableColumn<Element, Integer> elementCode;
+    /** column for element's name */
     @FXML
     private TableColumn<Element, String> elementNom;
+    /** column for element's purchase price */
     @FXML
     private TableColumn<Element, Double> elementPrixA;
+    /** column for element's selling price */
     @FXML
     private TableColumn<Element, Double> elementPrixV;
+    /** column for element's quantities */
     @FXML
     private TableColumn<Element, Double> elementQuantite;
+    /** column for element's unit */
     @FXML
     private TableColumn<Element, String> elementUnite;
+    /** text field for element's code */
     @FXML
     private TextField ajoutcode;
+    /** text field for element's name */
     @FXML
     private TextField ajoutnom;
+    /** text field for element's purchase price */
     @FXML
     private TextField ajoutprixa;
+    /** text field for element's selling price */
     @FXML
     private TextField ajoutprixv;
+    /** text field for element's quantities */
     @FXML
     private TextField ajoutqte;
+    /** text field for element's unit */
     @FXML
-    private ComboBox ajoutunite;
+    private ComboBox<Unite> ajoutunite;
+    /** information message */
     @FXML
     private Label message;
 
+
+    /* ===========================================
+     * TABLEVIEW INITIALIZATION
+     * =========================================== */
     /**
      * The application will load this function at the start when it's called
-     *
      * The code will display a table view, with custom columns
-     *
      * It also listens to clicks on table view rows in order to fill text fields
-     *
      * @param url
      * The location used to resolve relative paths for the root object, or
      * {@code null} if the location is not known.
-     *
      * @param resourceBundle
      * The resources used to localize the root object, or {@code null} if
      * the root object was not localized.
@@ -92,9 +108,13 @@ public class InventaireController implements Initializable {
         ajoutunite.getItems().addAll(Unite.values());
     }
 
+
+    /* ===========================================
+     * NAVIGATION
+     * =========================================== */
     /**
      * Enable to change the scene from inventaire to acceuil
-     * @param actionEvent - click
+     * @param actionEvent - click on tab
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml",
@@ -103,7 +123,7 @@ public class InventaireController implements Initializable {
 
     /**
      * Enable to change the scene from inventaire to chaine de production
-     * @param actionEvent
+     * @param actionEvent : click on tab
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
@@ -112,68 +132,103 @@ public class InventaireController implements Initializable {
 
     /**
      * Enable to change the scene from inventaire to inventaire (refresh)
-     * @param actionEvent
+     * @param actionEvent : click on tab
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",
                 "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
     }
 
+
+    /* ===========================================
+     * UTILS FOR CONTROLLER
+     * =========================================== */
+    /**
+     * Print a message whose content and color are given
+     * @param style : a css style in String format
+     * @param text : content of message
+     */
+    public void printLabel(String style, String text){
+        message.setStyle(style);
+        message.setText(text);
+    }
+
+    /**
+     * Creates a new element from the information provided in the text fields
+     */
+    public Element textfieldsToElement(){
+        return new Element(ajoutcode.getText(),ajoutnom.getText(),
+                Double.parseDouble(ajoutqte.getText()), (Unite)ajoutunite.getValue(),
+                Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
+    }
+
+    /**
+     * Creates a new item from a selected row in the tableview
+     */
+    public Element selecteditemToElement(){
+        return elementTableView.getSelectionModel().getSelectedItem();
+    }
+
+
+    /* ===========================================
+     * CHECK FORMAT OF INPUTS
+     * =========================================== */
+    /**
+     * Check if element attributes formats are correct and
+     * print the correct associated error message
+     * @return a boolean
+     */
     public boolean checkAll(){
         if (!checkFormatCode(ajoutcode.getText())) {
-            message.setStyle("-fx-text-fill: red");
-            message.setText("Code pas au bon format");
+            printLabel("-fx-text-fill: red", "Code pas au bon format\nFormat : 'E000' - 'E999'");
             return false;
         }
         if (!checkQuantite(Double.parseDouble(ajoutqte.getText()))) {
-            message.setStyle("-fx-text-fill: red");
-            message.setText("Qte doit être > 0");
+            printLabel("-fx-text-fill: red", "Qte doit être > 0");
             return false;
         }
         if (!checkPurchasePrice(Double.parseDouble(ajoutprixa.getText()))) {
-            message.setStyle("-fx-text-fill: red");
-            message.setText("Prix achat doit être > 0");
+            printLabel("-fx-text-fill: red", "Prix achat doit être > 0");
             return false;
         }
-        if (!checkSalePrice(Double.parseDouble(ajoutprixv.getText()))) {
-            message.setStyle("-fx-text-fill: red");
-            message.setText("Prix vente doit être > 0");
+        if (!checkSellingPrice(Double.parseDouble(ajoutprixv.getText()))) {
+            printLabel("-fx-text-fill: red", "Prix vente doit être > 0");
             return false;
         }
         return true;
     }
 
+
+    /* ===========================================
+     * ACTION ON BUTTON
+     * =========================================== */
     /**
      * Create an element and add it in the table view
      */
     public void addElement(){
         if (checkAll()){
-            Element e = new Element(ajoutcode.getText(),ajoutnom.getText(),
-                    Double.parseDouble(ajoutqte.getText()), (Unite) ajoutunite.getValue(),
-                    Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
+            Element e = textfieldsToElement();
             if (elementsContains(e)) {
-                getElements().get(getElements().indexOf(e)).setQuantite(getElements().get(getElements().indexOf(e)).getQuantite() + e.getQuantite());
-                message.setStyle("-fx-text-fill: green");
-                message.setText("Quantité mise à jour");
+                Double postqte = addQuantitiesOfElement(e);
+                printLabel("-fx-text-fill: green", "Quantité mise à jour");
                 elementTableView.refresh();
-                ajoutqte.setText(String.valueOf(getElements(getElements().indexOf(e)).getQuantite()));
+                ajoutqte.setText(String.valueOf(postqte));
             }
             else {
                 addToElements(e);
-                message.setStyle("-fx-text-fill: green");
-                message.setText("Element ajouté");
+                printLabel("-fx-text-fill: green", "Element ajouté");
             }
         }
     }
 
     /**
      * Remove the selected element from the table view
+     * @return an element
      */
     public Element delElement(){
-        Element e = elementTableView.getSelectionModel().getSelectedItem();
+        Element e = selecteditemToElement();
         removeToElement(e);
-        message.setStyle("-fx-text-fill: red");
-        message.setText("Element supprimé");
+        printLabel("-fx-text-fill: red", "Element supprimé");
         return e;
     }
 
@@ -181,23 +236,19 @@ public class InventaireController implements Initializable {
      * Modify the selected element from the table view
      */
     public void modifyElement() {
-        Element a = new Element(ajoutcode.getText(),ajoutnom.getText(),
-                Double.parseDouble(ajoutqte.getText()),(Unite)ajoutunite.getValue(),
-                Double.parseDouble(ajoutprixa.getText()), Double.parseDouble(ajoutprixv.getText()));
-        Element e = elementTableView.getSelectionModel().getSelectedItem();
-        if (elementsContains(e)){
-            getElements().set(getElements().indexOf(e),a);
+        Element eltextf = textfieldsToElement();
+        Element elselect = selecteditemToElement();
+        if (elementsContains(elselect)){
+            modifyToElement(elselect,eltextf);
             elementTableView.refresh();
-
         }
         else{
             if (checkAll()) {
-                removeToElement(e);
-                addToElements(a);
+                removeToElement(elselect);
+                addToElements(eltextf);
+                printLabel("-fx-text-fill: green", "Element modifié");
             }
         }
-        message.setStyle("-fx-text-fill: green");
-        message.setText("Element modifié");
     }
 
     /**
@@ -209,7 +260,7 @@ public class InventaireController implements Initializable {
         ajoutqte.setText("");
         ajoutprixa.setText("");
         ajoutprixv.setText("");
-        ajoutunite.setValue("");
+        ajoutunite.setValue(null);
         message.setText("");
     }
 }
