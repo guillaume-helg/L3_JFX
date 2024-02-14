@@ -3,9 +3,11 @@
  * Licence MIAGE, Université Paul Sabatier, pas de copyright, pas de droit d'auteur
  */
 package toulouse.miage.l3.nyx.core.model;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static toulouse.miage.l3.nyx.core.model.Usine.elementsContains;
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 
@@ -29,6 +31,8 @@ public class Chaine {
     private String listeElementEntrees;
     /** toString of the Hashmap listeElementSortie */
     private String listeElementSorties;
+
+    private Label message;
 
     /**
      * Constructeur de la chaine (code),(nom),(listeElementEntree),(listeElementSortie)
@@ -113,12 +117,16 @@ public class Chaine {
     public String getListeEntreeCSVType(){
         StringBuilder str = new StringBuilder();
         for (Map.Entry<Element, Double> entry : listeElementEntree.entrySet()) {
+            if(!str.isEmpty()){
+                str.append(",");
+            }
             str.append("(");
             str.append(entry.getKey().getCode());
             str.append(",");
             str.append(entry.getValue());
             str.append(")");
-            str.append(",");
+
+
         }
         return str.toString();
 
@@ -188,5 +196,16 @@ public class Chaine {
 
         }
         return feasible;
+    }
+
+    public boolean elementExist(Element e){
+        boolean elemExist = false;
+        if (elementsContains(e)) {
+            elemExist=true;
+        } else {
+            elemExist=false;
+            System.out.println("Erreur, element inexistant");
+        }
+        return elemExist;
     }
 }

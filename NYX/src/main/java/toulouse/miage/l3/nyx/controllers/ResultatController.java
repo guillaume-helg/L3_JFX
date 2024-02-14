@@ -160,4 +160,5 @@ public class ResultatController implements Initializable {
         }
         return countFaisable;
     }
+
 }

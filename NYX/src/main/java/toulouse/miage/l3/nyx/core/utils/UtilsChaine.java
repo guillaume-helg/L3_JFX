@@ -1,5 +1,6 @@
 package toulouse.miage.l3.nyx.core.utils;
 
+import javafx.scene.control.Alert;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.model.Usine;
@@ -8,6 +9,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 public class UtilsChaine {
 
@@ -73,12 +76,15 @@ public class UtilsChaine {
             String code = elements[i].replaceAll("[(]", "");
             Double value = Double.parseDouble(elements[i + 1].replaceAll("[)]", ""));
 
-            Element existingElement = findElementByCode(Usine.getElements(), code);
+            Element existingElement = findElementByCode(getElements(), code);
 
-            if (existingElement != null) {
+            if (existingElement != null && getElements().contains(existingElement)) {
                 elementMap.put(existingElement, value);
             } else {
                 System.err.println("Your Element does not exist");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Un des éléments entrées n'existe pas");
+                alert.showAndWait();
             }
         }
         return elementMap;
@@ -113,7 +119,7 @@ public class UtilsChaine {
                 file.println(chaine.getCode() + ";"
                                 + chaine.getNom() + ";"
                                 + chaine.getListeEntreeCSVType()+";"
-                                + chaine.getListeSortieCSVType()+";"
+                                + chaine.getListeSortieCSVType()
                 );
             }
 
@@ -122,4 +128,5 @@ public class UtilsChaine {
             System.out.println("File access problem");
         }
     }
+
 }

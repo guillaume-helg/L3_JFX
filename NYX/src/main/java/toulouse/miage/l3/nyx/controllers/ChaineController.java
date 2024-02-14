@@ -1,30 +1,18 @@
 package toulouse.miage.l3.nyx.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.cell.*;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import javafx.util.Callback;
 import toulouse.miage.l3.nyx.core.model.Chaine;
-import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 
 import java.io.*;
-import java.lang.invoke.StringConcatFactory;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
-
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.parseElementList;
 
@@ -48,8 +36,15 @@ public class ChaineController implements Initializable {
     private TextField ajoutListeEntree;
     @FXML
     private TextField ajoutListeSortie;
-
-    private HashMap<Chaine, Integer> chaineQuantities = new HashMap<>();
+    @FXML
+    private ComboBox comboBoxElemE;
+    @FXML
+    private ComboBox comboBoxQttE;
+    @FXML
+    private ComboBox comboBoxElemS;
+    @FXML
+    private ComboBox comboBoxQttS;
+    ObservableList<String> qtt = FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10");
 
     public void initialize(URL location, ResourceBundle resources) {
         chaineCode.setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -57,6 +52,10 @@ public class ChaineController implements Initializable {
         chaineEntree.setCellValueFactory(new PropertyValueFactory<>("listeElementEntree"));
         chaineSortie.setCellValueFactory(new PropertyValueFactory<>("listeElementSortie"));
         chaineTableView.setItems(getChaine());
+        comboBoxElemE.setItems(getCodeElement());
+        comboBoxQttE.setItems(qtt);
+        comboBoxElemS.setItems(getCodeElement());
+        comboBoxQttS.setItems(qtt);
     }
 
 
@@ -79,6 +78,19 @@ public class ChaineController implements Initializable {
 
     }
 
+
+    public void createListEntre(){createList(ajoutListeEntree,comboBoxElemE,comboBoxQttE);}
+
+    public void createListSortie(){createList(ajoutListeSortie,comboBoxElemS,comboBoxQttS);}
+
+    public void createList(TextField liste,ComboBox cbe,ComboBox cbq){
+        if (!liste.getText().isEmpty()) {
+            liste.setText(liste.getText() + ",");
+        }
+        liste.setText("("+liste.getText()+cbe.getSelectionModel().getSelectedItem().toString()+",");
+        liste.setText(liste.getText()+cbq.getSelectionModel().getSelectedItem().toString()+")");
+    }
+
     /**
      * Add chaine to Table and to .csv file
      */
@@ -96,13 +108,11 @@ public class ChaineController implements Initializable {
             if(!isInChaine){
                 getChaine().add(c);
             }
-            getChaine().add(c);
         } catch (ArrayIndexOutOfBoundsException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Entrer vos chaines dans le format suivant :"+'\n'+"(Code Element,Nombre Element),...");
             alert.showAndWait();
         }
-
     }
 
     public void delChaine(){
@@ -119,4 +129,5 @@ public class ChaineController implements Initializable {
         ajoutListeEntree.setText("");
         ajoutListeSortie.setText("");
     }
+
 }

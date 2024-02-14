@@ -1,82 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="NYX_Project:jar" />
-    </artifacts-to-build>
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4bb6732f-b27c-47e3-a6ce-57fb53063b45" name="Changes" comment="ajout fonctionnalités affichage classe ConfirmationController.java">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2024_12_18__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2024_12_18__Changes_.xml" afterDir="false" />
+    <list default="true" id="b37c552e-b10a-40d2-925b-a0a9a38be5e3" name="Changes" comment="ajout fonctionnalités affichage classe ConfirmationController.java">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2024_12_18_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_02_2024_12_18__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_02_2024_19_11__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_02_2024_19_11__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_02_2024_21_01__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_02_2024_21_01__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ChaineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ChaineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ResultatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/controllers/ResultatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Chaine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Usine.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/model/Usine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/utils/UtilsChaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/java/toulouse/miage/l3/nyx/core/utils/UtilsChaine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv" beforeDir="false" afterPath="$PROJECT_DIR$/NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="FxmlFile" />
-        <option value="CSS File" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="guillaume-helg &lt;95490983+guillaume-helg@users.noreply.github.com&gt;" />
-      </list>
-    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;guillaume-helg&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="ed9e4069-344d-4b72-944b-42eb0a089310" />
-        <option name="url" value="https://github.com/guillaume-helg/NYX_Project.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2b1wj6Gt8J3If4QTSZTu5172wPH" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2cMKVAaHCMVVKR3MmFDdJbEhZIi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -84,203 +49,65 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Debug",
-    "Docker.NYX/Dockerfile.executor": "Run",
-    "JAR Application.Unnamed.executor": "Run",
-    "Maven.NYX [clean].executor": "Run",
-    "Maven.NYX [compile].executor": "Run",
-    "Maven.NYX [deploy].executor": "Run",
-    "Maven.NYX [install].executor": "Run",
-    "Maven.NYX [package].executor": "Run",
-    "Maven.NYX [site].executor": "Run",
-    "Maven.NYX [test].executor": "Run",
-    "Maven.NYX [validate].executor": "Run",
-    "Maven.NYX [verify].executor": "Run",
+    "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "dev__chaine__prod2",
-    "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/HuguesAnsoborlo/NYX_Project/NYX/src/main/java/toulouse/miage/l3/nyx/core/model",
-    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HuguesAnsoborlo\NYX_Project\NYX\src\main\java\toulouse\miage\l3\nyx\core\model" />
-      <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\GuillaumeHelg\Documents\project_docker\NYX_Project" />
-      <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src\main\java\toulouse\miage\l3\nyx\controllers" />
-      <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src\main\resources\toulouse\miage\l3\nyx\style" />
-      <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src\main\resources\toulouse\miage\l3\nyx\fxml" />
-      <recent name="C:\Users\GuillaumeHelg\IdeaProjects\NYX_Project\NYX\src\main\resources\toulouse\miage\l3\nyx\image" />
-    </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="toulouse.miage.l3.nyx.controllers" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
       <option name="MAIN_CLASS_NAME" value="toulouse.miage.l3.nyx.Main" />
       <module name="NYX" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="toulouse.miage.l3.nyx.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="JarApplication" nameIsGenerated="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/NYX_Project_jar/NYX_Project.jar" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\jdk-21\lib&quot;" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\GuillaumeHelg\Documents\project_docker\NYX_Project" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <module name="NYX_Project" />
-      <method v="2">
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="NYX_Project:jar" />
-        </option>
-      </method>
-    </configuration>
-    <configuration name="NYX/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="containerName" value="" />
-          <option name="sourceFilePath" value="NYX/Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Docker.NYX/Dockerfile" />
-      <item itemvalue="JAR Application.Unnamed" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Docker.NYX/Dockerfile" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Docker.NYX/Dockerfile" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-11.0.22-corretto-11.0.22-f644763e9732-4a89cc43" />
-        <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-8f899f12" />
-        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-c0c073db" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4bb6732f-b27c-47e3-a6ce-57fb53063b45" name="Changes" comment="" />
-      <created>1705396026315</created>
+      <changelist id="b37c552e-b10a-40d2-925b-a0a9a38be5e3" name="Changes" comment="ajout fonctionnalités affichage classe ConfirmationController.java" />
+      <created>1707916034858</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1705396026315</updated>
-      <workItem from="1705396030438" duration="1013000" />
-      <workItem from="1705495289542" duration="185000" />
-      <workItem from="1705915508602" duration="2688000" />
-      <workItem from="1705921628048" duration="2504000" />
-      <workItem from="1705945858672" duration="8859000" />
-      <workItem from="1705955302076" duration="1546000" />
-      <workItem from="1706000208874" duration="328000" />
-      <workItem from="1706102781336" duration="2600000" />
-      <workItem from="1706110203168" duration="10936000" />
-      <workItem from="1706124958002" duration="822000" />
-      <workItem from="1706173808895" duration="6594000" />
-      <workItem from="1706184613546" duration="2057000" />
-      <workItem from="1706194849776" duration="1059000" />
-      <workItem from="1706208751653" duration="4126000" />
-      <workItem from="1706266079593" duration="644000" />
-      <workItem from="1706273290855" duration="1389000" />
-      <workItem from="1706277641712" duration="1691000" />
-      <workItem from="1706284662447" duration="116000" />
-      <workItem from="1706377106893" duration="5906000" />
-      <workItem from="1706384329850" duration="4919000" />
-      <workItem from="1706436787413" duration="10827000" />
-      <workItem from="1706464431948" duration="259000" />
-      <workItem from="1706512465207" duration="2134000" />
-      <workItem from="1706519392694" duration="154000" />
-      <workItem from="1706600641457" duration="1476000" />
-      <workItem from="1706728620476" duration="2250000" />
-      <workItem from="1706802960599" duration="4586000" />
-      <workItem from="1706914018819" duration="872000" />
-      <workItem from="1706915013661" duration="1254000" />
-      <workItem from="1706979001071" duration="5355000" />
-      <workItem from="1706991192271" duration="4152000" />
-      <workItem from="1707051786782" duration="8075000" />
-      <workItem from="1707158273217" duration="8340000" />
-      <workItem from="1707193797985" duration="4419000" />
-      <workItem from="1707199661533" duration="1919000" />
-      <workItem from="1707202920801" duration="386000" />
-      <workItem from="1707217025589" duration="1232000" />
-      <workItem from="1707218311300" duration="2124000" />
-      <workItem from="1707225599814" duration="2047000" />
-      <workItem from="1707339248930" duration="4085000" />
-      <workItem from="1707387232471" duration="3096000" />
-      <workItem from="1707400209580" duration="1329000" />
-      <workItem from="1707588643947" duration="4620000" />
-      <workItem from="1707650657861" duration="2149000" />
-      <workItem from="1707748157359" duration="601000" />
-      <workItem from="1707752283876" duration="86000" />
-      <workItem from="1707754818755" duration="152000" />
-      <workItem from="1707767440211" duration="667000" />
+      <updated>1707916034858</updated>
+      <workItem from="1707916054382" duration="9377000" />
     </task>
-    <task id="LOCAL-00001" summary="ajout fonctionnalités affichage classe ConfirmationController.java">
-      <option name="closed" value="true" />
-      <created>1707592115973</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1707592115973</updated>
-    </task>
-    <task id="LOCAL-00002" summary="ajout fonctionnalités affichage classe ConfirmationController.java">
-      <option name="closed" value="true" />
-      <created>1707592234322</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1707592234322</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ajout fonctionnalités affichage classe ConfirmationController.java" />
     <option name="LAST_COMMIT_MESSAGE" value="ajout fonctionnalités affichage classe ConfirmationController.java" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
