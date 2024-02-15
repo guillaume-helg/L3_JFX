@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import toulouse.miage.l3.nyx.core.model.Commande;
-import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 import toulouse.miage.l3.nyx.core.utils.UtilsCommande;
 import toulouse.miage.l3.nyx.core.utils.UtilsElement;
@@ -20,6 +19,7 @@ import java.net.URL;
 import java.util.*;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
+import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.*;
 
 public class ResultatController implements Initializable {
     @FXML
@@ -66,6 +66,7 @@ public class ResultatController implements Initializable {
      * @param actionEvent
      */
     public void goToConfirmation(ActionEvent actionEvent) throws IOException {
+        placeOrder();
         UtilsElement.writeElement(getElements());
         isCommandeWritten = UtilsCommande.writeResultInAFile();
         clearChainesCommandes();
@@ -135,39 +136,9 @@ public class ResultatController implements Initializable {
 
         chaineTableView.setItems(getCommandes());
 
-        double resultat = (double) faisible() / getSizeChainesCommande();
+        String[] s = getNbOrder().split("/");
+        double resultat = (double) Double.parseDouble(s[0]) / Double.parseDouble(s[1]) ;
         resultatCommande.setProgress(resultat);
-        stat.setText(faisible() + " " + "/" + " " + getSizeChainesCommande() + " réalisées !");
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int faisible () {
-        int count = 0;
-
-        for(Commande c : getCommandes()) {
-            if (c.getFeasible()) {
-                count ++;
-            }
-        }
-        return count;
-    }
-
-    /**
-     *
-     */
-    public double calculRentabiliteProduction() {
-        double prixTotal = 0;
-        for(Commande c : getCommandes()) {
-            for (Map.Entry<Element, Double> element : c.getChaine().getListeElementEntreeH().entrySet()) {
-                prixTotal -= element.getKey().getPrixVente() * element.getValue() * c.getQuantity();
-            }
-            for (Map.Entry<Element, Double> element : c.getChaine().getListeElementSortieH().entrySet()) {
-                prixTotal += element.getKey().getPrixVente() * element.getValue() * c.getQuantity();
-            }
-        }
-        return prixTotal;
+        stat.setText(Double.parseDouble(s[0]) + "/" + (Double.parseDouble(s[0]) + Double.parseDouble(s[1])) + " réalisées !");
     }
 }

@@ -42,11 +42,6 @@ public class Element {
     }
 
     /**
-     * Empty constructor for element
-     */
-    public Element() {}
-
-    /**
      * Define comparison points between elements
      * @param o : another element
      * @return boolean

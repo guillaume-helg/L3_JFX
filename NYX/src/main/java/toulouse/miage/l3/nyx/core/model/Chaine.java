@@ -181,17 +181,15 @@ public class Chaine {
             Element element = currentElement.getKey();
             if (getElements().contains(element)) {
                 int index = getElements().indexOf(element);
-                getElements().get(index).setQuantite(element.getQuantite()-(currentElement.getValue() * qtt));
+                if (getElements().get(index).getQuantite()-(currentElement.getValue() * qtt) >= 0) {
+                    feasible = true;
+                } else {
+                    System.out.println("Pas quantité suffisante");
+                    return false;
+                }
             } else {
                 System.out.println("Erreur, element inexistant");
             }
-
-            if (element.getQuantite() >= 0) {
-                feasible = true;
-            } else {
-                return false;
-            }
-
         }
         return feasible;
     }
