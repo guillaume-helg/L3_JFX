@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static toulouse.miage.l3.nyx.core.model.Usine.getChaine;
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 public class UtilsChaine {
@@ -129,4 +130,36 @@ public class UtilsChaine {
         }
     }
 
+    public static boolean checkCodeChaine(String code){
+        if(!code.matches("C\\d{3}")){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Code pas au bon format\nFormat : 'C000' - 'C999'");
+                alert.showAndWait();
+                return false;
+            }
+        for (Chaine i: getChaine())
+            if(code.equals(i.getCode())){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Code Chaine déja existant");
+                alert.showAndWait();
+                return false;
+            }
+            return true;
+        };
+
+
+    public static boolean checkNomChaine(String nom){
+        for (Chaine i: getChaine())
+            if (nom.equals(i.getNom())) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Nom Chaine déja existant");
+                alert.showAndWait();
+                return false;
+            }
+        return true;
+    }
 }
+
+
+
+

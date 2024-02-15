@@ -14,7 +14,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.*;
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
-import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.parseElementList;
+import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.*;
 
 public class ChaineController implements Initializable {
 
@@ -107,32 +107,10 @@ public class ChaineController implements Initializable {
      * Add chaine to Table and to .csv file
      */
     public void addChaine() throws IOException {
-        boolean codeIsInChaine = false;
-        boolean nameIsInChaine =false;
         try{Chaine c = new Chaine(ajoutcode.getText(), ajoutnom.getText(),
                         parseElementList(ajoutListeEntree.getText()),
                         parseElementList(ajoutListeSortie.getText()));
-            for(Chaine i: getChaine()) {
-                if (c.getCode().equals(i.getCode())) {
-                    codeIsInChaine = false;
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Code Chaine déja existant");
-                    alert.showAndWait();
-                    break;
-                } else {
-                    codeIsInChaine = true;
-                }
-                if (c.getNom().equals(i.getNom())){
-                    nameIsInChaine = false;
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Nom Chaine déja existant");
-                    alert.showAndWait();
-                    break;
-                }else{
-                    nameIsInChaine = true;
-                }
-            }
-            if (nameIsInChaine && codeIsInChaine){
+            if(checkCodeChaine(ajoutcode.getText()) && checkNomChaine(ajoutnom.getText())){
                 addToChaine(c);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
