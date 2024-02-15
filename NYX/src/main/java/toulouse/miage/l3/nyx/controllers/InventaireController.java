@@ -15,12 +15,6 @@ import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsElement.*;
 
 
-/**
- * Class InventaireController
- *
- * @author Lucas Godard
- * @version 1.0
- */
 public class InventaireController implements Initializable {
 
     /* ===========================================
