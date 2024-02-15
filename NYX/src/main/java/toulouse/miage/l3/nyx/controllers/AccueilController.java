@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
+import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.parseHashmapToCommand;
 
 public class AccueilController implements Initializable {
 
@@ -129,7 +130,7 @@ public class AccueilController implements Initializable {
      * @param actionEvent - click
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
-        addAllInChainesCommandes(listeCommandeAccueil.entrySet());
+        parseHashmapToCommand(listeCommandeAccueil);
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml",
                 "/toulouse/miage/l3/nyx/style/resultat.css", actionEvent);
     }

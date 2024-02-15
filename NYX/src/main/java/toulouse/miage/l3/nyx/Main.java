@@ -19,6 +19,9 @@ import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 public class Main extends Application {
     public Usine usine;
 
+    /**
+     * 
+     */
     @Override
     public void start(Stage stage) {
         try {

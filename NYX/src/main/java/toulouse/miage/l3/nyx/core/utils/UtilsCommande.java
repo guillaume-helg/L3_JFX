@@ -1,6 +1,7 @@
 package toulouse.miage.l3.nyx.core.utils;
 
 import toulouse.miage.l3.nyx.core.model.Chaine;
+import toulouse.miage.l3.nyx.core.model.Commande;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,7 +11,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.getChainesCommandes;
+import static toulouse.miage.l3.nyx.core.model.Usine.addToCommandes;
+import static toulouse.miage.l3.nyx.core.model.Usine.getCommandes;
 
 public class UtilsCommande {
     /**
@@ -36,11 +38,11 @@ public class UtilsCommande {
             fichier.println(separator);
             fichier.println("La liste des commandes \n");
 
-            for (Map.Entry<Chaine, Integer> entry : getChainesCommandes()) {
-                fichier.println("\tChaîne : " + entry.getKey().getCode() + " - " + entry.getKey().getNom());
-                fichier.println("\tQuantité : " + entry.getValue());
-                fichier.println("\tListe d'éléments d'entrée : " + entry.getKey().getListeElementEntree());
-                fichier.println("\tListe d'éléments de sortie : " + entry.getKey().getListeElementSortie());
+            for (Commande c : getCommandes()) {
+                fichier.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
+                fichier.println("\tQuantité : " + c.getQuantity());
+                fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getListeElementEntree());
+                fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getListeElementSortie());
                 fichier.println("\n");
             }
 
@@ -51,5 +53,11 @@ public class UtilsCommande {
             return false;
         }
         return true;
+    }
+
+    public static void parseHashmapToCommand(Map<Chaine, Integer> listeCommande) {
+        for (Map.Entry<Chaine, Integer> entry : listeCommande.entrySet()) {
+            addToCommandes(new Commande(entry.getKey(), entry.getValue()));
+        }
     }
 }

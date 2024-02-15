@@ -27,21 +27,10 @@ public class Chaine {
     protected HashMap<Element, Double> listeElementEntreeH;
     /** list of each element we make by using this chaine */
     private HashMap<Element, Double> listeElementSortieH;
-
-    public HashMap<Element, Double> getListeElementEntreeH() {
-        return listeElementEntreeH;
-    }
-
-    public HashMap<Element, Double> getListeElementSortieH() {
-        return listeElementSortieH;
-    }
-
     /** toString of the Hashmap listeElementEntree */
     private String listeElementEntrees;
     /** toString of the Hashmap listeElementSortie */
     private String listeElementSorties;
-
-    private Label message;
 
     /**
      * Constructeur de la chaine (code),(nom),(listeElementEntree),(listeElementSortie)
@@ -216,5 +205,13 @@ public class Chaine {
             System.out.println("Erreur, element inexistant");
         }
         return elemExist;
+    }
+
+    public HashMap<Element, Double> getListeElementEntreeH() {
+        return listeElementEntreeH;
+    }
+
+    public HashMap<Element, Double> getListeElementSortieH() {
+        return listeElementSortieH;
     }
 }

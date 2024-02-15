@@ -2,13 +2,6 @@ package toulouse.miage.l3.nyx.core.model;
 
 import java.util.*;
 
-
-/**
- * Class Element
- *
- * @author Lucas Godard
- * @version 1.0
- */
 public class Element {
 
     /* ===========================================
