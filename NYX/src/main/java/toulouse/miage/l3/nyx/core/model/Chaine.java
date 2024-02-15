@@ -3,9 +3,11 @@
  * Licence MIAGE, Université Paul Sabatier, pas de copyright, pas de droit d'auteur
  */
 package toulouse.miage.l3.nyx.core.model;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static toulouse.miage.l3.nyx.core.model.Usine.elementsContains;
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 
@@ -22,13 +24,24 @@ public class Chaine {
     /** name of the chain */
     private String nom;
     /** list of each element and his quantity needed by the chaine to create something */
-    protected HashMap<Element, Double> listeElementEntree;
+    protected HashMap<Element, Double> listeElementEntreeH;
     /** list of each element we make by using this chaine */
-    private HashMap<Element, Double> listeElementSortie;
+    private HashMap<Element, Double> listeElementSortieH;
+
+    public HashMap<Element, Double> getListeElementEntreeH() {
+        return listeElementEntreeH;
+    }
+
+    public HashMap<Element, Double> getListeElementSortieH() {
+        return listeElementSortieH;
+    }
+
     /** toString of the Hashmap listeElementEntree */
     private String listeElementEntrees;
     /** toString of the Hashmap listeElementSortie */
     private String listeElementSorties;
+
+    private Label message;
 
     /**
      * Constructeur de la chaine (code),(nom),(listeElementEntree),(listeElementSortie)
@@ -110,6 +123,38 @@ public class Chaine {
         return str.toString();
     }
 
+    public String getListeEntreeCSVType(){
+        StringBuilder str = new StringBuilder();
+        for (Map.Entry<Element, Double> entry : listeElementEntree.entrySet()) {
+            if(!str.isEmpty()){
+                str.append(",");
+            }
+            str.append("(");
+            str.append(entry.getKey().getCode());
+            str.append(",");
+            str.append(entry.getValue());
+            str.append(")");
+
+
+        }
+        return str.toString();
+
+    }
+
+    public String getListeSortieCSVType(){
+        StringBuilder str = new StringBuilder();
+        for (Map.Entry<Element, Double> entry : listeElementSortie.entrySet()) {
+            str.append("(");
+            str.append(entry.getKey().getCode());
+            str.append(",");
+            str.append(entry.getValue());
+            str.append(")");
+
+        }
+        return str.toString();
+
+    }
+
     /**
      *
      * @return
@@ -160,5 +205,16 @@ public class Chaine {
 
         }
         return feasible;
+    }
+
+    public boolean elementExist(Element e){
+        boolean elemExist = false;
+        if (elementsContains(e)) {
+            elemExist=true;
+        } else {
+            elemExist=false;
+            System.out.println("Erreur, element inexistant");
+        }
+        return elemExist;
     }
 }

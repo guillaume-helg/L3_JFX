@@ -2,6 +2,7 @@ package toulouse.miage.l3.nyx.core.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 
 import java.util.HashMap;
 import java.util.List;
@@ -103,6 +104,14 @@ public class Usine {
 
     public static void addAllElement(List<Element> elementss) {
         elements.addAll(elementss);
+    }
+
+    public static ObservableList<String> getCodeElement(){
+        ObservableList<String> codeElements = FXCollections.observableArrayList();
+        for(Element element : elements){
+            codeElements.add(element.getCode());
+        }
+        return codeElements;
     }
 
 }
