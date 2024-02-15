@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.readChaine;
 import static toulouse.miage.l3.nyx.core.utils.UtilsElement.readElement;
@@ -43,8 +40,18 @@ public class Usine {
      * =========================================== */
 
     public static ObservableList<Chaine> getChaine() {
-        return chaines;
+        return FXCollections.unmodifiableObservableList(chaines);
     }
+    public static void addToChaine(Chaine c) {
+        chaines.add(c);
+    }
+
+    public static void removeToChaine(Chaine c) {
+        chaines.remove(c);
+    }
+
+
+
 
     /* ===========================================
      * FUNCTIONS FOR CHAINESCOMMANDES
@@ -54,12 +61,14 @@ public class Usine {
         chainesCommandes.clear();
     }
 
+
+
     public static void addAllInChainesCommandes(Set<Map.Entry<Chaine, Integer>> chaines) {
         chainesCommandes.addAll(chaines);
     }
 
     public static ObservableList<Map.Entry<Chaine, Integer>> getChainesCommandes() {
-        return chainesCommandes;
+        return FXCollections.unmodifiableObservableList(chainesCommandes);
     }
 
     public static int getSizeChainesCommande() {
@@ -71,7 +80,7 @@ public class Usine {
      * =========================================== */
 
     public static ObservableList<Element> getElements() {
-        return elements;
+        return FXCollections.unmodifiableObservableList(elements);
     }
 
     public static void addToElements(Element e) {

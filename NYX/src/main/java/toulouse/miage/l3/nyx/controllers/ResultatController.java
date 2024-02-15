@@ -34,6 +34,7 @@ public class ResultatController implements Initializable {
     private Parent root;
 
     protected static boolean isCommandeWritten = false;
+    public static String indicValeur = String.valueOf(0);
 
 
     @FXML
@@ -106,6 +107,7 @@ public class ResultatController implements Initializable {
      */
     public void initialize(URL location, ResourceBundle resources) {
         indicateurValeur.setText(String.valueOf(calculRentabiliteProduction()) + "€");
+        indicValeur = indicateurValeur.toString();
         chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getCode()));
         chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getNom()));
         chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getListeElementEntree()));
@@ -170,12 +172,14 @@ public class ResultatController implements Initializable {
         double prixTotal = 0;
         for(Map.Entry<Chaine, Integer> command : getChainesCommandes()) {
             for (Map.Entry<Element, Double> element : command.getKey().getListeElementEntreeH().entrySet()) {
-                prixTotal += element.getKey().getPrixVente() * element.getValue() * command.getValue();
+                prixTotal -= element.getKey().getPrixVente() * element.getValue() * command.getValue();
             }
             for (Map.Entry<Element, Double> element : command.getKey().getListeElementSortieH().entrySet()) {
-                prixTotal -= element.getKey().getPrixVente() * element.getValue() * command.getValue();
+                prixTotal += element.getKey().getPrixVente() * element.getValue() * command.getValue();
             }
         }
         return prixTotal;
     }
+
+
 }

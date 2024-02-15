@@ -33,7 +33,7 @@ public class UtilsChaine {
 
             fichier.close();
         } catch (IOException ex) {
-            System.out.println("Problème d'accès fichier");
+            System.out.println("File access problem");
         }
         return chaines;
     }

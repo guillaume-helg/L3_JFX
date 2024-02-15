@@ -3,17 +3,13 @@ package toulouse.miage.l3.nyx.core.utils;
 import javafx.collections.ObservableList;
 import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.model.Unite;
+
 import java.io.*;
 import java.util.ArrayList;
 
-
-/**
- * Class Element
- *
- * @author Lucas Godard
- * @version 1.0
- */
 public class UtilsElement {
+
+    private final static String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
 
     /* ===========================================
      * CSV FILE MANIPULATION FUNCTIONS
@@ -24,7 +20,6 @@ public class UtilsElement {
      * @return a table of elements read from the file element.csv
      */
     public static ArrayList<Element> readElement() {
-        String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
         String line;
         ArrayList<Element> element = new ArrayList<>();
 
@@ -58,7 +53,6 @@ public class UtilsElement {
      * @param e : table with every Element of the application
      */
     public static void writeElement(ObservableList<Element> e) {
-        String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
         try {
             PrintWriter file = new PrintWriter(new FileWriter(fileName));
 

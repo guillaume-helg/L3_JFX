@@ -53,8 +53,8 @@ public class Chaine {
     public Chaine(String code, String nom, HashMap<Element, Double> listeElementEntree, HashMap<Element, Double> listeElementSortie) {
         this.code = code;
         this.nom = nom;
-        this.listeElementEntree = listeElementEntree;
-        this.listeElementSortie = listeElementSortie;
+        this.listeElementEntreeH = listeElementEntree;
+        this.listeElementSortieH = listeElementSortie;
         this.listeElementEntrees = getFormattedListeEntree();
         this.listeElementSorties = getFormattedListeSortie();
     }
@@ -97,7 +97,7 @@ public class Chaine {
      */
     public String getFormattedListeEntree() {
         StringBuilder str = new StringBuilder();
-        for (Map.Entry<Element, Double> entry : listeElementEntree.entrySet()) {
+        for (Map.Entry<Element, Double> entry : listeElementEntreeH.entrySet()) {
             str.append(entry.getKey().getCode());
             str.append(" * ");
             str.append(entry.getValue());
@@ -113,7 +113,7 @@ public class Chaine {
      */
     public String getFormattedListeSortie() {
         StringBuilder str = new StringBuilder();
-        for (Map.Entry<Element, Double> entry : listeElementSortie.entrySet()) {
+        for (Map.Entry<Element, Double> entry : listeElementSortieH.entrySet()) {
             str.append(entry.getKey().getCode());
             str.append(" * ");
             str.append(entry.getValue());
@@ -125,7 +125,7 @@ public class Chaine {
 
     public String getListeEntreeCSVType(){
         StringBuilder str = new StringBuilder();
-        for (Map.Entry<Element, Double> entry : listeElementEntree.entrySet()) {
+        for (Map.Entry<Element, Double> entry : listeElementEntreeH.entrySet()) {
             if(!str.isEmpty()){
                 str.append(",");
             }
@@ -143,7 +143,7 @@ public class Chaine {
 
     public String getListeSortieCSVType(){
         StringBuilder str = new StringBuilder();
-        for (Map.Entry<Element, Double> entry : listeElementSortie.entrySet()) {
+        for (Map.Entry<Element, Double> entry : listeElementSortieH.entrySet()) {
             str.append("(");
             str.append(entry.getKey().getCode());
             str.append(",");
@@ -188,7 +188,7 @@ public class Chaine {
     public boolean isFeasible(int qtt) {
         boolean feasible = false;
 
-        for (Map.Entry<Element, Double> currentElement : this.listeElementEntree.entrySet()) {
+        for (Map.Entry<Element, Double> currentElement : this.listeElementEntreeH.entrySet()) {
             Element element = currentElement.getKey();
             if (getElements().contains(element)) {
                 int index = getElements().indexOf(element);

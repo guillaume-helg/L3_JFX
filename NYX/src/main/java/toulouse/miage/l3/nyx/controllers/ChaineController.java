@@ -133,7 +133,7 @@ public class ChaineController implements Initializable {
                 }
             }
             if (nameIsInChaine && codeIsInChaine){
-                getChaine().add(c);
+                addToChaine(c);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -144,7 +144,7 @@ public class ChaineController implements Initializable {
 
     public void delChaine(){
         Chaine c = chaineTableView.getSelectionModel().getSelectedItem();
-        getChaine().remove(c);
+        removeToChaine(c);
     }
 
     /**

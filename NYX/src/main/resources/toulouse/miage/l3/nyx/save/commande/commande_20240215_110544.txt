@@ -1,0 +1,25 @@
+Date de la commande -> 2024-02-15T11:05:44.466399
+
+--------------------------------------------------------------------
+
+L'incateur de valeur est égal à -> 
+
+--------------------------------------------------------------------
+
+La liste des commandes 
+
+	Chaîne : C001 - Propulsion
+	Quantité : 2
+	Liste d'éléments d'entrée : E003 * 0.1, E004 * 1.0, E002 * 0.5
+	Liste d'éléments de sortie : E005 * 1.0
+
+
+	Chaîne : C002 - Coques
+	Quantité : 2
+	Liste d'éléments d'entrée : E003 * 1.0, E002 * 5.0
+	Liste d'éléments de sortie : E006 * 10.0
+
+
+
+--------------------------------------------------------------------
+

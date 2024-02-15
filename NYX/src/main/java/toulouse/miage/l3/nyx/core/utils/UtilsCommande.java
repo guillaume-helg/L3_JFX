@@ -26,21 +26,25 @@ public class UtilsCommande {
 
         String nomFichier = Paths.get("NYX", "src", "main", "resources", "toulouse", "miage", "l3", "nyx", "save", "commande", "commande_" + formattedDate + ".txt").toString();
 
-
+        String separator = "\n--------------------------------------------------------------------\n";
         try {
             PrintWriter fichier = new PrintWriter(new FileWriter(nomFichier));
 
-            fichier.println("Date de la commande : " + LocalDateTime.now());
-            fichier.println("Le resultat des commandes est de : " ); // mettre la valeur du résultat des commandes
-            fichier.println("La liste des commandes : \n");
+            fichier.println("Date de la commande -> " + LocalDateTime.now());
+            fichier.println(separator);
+            fichier.println("L'incateur de valeur est égal à -> "); // mettre la valeur du résultat des commandes
+            fichier.println(separator);
+            fichier.println("La liste des commandes \n");
 
             for (Map.Entry<Chaine, Integer> entry : getChainesCommandes()) {
-                fichier.println("Chaîne : " + entry.getKey().getCode() + " - " + entry.getKey().getNom());
-                fichier.println("Quantité : " + entry.getValue());
-                fichier.println("Liste d'éléments d'entrée : " + entry.getKey().getListeElementEntree());
-                fichier.println("Liste d'éléments de sortie : " + entry.getKey().getListeElementSortie());
+                fichier.println("\tChaîne : " + entry.getKey().getCode() + " - " + entry.getKey().getNom());
+                fichier.println("\tQuantité : " + entry.getValue());
+                fichier.println("\tListe d'éléments d'entrée : " + entry.getKey().getListeElementEntree());
+                fichier.println("\tListe d'éléments de sortie : " + entry.getKey().getListeElementSortie());
+                fichier.println("\n");
             }
 
+            fichier.println(separator);
             fichier.close();
         } catch (IOException ex) {
             System.err.println("File access problem");
