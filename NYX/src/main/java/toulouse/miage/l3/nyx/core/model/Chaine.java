@@ -24,9 +24,18 @@ public class Chaine {
     /** name of the chain */
     private String nom;
     /** list of each element and his quantity needed by the chaine to create something */
-    protected HashMap<Element, Double> listeElementEntree;
+    protected HashMap<Element, Double> listeElementEntreeH;
     /** list of each element we make by using this chaine */
-    private HashMap<Element, Double> listeElementSortie;
+    private HashMap<Element, Double> listeElementSortieH;
+
+    public HashMap<Element, Double> getListeElementEntreeH() {
+        return listeElementEntreeH;
+    }
+
+    public HashMap<Element, Double> getListeElementSortieH() {
+        return listeElementSortieH;
+    }
+
     /** toString of the Hashmap listeElementEntree */
     private String listeElementEntrees;
     /** toString of the Hashmap listeElementSortie */
