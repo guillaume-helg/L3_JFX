@@ -30,10 +30,10 @@
                             <columns>
                                 <TableColumn fx:id="elementCode" prefWidth="25.0" styleClass="table-column" text="Code" />
                                 <TableColumn fx:id="elementNom" prefWidth="25.0" styleClass="table-column" text="Nom" />
-                                <TableColumn fx:id="elementPrixA" prefWidth="25.0" styleClass="table-column" text="Prix d'achat" />
-                                <TableColumn fx:id="elementPrixV" prefWidth="248.20001220703125" styleClass="table-column" text="Prix de vente" />
                                 <TableColumn fx:id="elementQuantite" prefWidth="248.20001220703125" styleClass="table-column" text="Qte" />
                                 <TableColumn fx:id="elementUnite" minWidth="0.0" prefWidth="0.0" styleClass="table-column" text="Unité" />
+                                <TableColumn fx:id="elementPrixA" prefWidth="25.0" styleClass="table-column" text="Prix d'achat" />
+                                <TableColumn fx:id="elementPrixV" prefWidth="248.20001220703125" styleClass="table-column" text="Prix de vente" />
                             </columns>
                             <columnResizePolicy>
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
