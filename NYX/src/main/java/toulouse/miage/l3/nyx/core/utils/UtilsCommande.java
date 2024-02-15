@@ -1,6 +1,8 @@
 package toulouse.miage.l3.nyx.core.utils;
 
 import toulouse.miage.l3.nyx.core.model.Chaine;
+import toulouse.miage.l3.nyx.core.model.Commande;
+import toulouse.miage.l3.nyx.core.model.Element;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,7 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
-import static toulouse.miage.l3.nyx.core.model.Usine.getChainesCommandes;
+import static toulouse.miage.l3.nyx.core.model.Usine.*;
 
 public class UtilsCommande {
     /**
@@ -32,16 +34,26 @@ public class UtilsCommande {
 
             fichier.println("Date de la commande -> " + LocalDateTime.now());
             fichier.println(separator);
-            fichier.println("L'incateur de valeur est égal à -> "); // mettre la valeur du résultat des commandes
+            fichier.println("L'incateur de valeur est égal à -> " + calculRentabiliteProduction() + "€");
             fichier.println(separator);
             fichier.println("La liste des commandes \n");
 
-            for (Map.Entry<Chaine, Integer> entry : getChainesCommandes()) {
-                fichier.println("\tChaîne : " + entry.getKey().getCode() + " - " + entry.getKey().getNom());
-                fichier.println("\tQuantité : " + entry.getValue());
-                fichier.println("\tListe d'éléments d'entrée : " + entry.getKey().getListeElementEntree());
-                fichier.println("\tListe d'éléments de sortie : " + entry.getKey().getListeElementSortie());
-                fichier.println("\n");
+            for (Commande c : getCommandes()) {
+                if (c.getFeasible()) {
+                    fichier.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
+                    fichier.println("\tQuantité : " + c.getQuantity());
+                    fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getListeElementEntree());
+                    fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getListeElementSortie());
+                    fichier.println("\n");
+                } else {
+                    fichier.println("############ ! Pas Faisable ! ############");
+                    fichier.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
+                    fichier.println("\tQuantité : " + c.getQuantity());
+                    fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getListeElementEntree());
+                    fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getListeElementSortie());
+                    fichier.println("############ ! Pas Faisable ! ############");
+                    fichier.println("\n");
+                }
             }
 
             fichier.println(separator);
@@ -52,4 +64,71 @@ public class UtilsCommande {
         }
         return true;
     }
+
+    /**
+     *
+     */
+    public static void parseHashmapToCommand(Map<Chaine, Integer> listeCommande) {
+        for (Map.Entry<Chaine, Integer> entry : listeCommande.entrySet()) {
+            addToCommandes(new Commande(entry.getKey(), entry.getValue()));
+        }
+    }
+
+
+    /**
+     *
+     */
+    public static double calculRentabiliteProduction() {
+        double prixTotal = 0;
+        for(Commande c : getCommandes()) {
+            for (Map.Entry<Element, Double> element : c.getChaine().getListeElementEntreeH().entrySet()) {
+                prixTotal -= element.getKey().getPrixVente() * element.getValue() * c.getQuantity();
+            }
+            for (Map.Entry<Element, Double> element : c.getChaine().getListeElementSortieH().entrySet()) {
+                prixTotal += element.getKey().getPrixVente() * element.getValue() * c.getQuantity();
+            }
+        }
+        return prixTotal;
+    }
+
+    /**
+     *
+     */
+    public static void placeOrder() {
+        for(Commande c : getCommandes()) {
+            if (c.getFeasible()) {
+                for (Map.Entry<Element, Double> currentElement : c.getChaine().getListeElementEntreeH().entrySet()) {
+                    Element element = currentElement.getKey();
+                    if (getElements().contains(element)) {
+                        int index = getElements().indexOf(element);
+                        getElements().get(index).setQuantite(element.getQuantite()-(currentElement.getValue() * c.getQuantity()));
+                    }
+                }
+                for (Map.Entry<Element, Double> currentElement : c.getChaine().getListeElementSortieH().entrySet()) {
+                    Element element = currentElement.getKey();
+                    if (getElements().contains(element)) {
+                        int index = getElements().indexOf(element);
+                        getElements().get(index).setQuantite(element.getQuantite()+(currentElement.getValue() * c.getQuantity()));
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    public static String getNbOrder() {
+        int countFeasible = 0;
+        int countInfeasible = 0;
+        for (Commande c : getCommandes()) {
+            if (c.getFeasible()) {
+                countFeasible += c.getQuantity();
+            } else {
+                countInfeasible += c.getQuantity();
+            }
+        }
+        return countFeasible + "/" + countInfeasible;
+    }
+
 }

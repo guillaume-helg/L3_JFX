@@ -1,5 +1,6 @@
 package toulouse.miage.l3.nyx.controllers;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,13 +22,14 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
+import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.parseHashmapToCommand;
 
 public class AccueilController implements Initializable {
 
     @FXML
     private TableView<Chaine> chaineTableView;
     @FXML
-    private TableColumn<Chaine, Integer> chaineCode;
+    private TableColumn<Chaine, String> chaineCode;
     @FXML
     private TableColumn<Chaine, String> chaineNom;
     @FXML
@@ -59,12 +61,12 @@ public class AccueilController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         currentQte = 0;
-        chaineCode.setCellValueFactory(new PropertyValueFactory<>("code"));
-        chaineNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        chaineEntree.setCellValueFactory(new PropertyValueFactory<>("listeElementEntree"));
-        chaineSortie.setCellValueFactory(new PropertyValueFactory<>("listeElementSortie"));
 
-        // custom columns to increase or decrease the quantity wished by the user
+        chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCode()));
+        chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getNom()));
+        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getListeElementEntree()));
+        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getListeElementSortie()));
+
         Callback<TableColumn<Chaine, String>, TableCell<Chaine, String>> cellFoctory = (TableColumn<Chaine, String> param) -> {
             final TableCell<Chaine, String> cell = new TableCell<Chaine, String>() {
                 @Override
@@ -129,7 +131,7 @@ public class AccueilController implements Initializable {
      * @param actionEvent - click
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
-        addAllInChainesCommandes(listeCommandeAccueil.entrySet());
+        parseHashmapToCommand(listeCommandeAccueil);
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml",
                 "/toulouse/miage/l3/nyx/style/resultat.css", actionEvent);
     }

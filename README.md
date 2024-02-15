@@ -1,17 +1,5 @@
 # NYX_Project
 
-Element missing : 
-- [] information in the file wrote : price buy, price cell, feasible or not, percentage of success
-- [X] error of decreasing element quantity even if it's not feasible
-- [] javadoc and documentation
-- [] design cohérent entre les multiples interfaces
-- [X] write in text file when app is closed
-- [] check input when we add (inventory, chaine)
-- [X] clean code (class Usine)  
-- [X] display notification on the confirmation controller
-- [] afficher la faisabilité de manière dynamique sur la page d'accueil en afficher que les chaines de production à partir desquelles on peut produire
-- [] afficher la faisabilité sur la page d'accueil au fur et à mesure qu'on incrémente la quantité souhaitée
-
 # Gestionnaire de production
 
 ## 1 Présentation générale

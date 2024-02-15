@@ -9,9 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import toulouse.miage.l3.nyx.core.model.Chaine;
-import toulouse.miage.l3.nyx.core.model.Element;
+import toulouse.miage.l3.nyx.core.model.Commande;
 import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 import toulouse.miage.l3.nyx.core.utils.UtilsCommande;
 import toulouse.miage.l3.nyx.core.utils.UtilsElement;
@@ -21,6 +19,7 @@ import java.net.URL;
 import java.util.*;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
+import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.*;
 
 public class ResultatController implements Initializable {
     @FXML
@@ -38,19 +37,19 @@ public class ResultatController implements Initializable {
 
 
     @FXML
-    private TableView<Map.Entry<Chaine, Integer>> chaineTableView;
+    private TableView<Commande> chaineTableView;
     @FXML
-    private TableColumn<Map.Entry<Chaine, String>, String> chaineCode;
+    private TableColumn<Commande, String> chaineCode;
     @FXML
-    private TableColumn<Map.Entry<Chaine, String>, String> chaineNom;
+    private TableColumn<Commande, String> chaineNom;
     @FXML
-    private TableColumn<Map.Entry<Chaine, String>, String> chaineEntree;
+    private TableColumn<Commande, String> chaineEntree;
     @FXML
-    private TableColumn<Map.Entry<Chaine, String>, String> chaineSortie;
+    private TableColumn<Commande, String> chaineSortie;
     @FXML
-    private TableColumn<Map.Entry<Chaine, Integer>, Integer> qte;
+    private TableColumn<Commande, Integer> qte;
     @FXML
-    private TableColumn<Map.Entry<Chaine, Integer>, String> faisabilite;
+    private TableColumn<Commande, String> faisabilite;
 
     /**
      * Enable to change the scene from resultat to accueil
@@ -67,6 +66,7 @@ public class ResultatController implements Initializable {
      * @param actionEvent
      */
     public void goToConfirmation(ActionEvent actionEvent) throws IOException {
+        placeOrder();
         UtilsElement.writeElement(getElements());
         isCommandeWritten = UtilsCommande.writeResultInAFile();
         clearChainesCommandes();
@@ -108,78 +108,37 @@ public class ResultatController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         indicateurValeur.setText(String.valueOf(calculRentabiliteProduction()) + "€");
         indicValeur = indicateurValeur.toString();
-        chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getCode()));
-        chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getNom()));
-        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getListeElementEntree()));
-        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getListeElementSortie()));
-        qte.setCellValueFactory(param -> new SimpleIntegerProperty(param.getValue().getValue()).asObject());
-        faisabilite.setCellValueFactory(param -> new SimpleStringProperty(""));
-        faisabilite.setCellFactory(new Callback<TableColumn<Map.Entry<Chaine, Integer>, String>, TableCell<Map.Entry<Chaine, Integer>, String>>() {
-            @Override
-            public TableCell<Map.Entry<Chaine, Integer>, String> call(TableColumn<Map.Entry<Chaine, Integer>, String> param) {
-                return new TableCell<>() {
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setText("");
-                            setStyle("");
-                        } else {
-                            Chaine chaine = param.getTableView().getItems().get(getIndex()).getKey();
-                            int quantity = param.getTableView().getItems().get(getIndex()).getValue();
-                            boolean isFaisable = chaine.isFeasible(quantity);
 
-                            if (isFaisable) {
-                                setText("Faisable");
-                                setStyle("-fx-text-fill: green;");
-                            } else {
-                                setText("Non Faisable");
-                                setStyle("-fx-text-fill: red;");
-                            }
-                        }
+        chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getCode()));
+        chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getNom()));
+        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getListeElementEntree()));
+        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getListeElementSortie()));
+        qte.setCellValueFactory(param -> new SimpleIntegerProperty(param.getValue().getQuantity()).asObject());
+        faisabilite.setCellFactory(column -> new TableCell<Commande, String>() {
+            @Override
+        protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText("");
+                    setStyle("");
+                } else {
+                    boolean isFeasible = getTableView().getItems().get(getIndex()).getFeasible();
+                    if (isFeasible) {
+                        setText("Faisable");
+                        setStyle("-fx-text-fill: green;");
+                    } else {
+                        setText("Non Faisable");
+                        setStyle("-fx-text-fill: red;");
                     }
-                };
+                }
             }
         });
 
-        chaineTableView.setItems(getChainesCommandes());
+        chaineTableView.setItems(getCommandes());
 
-        double resultat = (double) faisible() / getSizeChainesCommande();
+        String[] s = getNbOrder().split("/");
+        double resultat = (double) Double.parseDouble(s[0]) / Double.parseDouble(s[1]) ;
         resultatCommande.setProgress(resultat);
-        stat.setText(faisible() + " " + "/" + " " + getSizeChainesCommande() + " réalisées !");
+        stat.setText(Integer.parseInt(s[0]) + "/" + (Integer.parseInt(s[0]) + Integer.parseInt(s[1])) + " réalisées !");
     }
-
-    /**
-     *
-     * @return
-     */
-    public int faisible () {
-        int countFaisable = 0;
-
-        for (Map.Entry<Chaine, Integer> entry : chaineTableView.getItems()) {
-            Chaine chaine = entry.getKey();
-            int quantity = entry.getValue();
-            boolean isFaisable = chaine.isFeasible(quantity);
-
-            if (isFaisable) {
-                countFaisable++;
-            }
-        }
-        return countFaisable;
-    }
-
-    public double calculRentabiliteProduction() {
-        double prixTotal = 0;
-        for(Map.Entry<Chaine, Integer> command : getChainesCommandes()) {
-            for (Map.Entry<Element, Double> element : command.getKey().getListeElementEntreeH().entrySet()) {
-                prixTotal -= element.getKey().getPrixVente() * element.getValue() * command.getValue();
-            }
-            for (Map.Entry<Element, Double> element : command.getKey().getListeElementSortieH().entrySet()) {
-                prixTotal += element.getKey().getPrixVente() * element.getValue() * command.getValue();
-            }
-        }
-        return prixTotal;
-    }
-
-
 }
