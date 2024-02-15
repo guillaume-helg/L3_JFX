@@ -139,6 +139,6 @@ public class ResultatController implements Initializable {
         String[] s = getNbOrder().split("/");
         double resultat = (double) Double.parseDouble(s[0]) / Double.parseDouble(s[1]) ;
         resultatCommande.setProgress(resultat);
-        stat.setText(Double.parseDouble(s[0]) + "/" + (Double.parseDouble(s[0]) + Double.parseDouble(s[1])) + " réalisées !");
+        stat.setText(Integer.parseInt(s[0]) + "/" + (Integer.parseInt(s[0]) + Integer.parseInt(s[1])) + " réalisées !");
     }
 }

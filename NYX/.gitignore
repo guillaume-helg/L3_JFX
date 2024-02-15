@@ -12,6 +12,9 @@ target/
 *.iws
 *.iml
 *.ipr
+.fleet/
+.fleet
+.idea
 
 ### Eclipse ###
 .apt_generated
