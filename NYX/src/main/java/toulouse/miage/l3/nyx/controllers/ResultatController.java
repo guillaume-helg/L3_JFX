@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import toulouse.miage.l3.nyx.core.model.Chaine;
+import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 import toulouse.miage.l3.nyx.core.utils.UtilsCommande;
 import toulouse.miage.l3.nyx.core.utils.UtilsElement;
@@ -22,8 +23,10 @@ import java.util.*;
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
 
 public class ResultatController implements Initializable {
-
-    public Label stat;
+    @FXML
+    private Label stat;
+    @FXML
+    private Label indicateurValeur;
     @FXML
     private ProgressBar resultatCommande;
     private Stage stage;
@@ -31,6 +34,7 @@ public class ResultatController implements Initializable {
     private Parent root;
 
     protected static boolean isCommandeWritten = false;
+
 
     @FXML
     private TableView<Map.Entry<Chaine, Integer>> chaineTableView;
@@ -101,6 +105,7 @@ public class ResultatController implements Initializable {
      * the root object was not localized.
      */
     public void initialize(URL location, ResourceBundle resources) {
+        indicateurValeur.setText(String.valueOf(calculRentabiliteProduction()) + "€");
         chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getCode()));
         chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getNom()));
         chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getListeElementEntree()));
@@ -139,7 +144,7 @@ public class ResultatController implements Initializable {
 
         double resultat = (double) faisible() / getSizeChainesCommande();
         resultatCommande.setProgress(resultat);
-        stat.setText(faisible() + " " + "/" + " " + getSizeChainesCommande() + " commandes réalisables !");
+        stat.setText(faisible() + " " + "/" + " " + getSizeChainesCommande() + " réalisées !");
     }
 
     /**
@@ -161,4 +166,16 @@ public class ResultatController implements Initializable {
         return countFaisable;
     }
 
+    public double calculRentabiliteProduction() {
+        double prixTotal = 0;
+        for(Map.Entry<Chaine, Integer> command : getChainesCommandes()) {
+            for (Map.Entry<Element, Double> element : command.getKey().getListeElementEntreeH().entrySet()) {
+                prixTotal += element.getKey().getPrixVente() * element.getValue() * command.getValue();
+            }
+            for (Map.Entry<Element, Double> element : command.getKey().getListeElementSortieH().entrySet()) {
+                prixTotal -= element.getKey().getPrixVente() * element.getValue() * command.getValue();
+            }
+        }
+        return prixTotal;
+    }
 }
