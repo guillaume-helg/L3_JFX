@@ -173,12 +173,21 @@ public class InventaireController implements Initializable {
     /* ===========================================
      * CHECK FORMAT OF INPUTS
      * =========================================== */
+    public boolean checkEmptyField(){
+        return checkEmpty(ajoutcode.getText(),ajoutnom.getText(), ajoutqte.getText(),
+                ajoutunite.getValue(),ajoutprixa.getText(), ajoutprixv.getText());
+    }
+
     /**
      * Check if element attributes formats are correct and
      * print the correct associated error message
      * @return a boolean
      */
     public boolean checkAll(){
+        if(checkEmptyField()) {
+            printLabel("-fx-text-fill: red", "Un des champs est vide");
+            return false;
+        }
         if (!checkFormatCode(ajoutcode.getText())) {
             printLabel("-fx-text-fill: red", "Code pas au bon format\nFormat : 'E000' - 'E999'");
             return false;

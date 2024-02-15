@@ -110,4 +110,23 @@ public class UtilsElement {
     public static boolean checkSellingPrice(Double sp){
         return sp > 0;
     }
+
+    /**
+     * Check if the unit is null or not
+     * @param u : unit of an element
+     * @return a boolean
+     */
+    public static boolean checkEmpty(String code, String nom, String qte, Unite u, String pp, String sp){
+        return code == null || u == null || nom == null || qte == null || pp == null || sp == null;
+    }
+
+    /**
+     * Check if the unit is null or not
+     *
+     * @return a boolean
+     */
+    public static boolean checkObject(){
+        return true;
+    }
+
 }
