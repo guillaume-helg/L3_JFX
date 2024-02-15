@@ -12,8 +12,7 @@ import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 
 /**
- * Class Chaines
- *
+ * Represents a production chain (Chaine)
  * @author Guillaume Helg
  * @version 1.0
  */
@@ -27,28 +26,17 @@ public class Chaine {
     protected HashMap<Element, Double> listeElementEntreeH;
     /** list of each element we make by using this chaine */
     private HashMap<Element, Double> listeElementSortieH;
-
-    public HashMap<Element, Double> getListeElementEntreeH() {
-        return listeElementEntreeH;
-    }
-
-    public HashMap<Element, Double> getListeElementSortieH() {
-        return listeElementSortieH;
-    }
-
     /** toString of the Hashmap listeElementEntree */
     private String listeElementEntrees;
     /** toString of the Hashmap listeElementSortie */
     private String listeElementSorties;
 
-    private Label message;
-
     /**
-     * Constructeur de la chaine (code),(nom),(listeElementEntree),(listeElementSortie)
-     * @param code :
-     * @param nom :
-     * @param listeElementEntree
-     * @param listeElementSortie
+     * Constructor for the Chaine class
+     * @param code The code of the chain
+     * @param nom The name of the chain
+     * @param listeElementEntree The list of input elements and their quantities
+     * @param listeElementSortie The list of output elements and their quantities
      */
     public Chaine(String code, String nom, HashMap<Element, Double> listeElementEntree, HashMap<Element, Double> listeElementSortie) {
         this.code = code;
@@ -60,32 +48,32 @@ public class Chaine {
     }
 
     /**
-     *
-     * @return
+     * Returns the code of the chain
+     * @return String containing the code
      */
     public String getCode() {
         return code;
     }
 
     /**
-     *
-     * @param code
+     * Sets the code of the chain
+     * @param code The new code of the chain
      */
     public void setCode(String code) {
         this.code = code;
     }
 
     /**
-     *
-     * @return
+     * Returns the name of the chain
+     * @return String containing the name
      */
     public String getNom() {
         return nom;
     }
 
     /**
-     *
-     * @param nom
+     * Sets the name of the chain
+     * @param nom The new name of the chain
      */
     public void setNom(String nom) {
         this.nom = nom;
@@ -181,9 +169,9 @@ public class Chaine {
     }
 
     /**
-     *
-     * @param qtt
-     * @return
+     * Determines whether the production of the specified quantity is feasible
+     * @param qtt The desired production quantity
+     * @return true if production is feasible, false otherwise
      */
     public boolean isFeasible(int qtt) {
         boolean feasible = false;
@@ -192,29 +180,24 @@ public class Chaine {
             Element element = currentElement.getKey();
             if (getElements().contains(element)) {
                 int index = getElements().indexOf(element);
-                getElements().get(index).setQuantite(element.getQuantite()-(currentElement.getValue() * qtt));
+                if (getElements().get(index).getQuantite()-(currentElement.getValue() * qtt) >= 0) {
+                    feasible = true;
+                } else {
+                    System.out.println("Pas quantité suffisante");
+                    return false;
+                }
             } else {
                 System.out.println("Erreur, element inexistant");
             }
-
-            if (element.getQuantite() >= 0) {
-                feasible = true;
-            } else {
-                return false;
-            }
-
         }
         return feasible;
     }
 
-    public boolean elementExist(Element e){
-        boolean elemExist = false;
-        if (elementsContains(e)) {
-            elemExist=true;
-        } else {
-            elemExist=false;
-            System.out.println("Erreur, element inexistant");
-        }
-        return elemExist;
+    public HashMap<Element, Double> getListeElementEntreeH() {
+        return listeElementEntreeH;
+    }
+
+    public HashMap<Element, Double> getListeElementSortieH() {
+        return listeElementSortieH;
     }
 }

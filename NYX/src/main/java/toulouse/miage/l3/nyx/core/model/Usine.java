@@ -20,12 +20,10 @@ public class Usine {
         return instance.get(usineId);
     }
 
-    private Usine(){
-
-    }
+    private Usine(){}
 
     private static ObservableList<Chaine> chaines = FXCollections.observableArrayList();
-    private static ObservableList<Map.Entry<Chaine, Integer>> chainesCommandes = FXCollections.observableArrayList();
+    private static ObservableList<Commande> commandes = FXCollections.observableArrayList();
     private static ObservableList<Element> elements = FXCollections.observableArrayList();
 
     public void chargerChaines() {
@@ -50,29 +48,40 @@ public class Usine {
         chaines.remove(c);
     }
 
-
-
-
     /* ===========================================
-     * FUNCTIONS FOR CHAINESCOMMANDES
+     * FUNCTIONS FOR COMMANDES
      * =========================================== */
 
     public static void clearChainesCommandes() {
-        chainesCommandes.clear();
+        commandes.clear();
     }
 
-
-
-    public static void addAllInChainesCommandes(Set<Map.Entry<Chaine, Integer>> chaines) {
-        chainesCommandes.addAll(chaines);
+    public static void addAllInChainesCommandes(Commande commande) {
+        commandes.addAll(commande);
     }
 
-    public static ObservableList<Map.Entry<Chaine, Integer>> getChainesCommandes() {
-        return FXCollections.unmodifiableObservableList(chainesCommandes);
+    public static void addToCommandes(Commande commande) {
+        commandes.add(commande);
+    }
+
+    public static ObservableList<Commande> getCommandes() {
+        return FXCollections.unmodifiableObservableList(commandes);
     }
 
     public static int getSizeChainesCommande() {
-        return chainesCommandes.size();
+        return commandes.size();
+    }
+
+    public static void removeToCommande(Commande c) {
+        commandes.remove(c);
+    }
+
+    public static void removeToCommandeByChaine(Chaine c) {
+        for(Commande commande : commandes) {
+            if (commande.getChaine().equals(c)) {
+                removeToCommande(commande);
+            }
+        }
     }
 
     /* ===========================================
