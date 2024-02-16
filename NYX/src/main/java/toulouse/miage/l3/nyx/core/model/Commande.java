@@ -1,5 +1,10 @@
 package toulouse.miage.l3.nyx.core.model;
 
+/**
+ * Represents a production chain (Chaine)
+ * @author Guillaume Helg
+ * @version 1.0
+ */
 public class Commande {
     private Chaine chaine;
     private int quantity;

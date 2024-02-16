@@ -1,5 +1,7 @@
 # NYX_Project
 
+Licence MIAGE, Université Paul Sabatier, pas de copyright, pas de droit d'auteur
+
 # Gestionnaire de production
 
 ## 1 Présentation générale

@@ -2,20 +2,24 @@ package toulouse.miage.l3.nyx.core.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 
 import java.util.*;
 
 import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.readChaine;
 import static toulouse.miage.l3.nyx.core.utils.UtilsElement.readElement;
 
+/**
+ * Represents a Usine (Usine)
+ * @author Guillaume Helg
+ * @version 1.0
+ */
 public class Usine {
 
     private static Map<Integer,Usine> instance = new HashMap<>();
 
     public static Usine getInstance(Integer usineId) {
         if (instance.get(usineId) == null) {
-            instance.put(usineId,new Usine());
+            instance.put(usineId, new Usine());
         }
         return instance.get(usineId);
     }
@@ -131,5 +135,4 @@ public class Usine {
         }
         return codeElements;
     }
-
 }
