@@ -14,9 +14,11 @@ public class UtilsElement {
     /* ===========================================
      * CSV FILE MANIPULATION FUNCTIONS
      * =========================================== */
+
     /**
      * Read every line of a file of element, parse these lines into Element,
      * and add them to an ArrayList
+     *
      * @return a table of elements read from the file element.csv
      */
     public static ArrayList<Element> readElement() {
@@ -40,6 +42,7 @@ public class UtilsElement {
     /**
      * Parse a line in parameter with the format : code, name, quantity, unity, buy price, sell price
      * into a new Element
+     *
      * @param line : Here is an example of line : E001;Circuit principal;200;pieces;50;20
      * @return a new Element create with content of this line
      */
@@ -50,6 +53,7 @@ public class UtilsElement {
 
     /**
      * Write on object Element into a file elements.csv
+     *
      * @param e : table with every Element of the application
      */
     public static void writeElement(ObservableList<Element> e) {
@@ -75,58 +79,45 @@ public class UtilsElement {
     /* ===========================================
      * CHECK FORMAT OF INPUTS
      * =========================================== */
+
     /**
      * Check if the code is in the correct format
+     *
      * @param code : code of an element
      * @return a boolean
      */
-    public static boolean checkFormatCode(String code){
+    public static boolean checkFormatCode(String code) {
         return code.matches("E\\d{3}");
     }
 
     /**
      * Check if the quantity is strictly positive
+     *
      * @param qte : quantities of an element
      * @return a boolean
      */
-    public static boolean checkQuantite(Double qte){
+    public static boolean checkQuantite(Double qte) {
         return qte > 0;
     }
 
     /**
      * Check if the purchase price is strictly positive
+     *
      * @param pp : purchase price of an element
      * @return a boolean
      */
-    public static boolean checkPurchasePrice(Double pp){
+    public static boolean checkPurchasePrice(Double pp) {
         return pp > 0;
     }
 
     /**
      * Check if the selling price is strictly positive
+     *
      * @param sp : selling price of an element
      * @return a boolean
      */
-    public static boolean checkSellingPrice(Double sp){
+    public static boolean checkSellingPrice(Double sp) {
         return sp > 0;
-    }
-
-    /**
-     * Check if the unit is null or not
-     * @param u : unit of an element
-     * @return a boolean
-     */
-    public static boolean checkEmpty(String code, String nom, String qte, Unite u, String pp, String sp){
-        return code == null || u == null || nom == null || qte == null || pp == null || sp == null;
-    }
-
-    /**
-     * Check if the unit is null or not
-     *
-     * @return a boolean
-     */
-    public static boolean checkObject(){
-        return true;
     }
 
 }

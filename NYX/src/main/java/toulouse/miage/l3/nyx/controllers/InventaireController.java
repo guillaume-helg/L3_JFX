@@ -10,6 +10,7 @@ import toulouse.miage.l3.nyx.core.model.Unite;
 import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsElement.*;
@@ -100,6 +101,7 @@ public class InventaireController implements Initializable {
         });
 
         ajoutunite.getItems().addAll(Unite.values());
+        ajoutunite.setValue(Unite.pieces);
     }
 
 
@@ -168,8 +170,31 @@ public class InventaireController implements Initializable {
      * CHECK FORMAT OF INPUTS
      * =========================================== */
     public boolean checkEmptyField(){
-        return checkEmpty(ajoutcode.getText(),ajoutnom.getText(), ajoutqte.getText(),
-                ajoutunite.getValue(),ajoutprixa.getText(), ajoutprixv.getText());
+        return ajoutcode.getText().isEmpty() ||
+                ajoutnom.getText().isEmpty() ||
+                ajoutqte.getText().isEmpty() ||
+                ajoutprixa.getText().isEmpty() ||
+                ajoutprixv.getText().isEmpty();
+    }
+
+    public boolean checkCodeIsTake(){
+        Element e = getElementByCode(ajoutcode.getText());
+        if (e != null) {
+            return !Objects.equals(e.getNom(), ajoutnom.getText()) ||
+                    !e.getPrixAchat().toString().equals(ajoutprixa.getText()) ||
+                    !e.getPrixVente().toString().equals(ajoutprixv.getText()) ||
+                    e.getUniteMesure() != ajoutunite.getValue()
+                    ;
+        }
+        return false;
+    }
+
+    public boolean checkElementExist() {
+        Element e = getElementByNamePriceUnit(ajoutnom.getText(),ajoutprixa.getText(),ajoutprixv.getText(),ajoutunite.getValue().name());
+        if (e != null) {
+            return !Objects.equals(e.getCode(), ajoutcode.getText());
+        }
+        return false;
     }
 
     /**
@@ -178,6 +203,39 @@ public class InventaireController implements Initializable {
      * @return a boolean
      */
     public boolean checkAll(){
+        if(checkEmptyField()) {
+            printLabel("-fx-text-fill: red", "Un des champs est vide");
+            return false;
+        }
+        if (!checkFormatCode(ajoutcode.getText())) {
+            printLabel("-fx-text-fill: red", "Code pas au bon format\nFormat : 'E000' - 'E999'");
+            return false;
+        }
+        if (!checkQuantite(Double.parseDouble(ajoutqte.getText()))) {
+            printLabel("-fx-text-fill: red", "Qte doit être > 0");
+            return false;
+        }
+        if (!checkPurchasePrice(Double.parseDouble(ajoutprixa.getText()))) {
+            printLabel("-fx-text-fill: red", "Prix achat doit être > 0");
+            return false;
+        }
+        if (!checkSellingPrice(Double.parseDouble(ajoutprixv.getText()))) {
+            printLabel("-fx-text-fill: red", "Prix vente doit être > 0");
+            return false;
+        }
+        if (checkCodeIsTake()) {
+            printLabel("-fx-text-fill: red","Code déjà pris pour un autre\nnom, prix et/ou unite");
+            return false;
+        }
+        if (checkElementExist()) {
+            printLabel("-fx-text-fill: red","Element déjà présent\navec le code : " +
+                    getElementByNamePriceUnit(ajoutnom.getText(),ajoutprixa.getText(),ajoutprixv.getText(),ajoutunite.getValue().name()).getCode());
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkAllModif(){
         if(checkEmptyField()) {
             printLabel("-fx-text-fill: red", "Un des champs est vide");
             return false;
@@ -239,17 +297,16 @@ public class InventaireController implements Initializable {
      * Modify the selected element from the table view
      */
     public void modifyElement() {
-        Element eltextf = textfieldsToElement();
-        Element elselect = selecteditemToElement();
-        if (elementsContains(elselect)){
-            modifyToElement(elselect,eltextf);
-            elementTableView.refresh();
-        }
-        else{
-            if (checkAll()) {
-                removeToElement(elselect);
-                addToElements(eltextf);
+        if (checkAllModif()){
+            Element eltextf = textfieldsToElement();
+            Element elselect = selecteditemToElement();
+            if (elementsContains(elselect)){
+                modifyToElement(elselect,eltextf);
+                elementTableView.refresh();
                 printLabel("-fx-text-fill: green", "Element modifié");
+            }
+            else{
+                printLabel("-fx-text-fill: red", "Element non modifiable");
             }
         }
     }
@@ -263,7 +320,7 @@ public class InventaireController implements Initializable {
         ajoutqte.setText("");
         ajoutprixa.setText("");
         ajoutprixv.setText("");
-        ajoutunite.setValue(null);
+        ajoutunite.setValue(Unite.pieces);
         message.setText("");
     }
 }

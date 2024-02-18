@@ -120,6 +120,23 @@ public class Usine {
         return elements.get(index);
     }
 
+    public static Element getElementByCode(String code){
+        for(Element element : elements){
+            if (Objects.equals(element.getCode(), code)) return element;
+        }
+        return null;
+    }
+
+    public static Element getElementByNamePriceUnit(String name, String pp, String sp, String unit){
+        for(Element element : elements){
+            if (Objects.equals(element.getNom(), name) &&
+                    Objects.equals(element.getPrixAchat().toString(), pp) &&
+                    Objects.equals(element.getPrixVente().toString(), sp) &&
+                    Objects.equals(element.getUniteMesure().name(), unit)) return element;
+        }
+        return null;
+    }
+
     public static void addAllElement(List<Element> elementss) {
         elements.addAll(elementss);
     }
