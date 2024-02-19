@@ -120,6 +120,20 @@ public class Usine {
         return elements.get(index);
     }
 
+    public static Element getElementByCode(String code){
+        for(Element element : elements){
+            if (Objects.equals(element.getCode(), code)) return element;
+        }
+        return null;
+    }
+
+    public static Element getElementByName(String name){
+        for(Element element : elements){
+            if (Objects.equals(element.getNom(), name)) return element;
+        }
+        return null;
+    }
+
     public static void addAllElement(List<Element> elementss) {
         elements.addAll(elementss);
     }

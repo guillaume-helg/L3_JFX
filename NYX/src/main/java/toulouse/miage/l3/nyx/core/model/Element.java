@@ -42,7 +42,8 @@ public class Element {
     }
 
     /**
-     * Define comparison points between elements
+     * Define comparison points between elements (primary key system)
+     * Uses in elementsContains
      * @param o : another element
      * @return boolean
      */
