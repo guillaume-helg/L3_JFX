@@ -1,23 +1,29 @@
 package toulouse.miage.l3.nyx.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import toulouse.miage.l3.nyx.core.model.Chaine;
+import toulouse.miage.l3.nyx.core.model.Element;
+import toulouse.miage.l3.nyx.core.utils.SceneUtils;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
-import toulouse.miage.l3.nyx.core.model.Chaine;
-import toulouse.miage.l3.nyx.core.utils.SceneUtils;
 
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.*;
 
+
 public class ChaineController implements Initializable {
 
+    @FXML
+    private TextField inputQuantiteS;
+    @FXML
+    private TextField inputQuantiteE;
     @FXML
     private TableView<Chaine> chaineTableView;
     @FXML
@@ -39,12 +45,7 @@ public class ChaineController implements Initializable {
     @FXML
     private ComboBox comboBoxElemE;
     @FXML
-    private ComboBox comboBoxQttE;
-    @FXML
     private ComboBox comboBoxElemS;
-    @FXML
-    private ComboBox comboBoxQttS;
-    ObservableList<String> qtt = FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10");
 
     public void initialize(URL location, ResourceBundle resources) {
         chaineCode.setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -53,9 +54,16 @@ public class ChaineController implements Initializable {
         chaineSortie.setCellValueFactory(new PropertyValueFactory<>("listeElementSortie"));
         chaineTableView.setItems(getChaine());
         comboBoxElemE.setItems(getCodeElement());
-        comboBoxQttE.setItems(qtt);
         comboBoxElemS.setItems(getCodeElement());
-        comboBoxQttS.setItems(qtt);
+
+        chaineTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                ajoutcode.setText(newSelection.getCode());
+                ajoutnom.setText(newSelection.getNom());
+                ajoutListeEntree.setText(String.valueOf(newSelection.getListeEntreeCSVType()));
+                ajoutListeSortie.setText(String.valueOf(newSelection.getListeSortieCSVType()));
+            }
+        });
     }
 
 
@@ -80,33 +88,37 @@ public class ChaineController implements Initializable {
 
 
     /**
-     * Enable to change the scene from chaine de production to accueil
-     * @param liste
+     * Create list from input
+     * @param listField
      * the type of liste to create
-     * @param cbe
+     * @param elementComboBox
      * Combobox for the element
-     * @param cbq
-     * Combobox for the quantity
+     * @param quantityField
+     * TextField for the quantity
      */
 
-    public void createList(TextField liste,ComboBox cbe,ComboBox cbq){
-        if (!liste.getText().isEmpty()) {
-            liste.setText(liste.getText() + ",");
+    public void createList(TextField listField, ComboBox<String> elementComboBox, TextField quantityField) {
+        String currentList = listField.getText();
+        String selectedElement = elementComboBox.getSelectionModel().getSelectedItem();
+        String quantity = quantityField.getText();
+
+        if (!currentList.isEmpty()) {
+            currentList += ",";
         }
-        liste.setText(liste.getText()+"("+cbe.getSelectionModel().getSelectedItem().toString()+",");
-        liste.setText(liste.getText()+cbq.getSelectionModel().getSelectedItem().toString()+")");
+        currentList += "(" + selectedElement + "," + quantity + ")";
+        listField.setText(currentList);
     }
     /**
      * two methods called by the button add
      */
-    public void createListEntre(){createList(ajoutListeEntree,comboBoxElemE,comboBoxQttE);}
+    public void createListEntre(){createList(ajoutListeEntree,comboBoxElemE,inputQuantiteE);}
 
-    public void createListSortie(){createList(ajoutListeSortie,comboBoxElemS,comboBoxQttS);}
+    public void createListSortie(){createList(ajoutListeSortie,comboBoxElemS,inputQuantiteS);}
 
     /**
-     * Add chaine to Table and to .csv file
+     * Add chaine to list of chaines
      */
-    public void addChaine() throws IOException {
+    public void addChaine(){
         try{Chaine c = new Chaine(ajoutcode.getText(), ajoutnom.getText(),
                         parseElementList(ajoutListeEntree.getText()),
                         parseElementList(ajoutListeSortie.getText()));
@@ -114,15 +126,31 @@ public class ChaineController implements Initializable {
                 addToChaine(c);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Entrer vos chaines dans le format suivant :"+'\n'+"(Code Element,Nombre Element),...");
-            alert.showAndWait();
+            showErrorAlert("Entrer vos chaines dans le format suivant :" + '\n' + "(Code Element,Nombre Element),...");
         }
     }
+
+    /**
+     * Delete chaine from list of chaines
+     */
 
     public void delChaine(){
         Chaine c = chaineTableView.getSelectionModel().getSelectedItem();
         removeToChaine(c);
+    }
+
+    /**
+     * Enable to modify selected chaine from TextField
+     */
+    public void modifyChaine() {
+        Chaine post = new Chaine(ajoutcode.getText(), ajoutnom.getText(),
+                parseElementList(ajoutListeEntree.getText()),
+                parseElementList(ajoutListeSortie.getText()));
+        Chaine pre=chaineTableView.getSelectionModel().getSelectedItem();
+        if (chainesContains(pre)){
+            modifyToChaine(pre,post);
+            chaineTableView.refresh();
+        }
     }
 
     /**
@@ -133,6 +161,12 @@ public class ChaineController implements Initializable {
         ajoutnom.setText("");
         ajoutListeEntree.setText("");
         ajoutListeSortie.setText("");
+    }
+
+    private void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }
