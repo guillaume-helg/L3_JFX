@@ -1,5 +1,6 @@
 package toulouse.miage.l3.nyx.controllers;
 
+import javafx.beans.property.SimpleStringProperty;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Element;
 import toulouse.miage.l3.nyx.core.utils.SceneUtils;
@@ -101,12 +102,14 @@ public class ChaineController implements Initializable {
         String currentList = listField.getText();
         String selectedElement = elementComboBox.getSelectionModel().getSelectedItem();
         String quantity = quantityField.getText();
-
         if (!currentList.isEmpty()) {
             currentList += ",";
         }
         currentList += "(" + selectedElement + "," + quantity + ")";
-        listField.setText(currentList);
+        if (Objects.equals(quantity, "") || selectedElement==null)
+            showErrorAlert("Séléctionnez un élément et une quantité");
+        else
+            listField.setText(currentList);
     }
     /**
      * two methods called by the button add
