@@ -127,12 +127,9 @@ public class Usine {
         return null;
     }
 
-    public static Element getElementByNamePriceUnit(String name, String pp, String sp, String unit){
+    public static Element getElementByName(String name){
         for(Element element : elements){
-            if (Objects.equals(element.getNom(), name) &&
-                    Objects.equals(element.getPrixAchat().toString(), pp) &&
-                    Objects.equals(element.getPrixVente().toString(), sp) &&
-                    Objects.equals(element.getUniteMesure().name(), unit)) return element;
+            if (Objects.equals(element.getNom(), name)) return element;
         }
         return null;
     }

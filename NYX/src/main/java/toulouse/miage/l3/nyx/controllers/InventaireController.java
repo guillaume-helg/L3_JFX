@@ -81,14 +81,18 @@ public class InventaireController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Create the tableview cells
         elementCode.setCellValueFactory(new PropertyValueFactory<>("code"));
         elementNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         elementPrixA.setCellValueFactory(new PropertyValueFactory<>("prixAchat"));
         elementPrixV.setCellValueFactory(new PropertyValueFactory<>("prixVente"));
         elementQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
         elementUnite.setCellValueFactory(new PropertyValueFactory<>("uniteMesure"));
+
+        //Add Element in cells
         elementTableView.setItems(getElements());
 
+        //Set text fields with data of the selected Element in the tableview
         elementTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 ajoutcode.setText(newSelection.getCode());
@@ -100,6 +104,7 @@ public class InventaireController implements Initializable {
             }
         });
 
+        //Add Unite values in the comboxbox and set 'pieces' by default
         ajoutunite.getItems().addAll(Unite.values());
         ajoutunite.setValue(Unite.pieces);
     }
@@ -169,6 +174,10 @@ public class InventaireController implements Initializable {
     /* ===========================================
      * CHECK FORMAT OF INPUTS
      * =========================================== */
+    /**
+     * Checks if the text fields are empty
+     * @return a boolean
+     */
     public boolean checkEmptyField(){
         return ajoutcode.getText().isEmpty() ||
                 ajoutnom.getText().isEmpty() ||
@@ -177,6 +186,10 @@ public class InventaireController implements Initializable {
                 ajoutprixv.getText().isEmpty();
     }
 
+    /**
+     * Checks if the element's code is take without affecting quantity addition
+     * @return a boolean
+     */
     public boolean checkCodeIsTake(){
         Element e = getElementByCode(ajoutcode.getText());
         if (e != null) {
@@ -189,8 +202,12 @@ public class InventaireController implements Initializable {
         return false;
     }
 
+    /**
+     * Checks if the element's code exists according to the name entered in the text field
+     * @return a boolean
+     */
     public boolean checkElementExist() {
-        Element e = getElementByNamePriceUnit(ajoutnom.getText(),ajoutprixa.getText(),ajoutprixv.getText(),ajoutunite.getValue().name());
+        Element e = getElementByName(ajoutnom.getText());
         if (e != null) {
             return !Objects.equals(e.getCode(), ajoutcode.getText());
         }
@@ -198,43 +215,10 @@ public class InventaireController implements Initializable {
     }
 
     /**
-     * Check if element attributes formats are correct and
+     * Check all conditions for modify (format and number check)
      * print the correct associated error message
      * @return a boolean
      */
-    public boolean checkAll(){
-        if(checkEmptyField()) {
-            printLabel("-fx-text-fill: red", "Un des champs est vide");
-            return false;
-        }
-        if (!checkFormatCode(ajoutcode.getText())) {
-            printLabel("-fx-text-fill: red", "Code pas au bon format\nFormat : 'E000' - 'E999'");
-            return false;
-        }
-        if (!checkQuantite(Double.parseDouble(ajoutqte.getText()))) {
-            printLabel("-fx-text-fill: red", "Qte doit être > 0");
-            return false;
-        }
-        if (!checkPurchasePrice(Double.parseDouble(ajoutprixa.getText()))) {
-            printLabel("-fx-text-fill: red", "Prix achat doit être > 0");
-            return false;
-        }
-        if (!checkSellingPrice(Double.parseDouble(ajoutprixv.getText()))) {
-            printLabel("-fx-text-fill: red", "Prix vente doit être > 0");
-            return false;
-        }
-        if (checkCodeIsTake()) {
-            printLabel("-fx-text-fill: red","Code déjà pris pour un autre\nnom, prix et/ou unite");
-            return false;
-        }
-        if (checkElementExist()) {
-            printLabel("-fx-text-fill: red","Element déjà présent\navec le code : " +
-                    getElementByNamePriceUnit(ajoutnom.getText(),ajoutprixa.getText(),ajoutprixv.getText(),ajoutunite.getValue().name()).getCode());
-            return false;
-        }
-        return true;
-    }
-
     public boolean checkAllModif(){
         if(checkEmptyField()) {
             printLabel("-fx-text-fill: red", "Un des champs est vide");
@@ -259,15 +243,36 @@ public class InventaireController implements Initializable {
         return true;
     }
 
+    /**
+     * Check all conditions for add (format, number and existence check)
+     * print the correct associated error message
+     * @return a boolean
+     */
+    public boolean checkAllAdd(){
+        if (!checkAllModif()){
+            return false;
+        }
+        if (checkCodeIsTake()) {
+            printLabel("-fx-text-fill: red","Code déjà pris pour un autre\nnom, prix et/ou unite");
+            return false;
+        }
+        if (checkElementExist()) {
+            printLabel("-fx-text-fill: red","Element déjà présent\navec le code : " +
+                    getElementByName(ajoutnom.getText()).getCode());
+            return false;
+        }
+        return true;
+    }
+
 
     /* ===========================================
      * ACTION ON BUTTON
      * =========================================== */
     /**
-     * Create an element and add it in the table view
+     * Create an element and add it in the table view or adjust his quantities
      */
     public void addElement(){
-        if (checkAll()){
+        if (checkAllAdd()){
             Element e = textfieldsToElement();
             if (elementsContains(e)) {
                 Double postqte = addQuantitiesOfElement(e);
