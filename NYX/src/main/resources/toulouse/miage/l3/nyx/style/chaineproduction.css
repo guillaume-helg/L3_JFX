@@ -38,3 +38,8 @@ Button {
 .ImageView {
     -fx-border-radius: 20px;
 }
+
+.add{
+    -fx-max-height: 35px;
+    -fx-min-height: 35px;
+}

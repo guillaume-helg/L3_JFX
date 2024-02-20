@@ -40,13 +40,19 @@ public class Usine {
     public static ObservableList<Chaine> getChaine() {
         return FXCollections.unmodifiableObservableList(chaines);
     }
-    public static void addToChaine(Chaine c) {
-        chaines.add(c);
+    public static void addToChaine(Chaine c) {chaines.add(c);}
+    public static boolean chainesContains(Chaine c) {
+        return chaines.contains(c);
     }
+    public static int chainesIndexOf(Chaine c) {
+        return chaines.indexOf(c);
+    }
+    public static void modifyToChaine(Chaine chpre, Chaine chpost){chaines.set(chainesIndexOf(chpre),chpost);}
 
     public static void removeToChaine(Chaine c) {
         chaines.remove(c);
     }
+
 
     /* ===========================================
      * FUNCTIONS FOR COMMANDES

@@ -3,16 +3,25 @@ package toulouse.miage.l3.nyx.core.utils;
 import javafx.scene.control.Alert;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Element;
-import toulouse.miage.l3.nyx.core.model.Usine;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static toulouse.miage.l3.nyx.core.model.Usine.getChaine;
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 public class UtilsChaine {
+
+    /**
+     * static constant for error messages / Format
+     */
+    private static final String CHAINES_FILE_PATH = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv";
+    private static final String CHAINE_CODE_FORMAT = "C\\d{3}";
+    private static final String CHAINE_CODE_ERROR_MESSAGE = "Code pas au bon format\nFormat : 'C000' - 'C999'";
+    private static final String CHAINE_CODE_EXISTS_ERROR_MESSAGE = "Code Chaine déja existant";
+    private static final String CHAINE_NAME_EXISTS_ERROR_MESSAGE = "Nom Chaine déja existant";
 
     /**
      * Read line of a file named chaines.csv, and transform these line into an object Chaine,
@@ -20,24 +29,17 @@ public class UtilsChaine {
      * @return : ArrayList with Chaine read from the file chaine.csv
      */
     public static ArrayList<Chaine> readChaine() {
-        String nomFichier = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv";
-        String ligne;
         ArrayList<Chaine> chaines = new ArrayList<>();
-
-        try {
-            BufferedReader fichier = new BufferedReader(new FileReader(nomFichier));
-
+        try (BufferedReader fichier = new BufferedReader(new FileReader(CHAINES_FILE_PATH))) {
+            String ligne;
             while ((ligne = fichier.readLine()) != null) {
                 chaines.add(parseChaine(ligne));
             }
-
-            fichier.close();
         } catch (IOException ex) {
             System.out.println("File access problem");
         }
         return chaines;
     }
-
 
     /**
      * Parse a line in parameter with the format : Code;Nom;Entrée (code,qte);Sortie (code,qte)
@@ -111,22 +113,76 @@ public class UtilsChaine {
      * @param chaines : table with every chaine of use by the application
      */
     public static void writeChaine(Chaine[] chaines) {
-        String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv";
-        try {
-            PrintWriter file = new PrintWriter(new FileWriter(fileName));
-
+        try (PrintWriter file = new PrintWriter(new FileWriter(CHAINES_FILE_PATH))) {
             for (Chaine chaine : chaines) {
                 file.println(chaine.getCode() + ";"
-                                + chaine.getNom() + ";"
-                                + chaine.getListeEntreeCSVType()+";"
-                                + chaine.getListeSortieCSVType()
+                        + chaine.getNom() + ";"
+                        + chaine.getListeEntreeCSVType() + ";"
+                        + chaine.getListeSortieCSVType()
                 );
             }
-
-            file.close();
         } catch (IOException ex) {
             System.out.println("File access problem");
         }
     }
 
+    /* ===========================================
+     * CHECK VALIDITY OF INPUT
+     * =========================================== */
+
+    /**
+     * check the validity of the chaine code
+     * @param code : code of the chaine in input
+     */
+
+    public static boolean checkCodeChaine(String code) {
+        if (!code.matches(CHAINE_CODE_FORMAT)) {
+            showErrorAlert(CHAINE_CODE_ERROR_MESSAGE);
+            return false;
+        }
+        for (Chaine chaine : getChaine()) {
+            if (code.equals(chaine.getCode())) {
+                showErrorAlert(CHAINE_CODE_EXISTS_ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * check the validity of the chaine name
+     * @param nom : name of the chaine in input
+     */
+
+    public static boolean checkNomChaine(String nom) {
+        for (Chaine chaine : getChaine()) {
+            if (nom.equals(chaine.getNom())) {
+                showErrorAlert(CHAINE_NAME_EXISTS_ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Check if the quantity is strictly positive
+     *
+     * @param qte : quantities of an element
+     * @return a boolean
+     */
+    public static boolean checkQuantite(Double qte) {
+        return qte > 0;
+    }
+
+    private static void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
 }
+
+
+
+
