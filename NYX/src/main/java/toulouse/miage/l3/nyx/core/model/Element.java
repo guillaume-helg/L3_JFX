@@ -25,6 +25,8 @@ public class Element {
     /** selling price of the element */
     private Double prixVente;
 
+    private Double deliveryDuration;
+
     /* ===========================================
      * CONSTRUCTOR AND NATIVE FUNCTIONS
      * =========================================== */
@@ -46,20 +48,6 @@ public class Element {
         this.prixVente = prixVente;
     }
 
-    /**
-     * Define comparison points between elements
-     * @param o : another element
-     * @return boolean
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Element element = (Element) o;
-        return Objects.equals(code, element.code);
-    }
-
-
     /* ===========================================
      * GETTER
      * =========================================== */
@@ -68,7 +56,7 @@ public class Element {
      * @return code
      */
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     /**
@@ -76,7 +64,7 @@ public class Element {
      * @return nom
      */
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     /**
@@ -84,7 +72,7 @@ public class Element {
      * @return quantite
      */
     public Double getQuantite() {
-        return quantite;
+        return this.quantite;
     }
 
     /**
@@ -92,7 +80,7 @@ public class Element {
      * @return uniteMesure
      */
     public Unite getUniteMesure() {
-        return uniteMesure;
+        return this.uniteMesure;
     }
 
     /**
@@ -100,7 +88,7 @@ public class Element {
      * @return prixAchat
      */
     public Double getPrixAchat() {
-        return prixAchat;
+        return this.prixAchat;
     }
 
     /**
@@ -108,7 +96,11 @@ public class Element {
      * @return prixVente
      */
     public Double getPrixVente() {
-        return prixVente;
+        return this.prixVente;
+    }
+
+    public Double getDeliveryDuration() {
+        return this.deliveryDuration;
     }
 
 
@@ -137,5 +129,13 @@ public class Element {
      */
     public void setQuantite(Double quantite) {
         this.quantite = quantite;
+    }
+
+    public Double getProductionTime() {
+        return this.deliveryDuration;
+    }
+
+    public boolean isAvailable(Double quantity, int multiplicator) {
+        return this.quantite >= quantity * multiplicator;
     }
 }

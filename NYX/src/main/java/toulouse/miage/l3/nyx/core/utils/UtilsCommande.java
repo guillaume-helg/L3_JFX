@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Map;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
@@ -39,21 +40,12 @@ public class UtilsCommande {
             fichier.println("La liste des commandes \n");
 
             for (Commande c : getCommandes()) {
-                if (c.getFeasible()) {
                     fichier.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
                     fichier.println("\tQuantité : " + c.getQuantity());
                     fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getListeElementEntree());
                     fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getListeElementSortie());
+                    fichier.println("\t" + c.getFeasible());
                     fichier.println("\n");
-                } else {
-                    fichier.println("############ ! Pas Faisable ! ############");
-                    fichier.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
-                    fichier.println("\tQuantité : " + c.getQuantity());
-                    fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getListeElementEntree());
-                    fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getListeElementSortie());
-                    fichier.println("############ ! Pas Faisable ! ############");
-                    fichier.println("\n");
-                }
             }
 
             fichier.println(separator);
@@ -131,4 +123,31 @@ public class UtilsCommande {
         return countFeasible + "/" + countInfeasible;
     }
 
+    /**
+     * Compute the time to produce the order
+     */
+    public static double timeProduction() {
+        double timeProduction = 0;
+
+        // On récupère tout les éléments nécéssaires à produire la commande dans une Hashmap
+        Map<Element, Double> elementNeeded = new HashMap<>();
+        for (Commande c : getCommandes()) {
+            timeProduction += c.getChaine().getProductionTime();
+            Map<Element, Double> elementsFromCommande = c.getChaine().getListeElementEntreeH();
+            for (Map.Entry<Element, Double> entry : elementsFromCommande.entrySet()) {
+                elementNeeded.merge(entry.getKey(), entry.getValue() * c.getQuantity(), Double::sum);
+            }
+        }
+
+        // On fait l'algo de calcul de temps
+        for(Map.Entry<Element, Double> ele : elementNeeded.entrySet()) {
+            if (ele.getKey().getQuantite() < ele.getValue()) {
+                timeProduction += (ele.getValue() - ele.getKey().getQuantite()) * ele.getKey().getDeliveryDuration();
+            }
+        }
+
+        System.out.println("Production time : " + timeProduction);
+
+        return timeProduction;
+    }
 }

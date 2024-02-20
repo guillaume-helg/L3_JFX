@@ -20,6 +20,8 @@ public class Chaine {
     /** list of each element we make by using this chaine */
     private HashMap<Element, Double> listeElementSortie;
 
+    private Double productionTime;
+
     /**
      * Constructor for the Chaine class
      * @param code The code of the chain
@@ -65,6 +67,8 @@ public class Chaine {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+
 
     public String getFormattedList(Map<Element, Double> elements) {
         StringBuilder str = new StringBuilder();
@@ -169,5 +173,9 @@ public class Chaine {
 
     public HashMap<Element, Double> getListeElementSortieH() {
         return listeElementSortie;
+    }
+
+    public Double getProductionTime() {
+        return this.productionTime;
     }
 }

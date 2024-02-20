@@ -1,19 +1,18 @@
 package toulouse.miage.l3.nyx.core.model;
 
 /**
- * Represents a production chain (Chaine)
+ * Represents an order (Commande)
  * @author Guillaume Helg
  * @version 1.0
  */
 public class Commande {
     private Chaine chaine;
     private int quantity;
-    private boolean feasible;
+
 
     public Commande(Chaine chaine, int quantity) {
         this.chaine = chaine;
         this.quantity = quantity;
-        this.feasible = chaine.isFeasible(quantity);
     }
 
     public Chaine getChaine() {
@@ -25,12 +24,9 @@ public class Commande {
     }
 
     public boolean getFeasible() {
-        return this.feasible;
+        return this.chaine.isFeasible(quantity);
     }
     
-    public void setFeasible(boolean b) {
-        this.feasible = b;
-    }
     
     public void setQuantity(int i) {
         if (this.quantity - i >= 0) {

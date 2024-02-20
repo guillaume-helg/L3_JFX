@@ -44,7 +44,7 @@
                                       <TableColumn fx:id="chaineNom" prefWidth="75.0" styleClass="table-column" text="Nom" />
                                       <TableColumn fx:id="chaineEntree" minWidth="100.0" prefWidth="248.20001220703125" styleClass="table-column" text="Eléments en entrée" />
                                       <TableColumn fx:id="chaineSortie" prefWidth="248.20001220703125" styleClass="table-column" text="Eléments en sortie" />
-                                      <TableColumn fx:id="qte" prefWidth="248.20001220703125" styleClass="table-column" text="Qte" />
+                                      <TableColumn fx:id="qte" prefWidth="248.20001220703125" styleClass="table-column" text="Niveau d'activation" />
                                       <TableColumn fx:id="faisabilite" prefWidth="248.20001220703125" styleClass="table-column" text="Faisabilité" />
                                   </columns>
                                   <columnResizePolicy>
@@ -73,6 +73,13 @@
                      </children>
                   </HBox>
                </top>
+               <right>
+                  <VBox alignment="TOP_CENTER" prefHeight="372.0" prefWidth="281.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="Récapitulatif de la commande" />
+                     </children>
+                  </VBox>
+               </right>
             </BorderPane>
             </items>
         </SplitPane>
