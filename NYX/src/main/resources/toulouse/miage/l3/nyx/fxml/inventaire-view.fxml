@@ -75,19 +75,6 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="29.0">
                      <children>
-                        <Label minWidth="85.0" text="Vente">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="ajoutprixv" prefHeight="29.0" promptText="Prix vente" />
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="29.0">
-                     <children>
                         <Label minWidth="85.0" text="Achat">
                            <HBox.margin>
                               <Insets />
@@ -98,6 +85,19 @@
                               <Insets />
                            </HBox.margin>
                         </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="29.0">
+                     <children>
+                        <Label minWidth="85.0" text="Vente">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="ajoutprixv" prefHeight="29.0" promptText="Prix vente" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="30.0" left="10.0" right="10.0" />
@@ -132,11 +132,6 @@
                         <Insets bottom="20.0" left="10.0" right="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Label fx:id="message" styleClass="message" text="">
-                     <VBox.margin>
-                        <Insets bottom="30.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="150.0">
@@ -156,7 +151,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                            <padding>
-                              <Insets left="10.0" />
+                              <Insets left="20.0" />
                            </padding>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="150.0">
@@ -173,11 +168,19 @@
                               </Button>
                            </children>
                            <padding>
-                              <Insets right="10.0" />
+                              <Insets right="20.0" />
                            </padding>
                         </VBox>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
                   </HBox>
+                  <Label fx:id="message" styleClass="message" text="">
+                     <VBox.margin>
+                        <Insets bottom="30.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
             </items>
@@ -193,17 +196,17 @@
                 </ImageView>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                     <children>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToAccueil" prefHeight="50.0" prefWidth="105.0" text="Accueil" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS" />
+                        <Button styleClass="nav-button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToAccueil" prefHeight="50.0" prefWidth="105.0" text="Accueil" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS" />
                     </children>
                 </VBox>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                     <children>
-                        <Button contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToInventaire" prefHeight="50.0" prefWidth="157.0" text="Inventaire" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS" />
+                        <Button styleClass="nav-button" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToInventaire" prefHeight="50.0" prefWidth="157.0" text="Inventaire" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS" />
                     </children>
                 </VBox>
                 <VBox alignment="CENTER" prefHeight="100.0" prefWidth="241.0">
                     <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToChaineProduction" prefHeight="50.0" prefWidth="270.0" text="Chaine de production" wrapText="true" />
+                        <Button styleClass="nav-button" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToChaineProduction" prefHeight="50.0" prefWidth="270.0" text="Chaine de production" wrapText="true" />
                     </children>
                 </VBox>
             </children>
