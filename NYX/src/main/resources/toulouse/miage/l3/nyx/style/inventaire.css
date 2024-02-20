@@ -3,14 +3,25 @@
     -fx-font-family: Inter;
 }
 
-Button {
-    -fx-background-color: white;
-    -fx-font-size: 24px;
-    -fx-font-family: Inter;
-    -fx-border-radius: 20px;
+.action-button {
+    -fx-background-color: #e1ecf4;
+    -fx-text-fill: #39739d;
+    -fx-font: 20 Inter;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #7aa7c7;
     -fx-cursor: hand;
-    -fx-wrap-text: true;
-    -fx-padding: 10px;
+    -fx-padding: 9px;
+}
+
+.action-button:hover {
+    -fx-background-color: #b3d3ea;
+    -fx-text-fill: #2c5777;
+}
+
+.action-button:pressed {
+    -fx-background-color: #a0c7e4;
+    -fx-text-fill: #2c5777;
 }
 
 .table-view {

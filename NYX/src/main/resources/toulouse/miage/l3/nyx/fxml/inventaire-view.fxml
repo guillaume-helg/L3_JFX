@@ -45,7 +45,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" maxWidth="Infinity" prefHeight="29.0">
                      <children>
-                        <Label minWidth="75.0" text="Code :" />
+                        <Label minWidth="75.0" text="Code" />
                         <TextField fx:id="ajoutcode" prefHeight="29.0" promptText="Code">
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -58,7 +58,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="29.0">
                      <children>
-                        <Label minWidth="75.0" text="Nom :">
+                        <Label minWidth="75.0" text="Nom">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -75,7 +75,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="29.0">
                      <children>
-                        <Label minWidth="85.0" text="Vente :">
+                        <Label minWidth="85.0" text="Vente">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -88,7 +88,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="29.0">
                      <children>
-                        <Label minWidth="85.0" text="Achat :">
+                        <Label minWidth="85.0" text="Achat">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -105,7 +105,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="29.0">
                      <children>
-                        <Label minWidth="60.0" text="Qte :">
+                        <Label minWidth="60.0" text="Qte">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -134,46 +134,46 @@
                   </HBox>
                   <Label fx:id="message" styleClass="message" text="">
                      <VBox.margin>
-                        <Insets bottom="40.0" top="10.0" />
+                        <Insets bottom="30.0" top="10.0" />
                      </VBox.margin>
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="150.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clearTextField" prefHeight="29.0" prefWidth="200.0" text="Réinitialiser">
+                              <Button mnemonicParsing="false" onAction="#clearTextField" prefHeight="29.0" prefWidth="200.0" styleClass="action-button" text="Réinitialiser">
                                  <VBox.margin>
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#modifyElement" prefHeight="29.0" prefWidth="200.0" text="Modifier">
+                              <Button mnemonicParsing="false" onAction="#modifyElement" prefHeight="29.0" prefWidth="200.0" styleClass="action-button" text="Modifier">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
                               </Button>
                            </children>
                            <HBox.margin>
-                              <Insets right="30.0" />
+                              <Insets right="20.0" />
                            </HBox.margin>
                            <padding>
-                              <Insets left="5.0" />
+                              <Insets left="10.0" />
                            </padding>
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="150.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#addElement" prefHeight="29.0" prefWidth="200.0" text="Ajouter" textAlignment="CENTER">
+                              <Button mnemonicParsing="false" onAction="#addElement" prefHeight="29.0" prefWidth="200.0" styleClass="action-button" text="Ajouter" textAlignment="CENTER">
                                  <VBox.margin>
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#delElement" prefHeight="29.0" prefWidth="200.0" text="Supprimer">
+                              <Button mnemonicParsing="false" onAction="#delElement" prefHeight="29.0" prefWidth="200.0" styleClass="action-button" text="Supprimer">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
                               </Button>
                            </children>
                            <padding>
-                              <Insets right="5.0" />
+                              <Insets right="10.0" />
                            </padding>
                         </VBox>
                      </children>
