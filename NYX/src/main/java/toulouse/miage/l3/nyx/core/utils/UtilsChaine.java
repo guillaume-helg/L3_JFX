@@ -14,6 +14,9 @@ import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 public class UtilsChaine {
 
+    /**
+     * static constant for error messages / Format
+     */
     private static final String CHAINES_FILE_PATH = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv";
     private static final String CHAINE_CODE_FORMAT = "C\\d{3}";
     private static final String CHAINE_CODE_ERROR_MESSAGE = "Code pas au bon format\nFormat : 'C000' - 'C999'";

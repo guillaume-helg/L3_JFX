@@ -66,7 +66,7 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#createListEntre" text="+" VBox.vgrow="NEVER" />
+                  <Button mnemonicParsing="false" onAction="#createListEntre" text="+ Nouvel élément" VBox.vgrow="NEVER" />
                   <TextField fx:id="ajoutListeEntree" promptText="Eléments en entrée">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" />
@@ -90,7 +90,7 @@
                      </children>
                   </HBox>
 
-                        <Button mnemonicParsing="false" onAction="#createListSortie" text="+">
+                        <Button mnemonicParsing="false" onAction="#createListSortie" text="+ Nouvel élément">
                      <font>
                         <Font size="10.0" />
                      </font>

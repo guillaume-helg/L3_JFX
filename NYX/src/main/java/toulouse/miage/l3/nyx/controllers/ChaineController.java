@@ -20,7 +20,7 @@ import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.*;
 
 
 public class ChaineController implements Initializable {
-
+    
     @FXML
     private TextField inputQuantiteS;
     @FXML
