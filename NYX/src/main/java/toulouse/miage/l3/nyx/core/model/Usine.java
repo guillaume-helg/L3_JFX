@@ -100,7 +100,14 @@ public class Usine {
         elements.remove(e);
     }
 
-    public static void modifyToElement(Element elpre, Element elpost) {elements.set(elementIndexOf(elpre),elpost);}
+    public static void modifyToElement(Element elpre, Element elpost) {
+        elpre.setCode(elpost.getCode());
+        elpre.setNom(elpost.getNom());
+        elpre.setUniteMesure(elpost.getUniteMesure());
+        elpre.setQuantite(elpost.getQuantite());
+        elpre.setPrixAchat(elpost.getPrixAchat());
+        elpre.setPrixVente(elpost.getPrixVente());
+    }
 
     public static Double addQuantitiesOfElement(Element e) {
         Double totqte = elements.get(elementIndexOf(e)).getQuantite() + e.getQuantite();

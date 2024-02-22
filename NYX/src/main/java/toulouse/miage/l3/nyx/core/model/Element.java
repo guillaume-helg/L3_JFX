@@ -111,6 +111,19 @@ public class Element {
     /* ===========================================
      * SETTER
      * =========================================== */
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setUniteMesure(Unite uniteMesure) {
+        this.uniteMesure = uniteMesure;
+    }
+
     /**
      * Set the element's purchase price
      * @param prixAchat : purchase price of an element
