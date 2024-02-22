@@ -1,10 +1,13 @@
 package toulouse.miage.l3.nyx;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Usine;
 import toulouse.miage.l3.nyx.core.utils.UtilsChaine;
@@ -39,6 +42,14 @@ public class Main extends Application {
             usine.chargerElements();
             usine.chargerChaines();
 
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent e) {
+                    UtilsElement.writeElement(getElements());
+                    UtilsChaine.writeChaine(getChaine().toArray(new Chaine[0]));
+                }
+            });
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -46,12 +57,5 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
-    }
-
-    @Override
-    public void stop() throws Exception {
-        UtilsElement.writeElement(getElements());
-        UtilsChaine.writeChaine(getChaine().toArray(new Chaine[0]));
-        super.stop();
     }
 }
