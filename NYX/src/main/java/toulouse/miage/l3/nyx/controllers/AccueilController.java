@@ -133,7 +133,7 @@ public class AccueilController implements Initializable {
     public void goToResultat(ActionEvent actionEvent) throws IOException {
         parseHashmapToCommand(listeCommandeAccueil);
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml",
-                "/toulouse/miage/l3/nyx/style/resultat.css", actionEvent);
+                actionEvent);
     }
 
     /**
@@ -142,7 +142,7 @@ public class AccueilController implements Initializable {
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
-                "/toulouse/miage/l3/nyx/style/chaineproduction.css", actionEvent);
+                actionEvent);
     }
 
     /**
@@ -150,7 +150,6 @@ public class AccueilController implements Initializable {
      * @param actionEvent - click
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",
-                "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml", actionEvent);
     }
 }

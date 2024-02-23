@@ -64,8 +64,7 @@ public class ChaineController implements Initializable {
      * @param actionEvent - click
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml",
-                "/toulouse/miage/l3/nyx/style/accueil.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml", actionEvent);
     }
 
     /**
@@ -73,8 +72,7 @@ public class ChaineController implements Initializable {
      * @param actionEvent - click
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",
-                "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml", actionEvent);
 
     }
 

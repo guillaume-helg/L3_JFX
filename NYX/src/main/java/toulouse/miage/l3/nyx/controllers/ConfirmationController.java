@@ -50,8 +50,7 @@ public class ConfirmationController implements Initializable {
      * @throws IOException
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml",
-                "/toulouse/miage/l3/nyx/style/accueil.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml", actionEvent);
     }
 
 
@@ -60,8 +59,7 @@ public class ConfirmationController implements Initializable {
      * @param actionEvent - click
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml",
-                "/toulouse/miage/l3/nyx/style/resultat.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml", actionEvent);
     }
 
     /**
@@ -69,8 +67,7 @@ public class ConfirmationController implements Initializable {
      * @param actionEvent - click
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
-                "/toulouse/miage/l3/nyx/style/chaineproduction.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml", actionEvent);
     }
 
     /**
@@ -78,7 +75,6 @@ public class ConfirmationController implements Initializable {
      * @param actionEvent - click
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",
-                "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml", actionEvent);
     }
 }

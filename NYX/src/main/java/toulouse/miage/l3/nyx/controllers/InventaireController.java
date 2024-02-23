@@ -118,8 +118,7 @@ public class InventaireController implements Initializable {
      * @param actionEvent - click on tab
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml",
-                "/toulouse/miage/l3/nyx/style/accueil.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml", actionEvent);
     }
 
     /**
@@ -127,8 +126,7 @@ public class InventaireController implements Initializable {
      * @param actionEvent : click on tab
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
-                "/toulouse/miage/l3/nyx/style/chaineproduction.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml", actionEvent);
     }
 
     /**
@@ -136,8 +134,7 @@ public class InventaireController implements Initializable {
      * @param actionEvent : click on tab
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",
-                "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml", actionEvent);
     }
 
 
@@ -293,9 +290,15 @@ public class InventaireController implements Initializable {
      */
     public Element delElement(){
         Element e = selecteditemToElement();
-        removeToElement(e);
-        printLabel("-fx-text-fill: red", "Element supprimé");
-        return e;
+        if (!checkEmptyField()){
+            removeToElement(e);
+            printLabel("-fx-text-fill: red", "Element supprimé");
+            return e;
+        }
+        else {
+            printLabel("-fx-text-fill: red", "Aucun élément sélectionné");
+            return null;
+        }
     }
 
     /**

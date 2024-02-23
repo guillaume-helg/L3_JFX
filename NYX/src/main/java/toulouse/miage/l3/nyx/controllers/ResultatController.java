@@ -57,8 +57,7 @@ public class ResultatController implements Initializable {
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
         clearChainesCommandes();
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml",
-                "/toulouse/miage/l3/nyx/style/accueil.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml", actionEvent);
     }
 
     /**
@@ -70,8 +69,7 @@ public class ResultatController implements Initializable {
         UtilsElement.writeElement(getElements());
         isCommandeWritten = UtilsCommande.writeResultInAFile();
         clearChainesCommandes();
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/confirmation-view.fxml",
-                "/toulouse/miage/l3/nyx/style/confirmation.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/confirmation-view.fxml", actionEvent);
     }
 
     /**
@@ -80,8 +78,7 @@ public class ResultatController implements Initializable {
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
         clearChainesCommandes();
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
-                "/toulouse/miage/l3/nyx/style/chaineproduction.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml", actionEvent);
     }
 
     /**
@@ -90,8 +87,7 @@ public class ResultatController implements Initializable {
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
         clearChainesCommandes();
-        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml",
-                "/toulouse/miage/l3/nyx/style/inventaire.css", actionEvent);
+        SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml", actionEvent);
     }
 
     /**

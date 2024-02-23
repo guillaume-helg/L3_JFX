@@ -13,7 +13,7 @@
 
 <BorderPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toulouse.miage.l3.nyx.controllers.AccueilController">
    <bottom>
-      <Button mnemonicParsing="false" onAction="#goToResultat" text="Commander" BorderPane.alignment="CENTER">
+      <Button styleClass="action-button-command" mnemonicParsing="false" onAction="#goToResultat" text="Commander" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="20.0" />
          </BorderPane.margin>
@@ -63,17 +63,17 @@
             </ImageView>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="105.0" text="Accueil" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS" />
+                  <Button styleClass="nav-button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="105.0" text="Accueil" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="157.0" text="Inventaire" onAction="#goToInventaire" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS" />
+                  <Button styleClass="nav-button" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="157.0" text="Inventaire" onAction="#goToInventaire" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="241.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" onAction="#goToChaineProduction" text="Chaine de production" wrapText="true" />
+                  <Button styleClass="nav-button" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" onAction="#goToChaineProduction" text="Chaine de production" wrapText="true" />
                </children>
             </VBox>
          </children>

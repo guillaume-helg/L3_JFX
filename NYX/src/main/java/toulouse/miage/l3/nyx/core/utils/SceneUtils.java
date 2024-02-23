@@ -16,20 +16,15 @@ public class SceneUtils {
      * Manage the travel between each scene and loading the css of each scene
      *
      * @param fxmlPath : path of the xml file
-     * @param cssPath : path of the css file
      * @param actionEvent : action (click)
      * @throws IOException : exeption
      */
-    public static void goToScene(String fxmlPath, String cssPath, ActionEvent actionEvent) throws IOException {
+    public static void goToScene(String fxmlPath, ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(SceneUtils.class.getResource(fxmlPath)));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-
-        if (cssPath != null && !cssPath.isEmpty()) {
-            String css = SceneUtils.class.getResource(cssPath).toExternalForm();
-            scene.getStylesheets().add(css);
-        }
-
+        String css = SceneUtils.class.getResource("/toulouse/miage/l3/nyx/style/styles.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
     }

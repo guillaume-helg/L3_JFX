@@ -30,7 +30,7 @@ public class Main extends Application {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml")));
             Scene scene = new Scene(root);
-            String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/accueil.css").toExternalForm();
+            String css = this.getClass().getResource("/toulouse/miage/l3/nyx/style/styles.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.setTitle("NYX");
             stage.setScene(scene);

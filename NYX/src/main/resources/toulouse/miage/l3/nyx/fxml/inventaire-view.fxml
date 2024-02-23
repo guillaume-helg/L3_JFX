@@ -136,12 +136,12 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="150.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clearTextField" prefHeight="29.0" prefWidth="200.0" styleClass="action-button" text="Réinitialiser">
+                              <Button mnemonicParsing="false" onAction="#clearTextField" prefHeight="29.0" prefWidth="200.0" styleClass="action-button-clear" text="Réinitialiser">
                                  <VBox.margin>
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#modifyElement" prefHeight="29.0" prefWidth="200.0" styleClass="action-button" text="Modifier">
+                              <Button mnemonicParsing="false" onAction="#modifyElement" prefHeight="29.0" prefWidth="200.0" styleClass="action-button-mod" text="Modifier">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -156,12 +156,12 @@
                         </VBox>
                         <VBox prefHeight="200.0" prefWidth="150.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#addElement" prefHeight="29.0" prefWidth="200.0" styleClass="action-button" text="Ajouter" textAlignment="CENTER">
+                              <Button mnemonicParsing="false" onAction="#addElement" prefHeight="29.0" prefWidth="200.0" styleClass="action-button-add" text="Ajouter" textAlignment="CENTER">
                                  <VBox.margin>
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#delElement" prefHeight="29.0" prefWidth="200.0" styleClass="action-button" text="Supprimer">
+                              <Button mnemonicParsing="false" onAction="#delElement" prefHeight="29.0" prefWidth="200.0" styleClass="action-button-del" text="Supprimer">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
