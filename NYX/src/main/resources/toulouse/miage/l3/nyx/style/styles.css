@@ -183,7 +183,3 @@ Button {
 .label {
     -fx-text-alignment: center;
 }
-
-@media only screen and (max-width: 600px) {
-
-}

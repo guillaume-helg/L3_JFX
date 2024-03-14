@@ -23,7 +23,7 @@ public class Main extends Application {
     public Usine usine;
 
     /**
-     * 
+     * Enable to set the frame of the GUI of the application
      */
     @Override
     public void start(Stage stage) {
