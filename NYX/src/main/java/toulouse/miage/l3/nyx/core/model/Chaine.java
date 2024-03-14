@@ -113,7 +113,7 @@ public class Chaine {
 
     /**
      * Create a StringBuilder to write listEntree in the correct format for the csv file
-     * @return StringBuilder of Liste Element Entree
+     * @return String
      */
     public String getListeEntreeCSVType(){
         StringBuilder str = new StringBuilder();
@@ -133,10 +133,6 @@ public class Chaine {
 
     }
 
-    /**
-     * Create a StringBuilder to write listSortie in the correct format for the csv file
-     * @return StringBuilder of Liste Element Sortie
-     */
     public String getListeSortieCSVType(){
         StringBuilder str = new StringBuilder();
         for (Map.Entry<Element, Double> entry : listeElementSortieH.entrySet()) {
@@ -152,7 +148,7 @@ public class Chaine {
     }
 
     /**
-     * Getter
+     *
      * @return
      */
     public String getListeElementEntree() {

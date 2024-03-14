@@ -65,8 +65,8 @@ public class AccueilController implements Initializable {
         // set value for each column of the tableview
         chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCode()));
         chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getNom()));
-        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getListeElementEntree()));
-        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getListeElementSortie()));
+        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFormattedListeEntree()));
+        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFormattedListeSortie()));
 
         // custom button to set the quantity of the chaine
         Callback<TableColumn<Chaine, String>, TableCell<Chaine, String>> cellFoctory = (TableColumn<Chaine, String> param) -> {

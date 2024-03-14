@@ -42,15 +42,15 @@ public class UtilsCommande {
                 if (c.getFeasible()) {
                     fichier.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
                     fichier.println("\tQuantité : " + c.getQuantity());
-                    fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getListeElementEntree());
-                    fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getListeElementSortie());
+                    fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getFormattedListeEntree());
+                    fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getFormattedListeSortie());
                     fichier.println("\n");
                 } else {
                     fichier.println("############ ! Pas Faisable ! ############");
                     fichier.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
                     fichier.println("\tQuantité : " + c.getQuantity());
-                    fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getListeElementEntree());
-                    fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getListeElementSortie());
+                    fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getFormattedListeEntree());
+                    fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getFormattedListeSortie());
                     fichier.println("############ ! Pas Faisable ! ############");
                     fichier.println("\n");
                 }
@@ -66,7 +66,7 @@ public class UtilsCommande {
     }
 
     /**
-     *
+     * Parse the Map in parameter into a new object Commande in the Usine listeCommande
      */
     public static void parseHashmapToCommand(Map<Chaine, Integer> listeCommande) {
         for (Map.Entry<Chaine, Integer> entry : listeCommande.entrySet()) {
@@ -76,7 +76,7 @@ public class UtilsCommande {
 
 
     /**
-     *
+     * Compute the price of the commandes
      */
     public static double calculRentabiliteProduction() {
         double prixTotal = 0;
@@ -92,7 +92,8 @@ public class UtilsCommande {
     }
 
     /**
-     *
+     * if the user finish is command the export it, this function modify the current stock of Element
+     * used to build the command
      */
     public static void placeOrder() {
         for(Commande c : getCommandes()) {
@@ -116,7 +117,7 @@ public class UtilsCommande {
     }
 
     /**
-     *
+     * Count the number of command feasible
      */
     public static String getNbOrder() {
         int countFeasible = 0;

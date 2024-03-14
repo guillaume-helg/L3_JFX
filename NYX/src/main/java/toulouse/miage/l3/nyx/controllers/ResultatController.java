@@ -110,8 +110,8 @@ public class ResultatController implements Initializable {
         // column of the table vue
         chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getCode()));
         chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getNom()));
-        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getListeElementEntree()));
-        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getListeElementSortie()));
+        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getFormattedListeEntree()));
+        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getFormattedListeSortie()));
 
         // custom column to see if the command is feasible or not
         qte.setCellValueFactory(param -> new SimpleIntegerProperty(param.getValue().getQuantity()).asObject());
@@ -137,7 +137,7 @@ public class ResultatController implements Initializable {
 
         chaineTableView.setItems(getCommandes());
 
-        //
+        // display the number of command produce
         String[] s = getNbOrder().split("/");
         double resultat = (double) Double.parseDouble(s[0]) / Double.parseDouble(s[1]) ;
         resultatCommande.setProgress(resultat);
