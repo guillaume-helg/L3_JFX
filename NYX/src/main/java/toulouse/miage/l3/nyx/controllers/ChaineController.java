@@ -119,11 +119,14 @@ public class ChaineController implements Initializable {
     /**
      * Add chaine to list of chaines
      */
-    public void addChaine(){
-        try{Chaine c = new Chaine(ajoutcode.getText(), ajoutnom.getText(),
-                        parseElementList(ajoutListeEntree.getText()),
-                        parseElementList(ajoutListeSortie.getText()));
-            if(checkCodeChaine(ajoutcode.getText()) && checkNomChaine(ajoutnom.getText())){
+    public void addChaine() {
+        try{
+            Chaine c = new Chaine(ajoutcode.getText(), ajoutnom.getText(),
+                                  parseElementList(ajoutListeEntree.getText()),
+                                  parseElementList(ajoutListeSortie.getText()));
+
+            if(checkCodeChaine(ajoutcode.getText())
+               && checkNomChaine(ajoutnom.getText())){
                 addToChaine(c);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -134,8 +137,7 @@ public class ChaineController implements Initializable {
     /**
      * Delete chaine from list of chaines
      */
-
-    public void delChaine(){
+    public void delChaine() {
         Chaine c = chaineTableView.getSelectionModel().getSelectedItem();
         removeToChaine(c);
     }
@@ -164,6 +166,9 @@ public class ChaineController implements Initializable {
         ajoutListeSortie.setText("");
     }
 
+    /**
+     * Display alert message on the GUI screen of the Chaine de production page
+     */
     private void showErrorAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText(message);

@@ -32,6 +32,7 @@ public class ResultatController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    // this boolean let us know if the text file have been created for the confirmation page
     protected static boolean isCommandeWritten = false;
     public static String indicValeur = String.valueOf(0);
 
@@ -102,13 +103,17 @@ public class ResultatController implements Initializable {
      * the root object was not localized.
      */
     public void initialize(URL location, ResourceBundle resources) {
+        // label to display the value of the command
         indicateurValeur.setText(String.valueOf(calculRentabiliteProduction()) + "€");
         indicValeur = indicateurValeur.toString();
 
+        // column of the table vue
         chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getCode()));
         chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getNom()));
         chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getListeElementEntree()));
         chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getListeElementSortie()));
+
+        // custom column to see if the command is feasible or not
         qte.setCellValueFactory(param -> new SimpleIntegerProperty(param.getValue().getQuantity()).asObject());
         faisabilite.setCellFactory(column -> new TableCell<Commande, String>() {
             @Override
@@ -132,6 +137,7 @@ public class ResultatController implements Initializable {
 
         chaineTableView.setItems(getCommandes());
 
+        //
         String[] s = getNbOrder().split("/");
         double resultat = (double) Double.parseDouble(s[0]) / Double.parseDouble(s[1]) ;
         resultatCommande.setProgress(resultat);

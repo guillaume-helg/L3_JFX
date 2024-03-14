@@ -60,13 +60,15 @@ public class AccueilController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        currentQte = 0;
+        currentQte = 0; // initialize to 0 when you go in this page
 
+        // set value for each column of the tableview
         chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCode()));
         chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getNom()));
         chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getListeElementEntree()));
         chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getListeElementSortie()));
 
+        // custom button to set the quantity of the chaine
         Callback<TableColumn<Chaine, String>, TableCell<Chaine, String>> cellFoctory = (TableColumn<Chaine, String> param) -> {
             final TableCell<Chaine, String> cell = new TableCell<Chaine, String>() {
                 @Override
@@ -93,12 +95,14 @@ public class AccueilController implements Initializable {
 
                         tf.setEditable(true);
 
+                        // function to change on clic the value of the label
                         add.setOnAction(e -> {
                             currentQte = Integer.parseInt(tf.getText());
                             tf.setText(Integer.toString(currentQte + 1));
                             listeCommandeAccueil.put(getTableView().getItems().get(getIndex()), Math.max(0, currentQte + 1));
                         });
 
+                        // function to change on clic the value of the label
                         less.setOnAction(e -> {
                             currentQte = Integer.parseInt(tf.getText());
                             tf.setText(Integer.toString(Math.max(0, currentQte - 1)));

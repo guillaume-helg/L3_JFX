@@ -80,8 +80,8 @@ public class Chaine {
     }
 
     /**
-     *
-     * @return
+     * format in a StringBuilder the content of the Hashmap listeElementEntreeH
+     * @return a StringBuilder with the list of Element in entry
      */
     public String getFormattedListeEntree() {
         StringBuilder str = new StringBuilder();
@@ -96,8 +96,8 @@ public class Chaine {
     }
 
     /**
-     *
-     * @return
+     * format in a StringBuilder the content of the Hashmap listeElementSortieH
+     * @return a StringBuilder with the list of Element in exit
      */
     public String getFormattedListeSortie() {
         StringBuilder str = new StringBuilder();
@@ -111,6 +111,10 @@ public class Chaine {
         return str.toString();
     }
 
+    /**
+     * Create a StringBuilder to write listEntree in the correct format for the csv file
+     * @return StringBuilder of Liste Element Entree
+     */
     public String getListeEntreeCSVType(){
         StringBuilder str = new StringBuilder();
         for (Map.Entry<Element, Double> entry : listeElementEntreeH.entrySet()) {
@@ -129,6 +133,10 @@ public class Chaine {
 
     }
 
+    /**
+     * Create a StringBuilder to write listSortie in the correct format for the csv file
+     * @return StringBuilder of Liste Element Sortie
+     */
     public String getListeSortieCSVType(){
         StringBuilder str = new StringBuilder();
         for (Map.Entry<Element, Double> entry : listeElementSortieH.entrySet()) {
@@ -144,7 +152,7 @@ public class Chaine {
     }
 
     /**
-     *
+     * Getter
      * @return
      */
     public String getListeElementEntree() {

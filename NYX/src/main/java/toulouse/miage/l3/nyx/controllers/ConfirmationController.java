@@ -39,13 +39,14 @@ public class ConfirmationController implements Initializable {
             imageAdress = "/toulouse/miage/l3/nyx/image/dislike.png";
             text = "Votre commande n'a pas pu être réalisée";
         }
+
         annonceConfirmation.setText(text);
         Image newImage = new Image(getClass().getResource(imageAdress).toExternalForm());
         imageConfirmation.setImage(newImage);
     }
 
     /**
-     *
+     * Enable to change the scene from confirmation to accueil
      * @param actionEvent
      * @throws IOException
      */
@@ -55,7 +56,7 @@ public class ConfirmationController implements Initializable {
 
 
     /**
-     * Enable to change the scene from accueil to resultat
+     * Enable to change the scene from confirmation to resultat
      * @param actionEvent - click
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
@@ -63,7 +64,7 @@ public class ConfirmationController implements Initializable {
     }
 
     /**
-     * Enable to change the scene from accueil to chaine de production
+     * Enable to change the scene from confirmation to chaine de production
      * @param actionEvent - click
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
@@ -71,7 +72,7 @@ public class ConfirmationController implements Initializable {
     }
 
     /**
-     * Enable to change the scene from accueil to inventaire
+     * Enable to change the scene from confirmation to inventaire
      * @param actionEvent - click
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
