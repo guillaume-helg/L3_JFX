@@ -180,6 +180,22 @@ public class UtilsChaine {
         alert.showAndWait();
     }
 
+    /**
+     * Get the code of element from his Namr
+     *
+     * @param name : name of an element
+     * @return a string
+     */
+
+    public static String getCodeFromName(String name){
+        for(Element i : getElements()){
+            if(name==i.getNom()){
+                return i.getCode();
+            }
+        }
+        return null;
+    }
+
 
 }
 

@@ -151,10 +151,10 @@ public class Usine {
         elements.addAll(elementss);
     }
 
-    public static ObservableList<String> getCodeElement(){
+    public static ObservableList<String> getNomElement(){
         ObservableList<String> codeElements = FXCollections.observableArrayList();
         for(Element element : elements){
-            codeElements.add(element.getCode());
+            codeElements.add(element.getNom());
         }
         return codeElements;
     }

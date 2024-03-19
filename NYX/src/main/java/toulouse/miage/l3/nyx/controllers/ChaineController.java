@@ -54,8 +54,8 @@ public class ChaineController implements Initializable {
         chaineEntree.setCellValueFactory(new PropertyValueFactory<>("listeElementEntree"));
         chaineSortie.setCellValueFactory(new PropertyValueFactory<>("listeElementSortie"));
         chaineTableView.setItems(getChaine());
-        comboBoxElemE.setItems(getCodeElement());
-        comboBoxElemS.setItems(getCodeElement());
+        comboBoxElemE.setItems(getNomElement());
+        comboBoxElemS.setItems(getNomElement());
 
         chaineTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -103,7 +103,7 @@ public class ChaineController implements Initializable {
         if (!currentList.isEmpty()) {
             currentList += ",";
         }
-        currentList += "(" + selectedElement + "," + quantity + ")";
+        currentList += "(" + getCodeFromName(selectedElement) + "," + quantity + ")";
         if (Objects.equals(quantity, "") || selectedElement==null)
             showErrorAlert("Séléctionnez un élément et une quantité");
         else
