@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Map;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
@@ -81,10 +82,10 @@ public class UtilsCommande {
     public static double calculRentabiliteProduction() {
         double prixTotal = 0;
         for(Commande c : getCommandes()) {
-            for (Map.Entry<Element, Double> element : c.getChaine().getListeElementEntreeH().entrySet()) {
+            for (Map.Entry<Element, Double> element : c.getChaine().getListeElementEntree().entrySet()) {
                 prixTotal -= element.getKey().getPrixVente() * element.getValue() * c.getQuantity();
             }
-            for (Map.Entry<Element, Double> element : c.getChaine().getListeElementSortieH().entrySet()) {
+            for (Map.Entry<Element, Double> element : c.getChaine().getListeElementSortie().entrySet()) {
                 prixTotal += element.getKey().getPrixVente() * element.getValue() * c.getQuantity();
             }
         }
@@ -98,14 +99,14 @@ public class UtilsCommande {
     public static void placeOrder() {
         for(Commande c : getCommandes()) {
             if (c.getFeasible()) {
-                for (Map.Entry<Element, Double> currentElement : c.getChaine().getListeElementEntreeH().entrySet()) {
+                for (Map.Entry<Element, Double> currentElement : c.getChaine().getListeElementEntree().entrySet()) {
                     Element element = currentElement.getKey();
                     if (getElements().contains(element)) {
                         int index = getElements().indexOf(element);
                         getElements().get(index).setQuantite(element.getQuantite()-(currentElement.getValue() * c.getQuantity()));
                     }
                 }
-                for (Map.Entry<Element, Double> currentElement : c.getChaine().getListeElementSortieH().entrySet()) {
+                for (Map.Entry<Element, Double> currentElement : c.getChaine().getListeElementSortie().entrySet()) {
                     Element element = currentElement.getKey();
                     if (getElements().contains(element)) {
                         int index = getElements().indexOf(element);
@@ -132,4 +133,31 @@ public class UtilsCommande {
         return countFeasible + "/" + countInfeasible;
     }
 
+
+    /**
+     * Create a string of the element used to produce the command
+     * TODO : si j'ai le temps
+     */
+    public static String getUsedElement() {
+        HashMap<Element, Integer> d = new HashMap<>();
+
+        String str = "";
+
+        for (Commande c : getCommandes()) {
+            if (c.getFeasible()) {
+                d. c.getChaine().getListeElementEntree();
+                       c.getQuantity();
+            }
+        }
+
+        System.out.println(str);
+        return str;
+    }
+
+    /**
+     * Estimation of the time to produce a command
+     */
+    public static void costTimeProduction() {
+
+    }
 }

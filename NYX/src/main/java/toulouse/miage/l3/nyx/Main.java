@@ -18,6 +18,7 @@ import java.util.Objects;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.getChaine;
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
+import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.getUsedElement;
 
 public class Main extends Application {
     public Usine usine;
@@ -41,6 +42,8 @@ public class Main extends Application {
             usine = Usine.getInstance(0);
             usine.chargerElements();
             usine.chargerChaines();
+
+
 
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override

@@ -51,8 +51,8 @@ public class ChaineController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         chaineCode.setCellValueFactory(new PropertyValueFactory<>("code"));
         chaineNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        chaineEntree.setCellValueFactory(new PropertyValueFactory<>("listeElementEntree"));
-        chaineSortie.setCellValueFactory(new PropertyValueFactory<>("listeElementSortie"));
+        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFormattedListeEntree()));
+        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFormattedListeSortie()));
         chaineTableView.setItems(getChaine());
         comboBoxElemE.setItems(getCodeElement());
         comboBoxElemS.setItems(getCodeElement());
