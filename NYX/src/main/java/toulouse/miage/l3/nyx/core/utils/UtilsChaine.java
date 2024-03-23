@@ -1,6 +1,8 @@
 package toulouse.miage.l3.nyx.core.utils;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Element;
 
@@ -17,11 +19,11 @@ public class UtilsChaine {
     /**
      * static constant for error messages / Format
      */
-    private static final String CHAINES_FILE_PATH = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv";
-    private static final String CHAINE_CODE_FORMAT = "C\\d{3}";
-    private static final String CHAINE_CODE_ERROR_MESSAGE = "Code pas au bon format\nFormat : 'C000' - 'C999'";
-    private static final String CHAINE_CODE_EXISTS_ERROR_MESSAGE = "Code Chaine déja existant";
-    private static final String CHAINE_NAME_EXISTS_ERROR_MESSAGE = "Nom Chaine déja existant";
+    public static final String CHAINES_FILE_PATH = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/chaines.csv";
+    public static final String CHAINE_CODE_FORMAT = "C\\d{3}";
+    public static final String CHAINE_CODE_ERROR_MESSAGE = "Code pas au bon format\nFormat : 'C000' - 'C999'";
+    public static final String CHAINE_CODE_EXISTS_ERROR_MESSAGE = "Code Chaine déja existant";
+    public static final String CHAINE_NAME_EXISTS_ERROR_MESSAGE = "Nom Chaine déja existant";
 
     /**
      * Read line of a file named chaines.csv, and transform these line into an object Chaine,
@@ -83,10 +85,7 @@ public class UtilsChaine {
             if (existingElement != null && getElements().contains(existingElement)) {
                 elementMap.put(existingElement, value);
             } else {
-                System.err.println("Your Element does not exist");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Un des éléments entrées n'existe pas");
-                alert.showAndWait();
+                showErrorAlert("Un des éléments entrées n'existe pas");
             }
         }
         return elementMap;
@@ -174,11 +173,6 @@ public class UtilsChaine {
         return qte > 0;
     }
 
-    private static void showErrorAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 
     /**
      * Get the code of element from his Namr
@@ -194,6 +188,15 @@ public class UtilsChaine {
             }
         }
         return null;
+    }
+
+    /**
+     * Display alert message on the GUI screen of the Chaine de production page
+     */
+    private static void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 
