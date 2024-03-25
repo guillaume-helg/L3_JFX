@@ -22,6 +22,9 @@ import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.*;
 
 public class ResultatController implements Initializable {
+
+    @FXML
+    private Label statTemps;
     @FXML
     private Label recapitulatif;
     @FXML
@@ -148,5 +151,7 @@ public class ResultatController implements Initializable {
                                    + Integer.parseInt(s[1])) + " réalisées !");
 
         recapitulatif.setText(getUsedElement());
+
+        statTemps.setText("Temps de prod : " + timeEstimation() + " heures");
     }
 }

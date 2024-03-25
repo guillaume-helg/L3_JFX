@@ -53,6 +53,11 @@
                               <Label fx:id="indicateurValeur" prefHeight="17.0" prefWidth="252.0" text="Valeur totale : " />
                            </children>
                         </HBox>
+                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="219.0" spacing="80.0">
+                             <children>
+                                 <Label fx:id="statTemps" prefHeight="17.0" prefWidth="252.0" text="Temps total : " />
+                             </children>
+                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Label fx:id="recapitulatif" text="Label" />

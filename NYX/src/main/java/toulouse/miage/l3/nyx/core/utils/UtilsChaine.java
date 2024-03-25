@@ -57,7 +57,9 @@ public class UtilsChaine {
         HashMap<Element, Double> inputElementList = parseElementList(parts[2]);
         HashMap<Element, Double> outputElementList = parseElementList(parts[3]);
 
-        return new Chaine(code, name, inputElementList, outputElementList);
+        int time = Integer.parseInt(parts[4]);
+
+        return new Chaine(code, name, inputElementList, outputElementList, time);
     }
 
     /**
@@ -118,7 +120,8 @@ public class UtilsChaine {
                 file.println(chaine.getCode() + ";"
                         + chaine.getNom() + ";"
                         + chaine.getListeEntreeCSVType() + ";"
-                        + chaine.getListeSortieCSVType()
+                        + chaine.getListeSortieCSVType() + ";"
+                        + chaine.getTime()
                 );
             }
         } catch (IOException ex) {

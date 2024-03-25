@@ -161,7 +161,12 @@ public class UtilsCommande {
     /**
      * Estimation of the time to produce a command
      */
-    public static void costTimeProduction() {
+    public static int timeEstimation() {
+        int totalTime = 0;
+        for(Commande c : getCommandes()) {
+            totalTime += c.getChaine().getTime() * c.getQuantity();
+        }
 
+        return totalTime;
     }
 }

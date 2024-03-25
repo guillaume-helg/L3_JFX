@@ -20,7 +20,11 @@ import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.*;
 
 
 public class ChaineController implements Initializable {
-    
+
+    @FXML
+    public TableColumn<Chaine, String> temps;
+    @FXML
+    public TextField ajouttemps;
     @FXML
     private TextField inputQuantiteS;
     @FXML
@@ -65,6 +69,9 @@ public class ChaineController implements Initializable {
                 ajoutListeSortie.setText(String.valueOf(newSelection.getListeSortieCSVType()));
             }
         });
+
+        temps.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getTime())));
+
     }
 
 
@@ -123,7 +130,8 @@ public class ChaineController implements Initializable {
         try{
             Chaine c = new Chaine(ajoutcode.getText(), ajoutnom.getText(),
                                   parseElementList(ajoutListeEntree.getText()),
-                                  parseElementList(ajoutListeSortie.getText()));
+                                  parseElementList(ajoutListeSortie.getText()),
+                                  Integer.parseInt(ajouttemps.getText()));
 
             if(checkCodeChaine(ajoutcode.getText())
                && checkNomChaine(ajoutnom.getText())){
@@ -148,7 +156,8 @@ public class ChaineController implements Initializable {
     public void modifyChaine() {
         Chaine post = new Chaine(ajoutcode.getText(), ajoutnom.getText(),
                 parseElementList(ajoutListeEntree.getText()),
-                parseElementList(ajoutListeSortie.getText()));
+                parseElementList(ajoutListeSortie.getText()),
+                Integer.parseInt(ajouttemps.getText()));
         Chaine pre=chaineTableView.getSelectionModel().getSelectedItem();
         if (chainesContains(pre)){
             modifyToChaine(pre,post);
@@ -164,6 +173,7 @@ public class ChaineController implements Initializable {
         ajoutnom.setText("");
         ajoutListeEntree.setText("");
         ajoutListeSortie.setText("");
+        ajouttemps.setText("");
     }
 
     /**

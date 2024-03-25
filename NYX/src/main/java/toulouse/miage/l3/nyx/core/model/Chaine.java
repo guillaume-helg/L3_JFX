@@ -19,6 +19,8 @@ public class Chaine {
     protected HashMap<Element, Double> listeElementEntree;
     /** list of each element we make by using this chaine */
     private HashMap<Element, Double> listeElementSortie;
+    /** time to produce the product */
+    private int time;
 
 
     /**
@@ -35,6 +37,13 @@ public class Chaine {
         this.listeElementSortie = listeElementSortie;
     }
 
+    public Chaine(String code, String nom, HashMap<Element, Double> listeElementEntree, HashMap<Element, Double> listeElementSortie, int time) {
+        this.code = code;
+        this.nom = nom;
+        this.listeElementEntree = listeElementEntree;
+        this.listeElementSortie = listeElementSortie;
+        this.time = time;
+    }
     /**
      * Returns the code of the chain
      * @return String containing the code
@@ -131,8 +140,8 @@ public class Chaine {
     }
 
     /**
-     *
-     * @return
+     * Return a string of chaine
+     * @return string of chaine
      */
     public String toString() {
         return this.code + "\n" + this.nom + "\n" + this.getFormattedListeEntree() + "\n" + this.getFormattedListeSortie();
@@ -169,5 +178,9 @@ public class Chaine {
 
     public HashMap<Element, Double> getListeElementSortie() {
         return listeElementSortie;
+    }
+
+    public int getTime() {
+        return this.time;
     }
 }

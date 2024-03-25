@@ -25,7 +25,8 @@ import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.parseHashmapToCommand;
 
 public class AccueilController implements Initializable {
-
+    @FXML
+    public TableColumn<Chaine, String> temps;
     @FXML
     private TableView<Chaine> chaineTableView;
     @FXML
@@ -125,6 +126,9 @@ public class AccueilController implements Initializable {
 
             return cell;
         };
+
+        temps.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getTime())));
+
 
         qte.setCellFactory(cellFoctory);
         chaineTableView.setItems(getChaine());

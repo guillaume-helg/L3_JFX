@@ -43,8 +43,6 @@ public class Main extends Application {
             usine.chargerElements();
             usine.chargerChaines();
 
-
-
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent e) {
