@@ -68,6 +68,7 @@ public class UtilsCommande {
 
     /**
      * Parse the Map in parameter into a new object Commande in the Usine listeCommande
+     * @param listeCommande, Hashmap of llll
      */
     public static void parseHashmapToCommand(Map<Chaine, Integer> listeCommande) {
         for (Map.Entry<Chaine, Integer> entry : listeCommande.entrySet()) {
@@ -77,7 +78,8 @@ public class UtilsCommande {
 
 
     /**
-     * Compute the price of the commandes
+     * Compute the price of the command
+     * @return total price of the command
      */
     public static double calculRentabiliteProduction() {
         double prixTotal = 0;
@@ -119,6 +121,7 @@ public class UtilsCommande {
 
     /**
      * Count the number of command feasible
+     * @return string of a fraction of valid command on the total of command
      */
     public static String getNbOrder() {
         int countFeasible = 0;
@@ -137,6 +140,7 @@ public class UtilsCommande {
     /**
      * Create a string of the element used to produce the command
      * TODO : si j'ai le temps
+     * @return a list of element used to build the command with their quantity
      */
     public static String getUsedElement() {
         HashMap<Element, Integer> d = new HashMap<>();
@@ -145,7 +149,7 @@ public class UtilsCommande {
 
         for (Commande c : getCommandes()) {
             if (c.getFeasible()) {
-                d. c.getChaine().getListeElementEntree();
+               // d. c.getChaine().getListeElementEntree();
                        c.getQuantity();
             }
         }

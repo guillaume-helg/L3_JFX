@@ -7,6 +7,11 @@ import toulouse.miage.l3.nyx.core.model.Unite;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Provide every funtions needed that handle Element
+ * @author Lucas Goard, Guillaume Helg
+ * @version 1.0
+ */
 public class UtilsElement {
 
     private final static String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";

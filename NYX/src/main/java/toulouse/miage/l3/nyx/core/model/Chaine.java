@@ -6,7 +6,7 @@ import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 
 /**
  * Represents a production chain (Chaine)
- * @author Guillaume Helg && Hugues Ansoborlo
+ * @author Guillaume Helg, Hugues Ansoborlo
  * @version 1.0
  */
 public class Chaine {

@@ -133,6 +133,7 @@ public class AccueilController implements Initializable {
     /**
      * Enable to change the scene from accueil to resultat
      * @param actionEvent - click
+     * @throws IOException in case the scene does not exist
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
         parseHashmapToCommand(listeCommandeAccueil);
