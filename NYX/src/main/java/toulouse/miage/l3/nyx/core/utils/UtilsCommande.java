@@ -65,7 +65,8 @@ public class UtilsCommande {
             writer.close();
 
             Path sourcePath = fichier.toPath();
-            Path destinationPath = Paths.get(System.getProperty("user.home"), "Downloads", fichier.getName());
+            Path destinationPath = Paths.get(System.getProperty("user.home"), "Downloads", "CommandesNYX", fichier.getName());
+            Files.createDirectories(destinationPath.getParent());
             Files.move(sourcePath, destinationPath);
 
         } catch (IOException ex) {
