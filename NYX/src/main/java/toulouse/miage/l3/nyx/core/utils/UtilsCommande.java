@@ -39,6 +39,8 @@ public class UtilsCommande {
             writer.println(separator);
             writer.println("L'incateur de valeur est égal à -> " + calculRentabiliteProduction() + "€");
             writer.println(separator);
+            writer.println("L'indication du temps de production : " + timeEstimation());
+            writer.println(separator);
             writer.println("La liste des commandes \n");
 
             for (Commande c : getCommandes()) {
@@ -62,7 +64,6 @@ public class UtilsCommande {
             writer.println(separator);
             writer.close();
 
-            // Déplacer le fichier vers le dossier "Downloads"
             Path sourcePath = fichier.toPath();
             Path destinationPath = Paths.get(System.getProperty("user.home"), "Downloads", fichier.getName());
             Files.move(sourcePath, destinationPath);
