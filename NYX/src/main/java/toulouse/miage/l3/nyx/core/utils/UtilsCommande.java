@@ -4,9 +4,12 @@ import toulouse.miage.l3.nyx.core.model.Chaine;
 import toulouse.miage.l3.nyx.core.model.Commande;
 import toulouse.miage.l3.nyx.core.model.Element;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,38 +30,43 @@ public class UtilsCommande {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
         String formattedDate = dateTime.format(formatter);
 
-        String nomFichier = Paths.get("NYX", "src", "main", "resources", "toulouse", "miage", "l3", "nyx", "save", "commande", "commande_" + formattedDate + ".txt").toString();
-
         String separator = "\n--------------------------------------------------------------------\n";
         try {
-            PrintWriter fichier = new PrintWriter(new FileWriter(nomFichier));
+            File fichier = new File(Paths.get("NYX", "src", "main", "resources", "toulouse", "miage", "l3", "nyx", "save", "commande", "commande_" + formattedDate + ".txt").toString());
+            PrintWriter writer = new PrintWriter(new FileWriter(fichier));
 
-            fichier.println("Date de la commande -> " + LocalDateTime.now());
-            fichier.println(separator);
-            fichier.println("L'incateur de valeur est égal à -> " + calculRentabiliteProduction() + "€");
-            fichier.println(separator);
-            fichier.println("La liste des commandes \n");
+            writer.println("Date de la commande -> " + LocalDateTime.now());
+            writer.println(separator);
+            writer.println("L'incateur de valeur est égal à -> " + calculRentabiliteProduction() + "€");
+            writer.println(separator);
+            writer.println("La liste des commandes \n");
 
             for (Commande c : getCommandes()) {
                 if (c.getFeasible()) {
-                    fichier.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
-                    fichier.println("\tQuantité : " + c.getQuantity());
-                    fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getFormattedListeEntree());
-                    fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getFormattedListeSortie());
-                    fichier.println("\n");
+                    writer.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
+                    writer.println("\tQuantité : " + c.getQuantity());
+                    writer.println("\tListe d'éléments d'entrée : " + c.getChaine().getFormattedListeEntree());
+                    writer.println("\tListe d'éléments de sortie : " + c.getChaine().getFormattedListeSortie());
+                    writer.println("\n");
                 } else {
-                    fichier.println("############ ! Pas Faisable ! ############");
-                    fichier.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
-                    fichier.println("\tQuantité : " + c.getQuantity());
-                    fichier.println("\tListe d'éléments d'entrée : " + c.getChaine().getFormattedListeEntree());
-                    fichier.println("\tListe d'éléments de sortie : " + c.getChaine().getFormattedListeSortie());
-                    fichier.println("############ ! Pas Faisable ! ############");
-                    fichier.println("\n");
+                    writer.println("############ ! Pas Faisable ! ############");
+                    writer.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
+                    writer.println("\tQuantité : " + c.getQuantity());
+                    writer.println("\tListe d'éléments d'entrée : " + c.getChaine().getFormattedListeEntree());
+                    writer.println("\tListe d'éléments de sortie : " + c.getChaine().getFormattedListeSortie());
+                    writer.println("############ ! Pas Faisable ! ############");
+                    writer.println("\n");
                 }
             }
 
-            fichier.println(separator);
-            fichier.close();
+            writer.println(separator);
+            writer.close();
+
+            // Déplacer le fichier vers le dossier "Downloads"
+            Path sourcePath = fichier.toPath();
+            Path destinationPath = Paths.get(System.getProperty("user.home"), "Downloads", fichier.getName());
+            Files.move(sourcePath, destinationPath);
+
         } catch (IOException ex) {
             System.err.println("File access problem");
             return false;
