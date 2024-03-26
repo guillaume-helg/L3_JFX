@@ -25,7 +25,8 @@ import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.parseHashmapToCommand;
 
 public class AccueilController implements Initializable {
-
+    @FXML
+    public TableColumn<Chaine, String> temps;
     @FXML
     private TableView<Chaine> chaineTableView;
     @FXML
@@ -65,8 +66,8 @@ public class AccueilController implements Initializable {
         // set value for each column of the tableview
         chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getCode()));
         chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getNom()));
-        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getListeElementEntree()));
-        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getListeElementSortie()));
+        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFormattedListeEntree()));
+        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getFormattedListeSortie()));
 
         // custom button to set the quantity of the chaine
         Callback<TableColumn<Chaine, String>, TableCell<Chaine, String>> cellFoctory = (TableColumn<Chaine, String> param) -> {
@@ -126,6 +127,9 @@ public class AccueilController implements Initializable {
             return cell;
         };
 
+        temps.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getTime())));
+
+
         qte.setCellFactory(cellFoctory);
         chaineTableView.setItems(getChaine());
     }
@@ -133,6 +137,7 @@ public class AccueilController implements Initializable {
     /**
      * Enable to change the scene from accueil to resultat
      * @param actionEvent - click
+     * @throws IOException in case the scene does not exist
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
         parseHashmapToCommand(listeCommandeAccueil);

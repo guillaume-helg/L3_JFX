@@ -2,7 +2,6 @@ package toulouse.miage.l3.nyx.core.model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 
 import java.util.*;
 
@@ -11,6 +10,7 @@ import static toulouse.miage.l3.nyx.core.utils.UtilsElement.readElement;
 
 public class Usine {
 
+    // Design pattern in case we had to manage several Usine to stock Chaine, Commande and Element
     private static Map<Integer,Usine> instance = new HashMap<>();
 
     public static Usine getInstance(Integer usineId) {
@@ -20,21 +20,41 @@ public class Usine {
         return instance.get(usineId);
     }
 
+
     private Usine(){}
 
+    /**
+     * List which register every chaine object of the Usine from the text files
+     */
     private static ObservableList<Chaine> chaines = FXCollections.observableArrayList();
+    /**
+     * List which register every commandes object of the Usine from the text files
+     */
     private static ObservableList<Commande> commandes = FXCollections.observableArrayList();
+    /**
+     * List which register every element object of the Usine from the text files
+     */
     private static ObservableList<Element> elements = FXCollections.observableArrayList();
 
+
+    /**
+     * add every chaine to the list
+     */
     public void chargerChaines() {
         chaines.addAll(readChaine());
     }
+
+    /**
+     * add every element to the liste
+     */
     public void chargerElements() {
         elements.addAll(readElement());
     }
 
     /* ===========================================
      * FUNCTIONS FOR CHAINES
+     * These functions have been created to counter every bad manipulations with the list
+     * and give access only to some methods
      * =========================================== */
 
     public static ObservableList<Chaine> getChaine() {
@@ -56,6 +76,8 @@ public class Usine {
 
     /* ===========================================
      * FUNCTIONS FOR COMMANDES
+     * These functions have been created to counter every bad manipulations with the list
+     * and give access only to some methods
      * =========================================== */
 
     public static void clearChainesCommandes() {
@@ -92,6 +114,8 @@ public class Usine {
 
     /* ===========================================
      * FUNCTIONS FOR ELEMENTS
+     * These functions have been created to counter every bad manipulations with the list
+     * and give access only to some methods
      * =========================================== */
 
     public static ObservableList<Element> getElements() {
@@ -158,5 +182,4 @@ public class Usine {
         }
         return codeElements;
     }
-
 }

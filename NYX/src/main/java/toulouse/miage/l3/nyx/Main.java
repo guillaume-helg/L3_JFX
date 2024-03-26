@@ -18,12 +18,13 @@ import java.util.Objects;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.getChaine;
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
+import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.getUsedElement;
 
 public class Main extends Application {
     public Usine usine;
 
     /**
-     * 
+     * Enable to set the frame of the GUI of the application
      */
     @Override
     public void start(Stage stage) {

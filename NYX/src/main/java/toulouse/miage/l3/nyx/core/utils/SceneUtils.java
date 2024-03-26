@@ -14,7 +14,6 @@ public class SceneUtils {
 
     /**
      * Manage the travel between each scene and loading the css of each scene
-     *
      * @param fxmlPath : path of the xml file
      * @param actionEvent : action (click)
      * @throws IOException : exeption

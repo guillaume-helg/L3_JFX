@@ -22,6 +22,11 @@ import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.*;
 
 public class ResultatController implements Initializable {
+
+    @FXML
+    private Label statTemps;
+    @FXML
+    private Label recapitulatif;
     @FXML
     private Label stat;
     @FXML
@@ -104,14 +109,14 @@ public class ResultatController implements Initializable {
      */
     public void initialize(URL location, ResourceBundle resources) {
         // label to display the value of the command
-        indicateurValeur.setText(String.valueOf(calculRentabiliteProduction()) + "€");
+        indicateurValeur.setText("Valeur totale : " + String.valueOf(calculRentabiliteProduction()) + "€");
         indicValeur = indicateurValeur.toString();
 
-        // column of the table vue
+        // column of the tableview
         chaineCode.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getCode()));
         chaineNom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getNom()));
-        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getListeElementEntree()));
-        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getListeElementSortie()));
+        chaineEntree.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getFormattedListeEntree()));
+        chaineSortie.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getChaine().getFormattedListeSortie()));
 
         // custom column to see if the command is feasible or not
         qte.setCellValueFactory(param -> new SimpleIntegerProperty(param.getValue().getQuantity()).asObject());
@@ -137,10 +142,16 @@ public class ResultatController implements Initializable {
 
         chaineTableView.setItems(getCommandes());
 
-        //
+        // display the number of command produce
         String[] s = getNbOrder().split("/");
         double resultat = (double) Double.parseDouble(s[0]) / Double.parseDouble(s[1]) ;
         resultatCommande.setProgress(resultat);
-        stat.setText(Integer.parseInt(s[0]) + "/" + (Integer.parseInt(s[0]) + Integer.parseInt(s[1])) + " réalisées !");
+        stat.setText("Résultat : " + Integer.parseInt(s[0]) + "/"
+                                   + (Integer.parseInt(s[0])
+                                   + Integer.parseInt(s[1])) + " réalisées !");
+
+        recapitulatif.setText(getUsedElement());
+
+        statTemps.setText("Temps de prod : " + timeEstimation() + " heures");
     }
 }

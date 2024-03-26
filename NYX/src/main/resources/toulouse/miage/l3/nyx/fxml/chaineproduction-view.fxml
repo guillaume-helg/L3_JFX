@@ -30,6 +30,7 @@
                                 <TableColumn fx:id="chaineNom" prefWidth="25.0" styleClass="table-column" text="Nom" />
                                 <TableColumn fx:id="chaineEntree" minWidth="250.0" prefWidth="248.20001220703125" styleClass="table-column" text="Eléments en entrée" />
                                 <TableColumn fx:id="chaineSortie" prefWidth="248.20001220703125" styleClass="table-column" text="Eléments en sortie" />
+                                <TableColumn fx:id="temps" prefWidth="248.20001220703125" styleClass="table-column" text="Temps en Heures" />
 
                             </columns>
                             <columnResizePolicy>
@@ -46,6 +47,11 @@
                             </VBox.margin>
                         </TextField>
                         <TextField fx:id="ajoutnom" promptText="Nom">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="ajouttemps" promptText="Temps en heure">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" />
                             </VBox.margin>
