@@ -14,7 +14,8 @@ import java.util.ArrayList;
  */
 public class UtilsElement {
 
-    private final static String fileName = "NYX/src/main/resources/toulouse/miage/l3/nyx/save/elements.csv";
+
+    private final static String fileName = "/toulouse/miage/l3/nyx/save/elements.csv";
 
     /* ===========================================
      * CSV FILE MANIPULATION FUNCTIONS
@@ -31,7 +32,11 @@ public class UtilsElement {
         ArrayList<Element> element = new ArrayList<>();
 
         try {
-            BufferedReader file = new BufferedReader(new FileReader(fileName));
+            InputStream inputStream = UtilsElement.class.getResourceAsStream(fileName);
+            if (inputStream == null) {
+                throw new FileNotFoundException("File not found: " + fileName);
+            }
+            BufferedReader file = new BufferedReader(new InputStreamReader(inputStream));
 
             while ((line = file.readLine()) != null) {
                 element.add(parseElement(line));
@@ -39,10 +44,12 @@ public class UtilsElement {
 
             file.close();
         } catch (IOException ex) {
-            System.out.println("Acces problem");
+            ex.printStackTrace();
+            System.out.println("Error reading file: " + ex.getMessage());
         }
         return element;
     }
+
 
     /**
      * Parse a line in parameter with the format : code, name, quantity, unity, buy price, sell price
@@ -59,26 +66,30 @@ public class UtilsElement {
     /**
      * Write on object Element into a file elements.csv
      *
-     * @param e : table with every Element of the application
+     * @param elements : table with every Element of the application
      */
-    public static void writeElement(ObservableList<Element> e) {
+    public static void writeElement(ObservableList<Element> elements) {
         try {
-            PrintWriter file = new PrintWriter(new FileWriter(fileName));
+            OutputStream outputStream = new FileOutputStream(fileName);
+            BufferedWriter file = new BufferedWriter(new OutputStreamWriter(outputStream));
 
-            for (Element a : e) {
-                file.println(a.getCode() + ";"
+            for (Element a : elements) {
+                file.write(a.getCode() + ";"
                         + a.getNom() + ";"
                         + a.getQuantite() + ";"
                         + a.getUniteMesure() + ";"
                         + a.getPrixAchat() + ";"
                         + a.getPrixVente());
+                file.newLine();
             }
 
             file.close();
         } catch (IOException ex) {
-            System.out.println("File access problem");
+            ex.printStackTrace();
+            System.out.println("Error writing to file: " + ex.getMessage());
         }
     }
+
 
 
     /* ===========================================

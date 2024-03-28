@@ -18,7 +18,11 @@ import java.util.*;
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.*;
 
-// Controller class for managing production chains in a GUI application
+/**
+ * Controller class for managing production chains in a GUI application
+ * @author Hugues Ansoborlo
+ * @version 1.0
+ */
 public class ChaineController implements Initializable {
 
     // FXML fields for UI components
@@ -83,7 +87,7 @@ public class ChaineController implements Initializable {
 
     /**
      * Navigates to the accueil view.
-     *
+     * @throws IOException in case scene do not exist
      * @param actionEvent the event that triggered the navigation
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
@@ -92,7 +96,7 @@ public class ChaineController implements Initializable {
 
     /**
      * Navigates to the inventaire view.
-     *
+     * @throws IOException in case scene do not exist
      * @param actionEvent the event that triggered the navigation
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {

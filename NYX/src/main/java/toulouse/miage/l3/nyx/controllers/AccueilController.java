@@ -24,6 +24,11 @@ import java.util.ResourceBundle;
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.parseHashmapToCommand;
 
+/**
+ * Controller for the accueil IHM
+ * @author Guillaume Helg
+ * @version 1.0
+ */
 public class AccueilController implements Initializable {
     @FXML
     public TableColumn<Chaine, String> temps;
@@ -148,6 +153,7 @@ public class AccueilController implements Initializable {
     /**
      * Enable to change the scene from accueil to chaine de production
      * @param actionEvent - click
+     * @throws IOException in case the scene do not exist
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml",
@@ -157,6 +163,7 @@ public class AccueilController implements Initializable {
     /**
      * Enable to change the scene from accueil to inventaire
      * @param actionEvent - click
+     * @throws IOException in case the scene do not exist
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml", actionEvent);

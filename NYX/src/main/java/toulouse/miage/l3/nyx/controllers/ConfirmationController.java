@@ -11,6 +11,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for managing export of command in a GUI application
+ * @author Guillaume HELG
+ * @version 1.0
+ */
 public class ConfirmationController implements Initializable {
 
     @FXML
@@ -47,8 +52,8 @@ public class ConfirmationController implements Initializable {
 
     /**
      * Enable to change the scene from confirmation to accueil
-     * @param actionEvent
-     * @throws IOException
+     * @param actionEvent click on the button
+     * @throws IOException trigger if the view do not exist
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml", actionEvent);
@@ -57,7 +62,8 @@ public class ConfirmationController implements Initializable {
 
     /**
      * Enable to change the scene from confirmation to resultat
-     * @param actionEvent - click
+     * @param actionEvent click on the button
+     * @throws IOException trigger if the view do not exist
      */
     public void goToResultat(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/resultat-view.fxml", actionEvent);
@@ -65,7 +71,8 @@ public class ConfirmationController implements Initializable {
 
     /**
      * Enable to change the scene from confirmation to chaine de production
-     * @param actionEvent - click
+     * @param actionEvent click on the button
+     * @throws IOException trigger if the view do not exist
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml", actionEvent);
@@ -73,7 +80,8 @@ public class ConfirmationController implements Initializable {
 
     /**
      * Enable to change the scene from confirmation to inventaire
-     * @param actionEvent - click
+     * @param actionEvent click on the button
+     * @throws IOException trigger if the view do not exist
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml", actionEvent);

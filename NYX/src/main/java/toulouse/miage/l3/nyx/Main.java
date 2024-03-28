@@ -20,11 +20,17 @@ import static toulouse.miage.l3.nyx.core.model.Usine.getChaine;
 import static toulouse.miage.l3.nyx.core.model.Usine.getElements;
 import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.getUsedElement;
 
+/**
+ * Main class to launch the GUI Application
+ * @author Guillaume Helg, Lucas Godard, Hugues Ansoborlo
+ * @version 1.0
+ */
 public class Main extends Application {
     public Usine usine;
 
     /**
      * Enable to set the frame of the GUI of the application
+     * @param stage take the stage
      */
     @Override
     public void start(Stage stage) {
@@ -56,6 +62,10 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Function to lauch the app
+     * @param args : string pararm
+     */
     public static void main(String[] args) {
         launch();
     }

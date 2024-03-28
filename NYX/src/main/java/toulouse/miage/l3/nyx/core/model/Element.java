@@ -2,6 +2,11 @@ package toulouse.miage.l3.nyx.core.model;
 
 import java.util.*;
 
+/**
+ * Represents an Element (Element)
+ * @author Lucas Godard, Guillaume Helg
+ * @version 1.0
+ */
 public class Element {
 
     /* ===========================================
@@ -112,14 +117,26 @@ public class Element {
      * SETTER
      * =========================================== */
 
+    /**
+     * Modify the field code with the code in parameters
+     * @param code code for an element, must respect the format E001
+     */
     public void setCode(String code) {
         this.code = code;
     }
 
+    /**
+     * Modify the field nom with the nom in parameters
+     * @param nom name that you give in String
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     * Modify the field unity with the nom in parameters
+     * @param uniteMesure unite with which you want to change
+     */
     public void setUniteMesure(Unite uniteMesure) {
         this.uniteMesure = uniteMesure;
     }

@@ -15,7 +15,11 @@ import java.util.ResourceBundle;
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsElement.*;
 
-
+/**
+ * Controller class for managing Element in a GUI application
+ * @author Lucas GODARD
+ * @version 1.0
+ */
 public class InventaireController implements Initializable {
 
     /* ===========================================
@@ -114,8 +118,9 @@ public class InventaireController implements Initializable {
      * NAVIGATION
      * =========================================== */
     /**
-     * Enable to change the scene from inventaire to acceuil
+     * Enable to change the scene from inventaire to accueil
      * @param actionEvent - click on tab
+     * @throws IOException if the scene do not exist
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/accueil-view.fxml", actionEvent);
@@ -124,6 +129,7 @@ public class InventaireController implements Initializable {
     /**
      * Enable to change the scene from inventaire to chaine de production
      * @param actionEvent : click on tab
+     * @throws IOException if the scene do not exist
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/chaineproduction-view.fxml", actionEvent);
@@ -132,6 +138,7 @@ public class InventaireController implements Initializable {
     /**
      * Enable to change the scene from inventaire to inventaire (refresh)
      * @param actionEvent : click on tab
+     * @throws IOException if the scene do not exist
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
         SceneUtils.goToScene("/toulouse/miage/l3/nyx/fxml/inventaire-view.fxml", actionEvent);
@@ -153,6 +160,7 @@ public class InventaireController implements Initializable {
 
     /**
      * Creates a new element from the information provided in the text fields
+     * @return Element created through the GUI of inventaire
      */
     public Element textfieldsToElement(){
         return new Element(ajoutcode.getText(),ajoutnom.getText(),
@@ -162,6 +170,7 @@ public class InventaireController implements Initializable {
 
     /**
      * Creates a new item from a selected row in the tableview
+     * @return Element selected in the GUI
      */
     public Element selecteditemToElement(){
         return elementTableView.getSelectionModel().getSelectedItem();

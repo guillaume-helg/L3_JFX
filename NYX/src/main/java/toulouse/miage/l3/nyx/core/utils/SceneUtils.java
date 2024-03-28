@@ -16,7 +16,7 @@ public class SceneUtils {
      * Manage the travel between each scene and loading the css of each scene
      * @param fxmlPath : path of the xml file
      * @param actionEvent : action (click)
-     * @throws IOException : exeption
+     * @throws IOException : exception in case the scene do not exist
      */
     public static void goToScene(String fxmlPath, ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(SceneUtils.class.getResource(fxmlPath)));

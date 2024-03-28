@@ -21,6 +21,7 @@ import java.util.*;
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
 import static toulouse.miage.l3.nyx.core.utils.UtilsCommande.*;
 
+
 public class ResultatController implements Initializable {
 
     @FXML
@@ -58,8 +59,9 @@ public class ResultatController implements Initializable {
     private TableColumn<Commande, String> faisabilite;
 
     /**
-     * Enable to change the scene from resultat to accueil
-     * @throws IOException
+     * Navigates to the accueil view.
+     * @throws IOException in case scene do not exist
+     * @param actionEvent the event that triggered the navigation
      */
     public void goToAccueil(ActionEvent actionEvent) throws IOException {
         clearChainesCommandes();
@@ -67,8 +69,9 @@ public class ResultatController implements Initializable {
     }
 
     /**
-     * Enable to change the scene from resultat to confirmation
-     * @param actionEvent
+     * Navigates to the confirmation view.
+     * @throws IOException in case scene do not exist
+     * @param actionEvent the event that triggered the navigation
      */
     public void goToConfirmation(ActionEvent actionEvent) throws IOException {
         placeOrder();
@@ -79,8 +82,9 @@ public class ResultatController implements Initializable {
     }
 
     /**
-     * Enable to change the scene from resultat to chaine de production
-     * @param actionEvent
+     * Navigates to the Chaine Production view.
+     * @throws IOException in case scene do not exist
+     * @param actionEvent the event that triggered the navigation
      */
     public void goToChaineProduction(ActionEvent actionEvent) throws IOException {
         clearChainesCommandes();
@@ -88,8 +92,9 @@ public class ResultatController implements Initializable {
     }
 
     /**
-     * Enable to change the scene from resultat to inventaire
-     * @param actionEvent
+     * Navigates to the Inventaire view.
+     * @throws IOException in case scene do not exist
+     * @param actionEvent the event that triggered the navigation
      */
     public void goToInventaire(ActionEvent actionEvent) throws IOException {
         clearChainesCommandes();

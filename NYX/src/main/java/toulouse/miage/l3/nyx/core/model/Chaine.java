@@ -37,6 +37,13 @@ public class Chaine {
         this.listeElementSortie = listeElementSortie;
     }
 
+    /** Constructor for the Chaine class
+     * @param code The code of the chain
+     * @param nom The name of the chain
+     * @param listeElementEntree The list of input elements and their quantities
+     * @param listeElementSortie The list of output elements and their quantities
+     * @param time time to produce this chain
+     */
     public Chaine(String code, String nom, HashMap<Element, Double> listeElementEntree, HashMap<Element, Double> listeElementSortie, int time) {
         this.code = code;
         this.nom = nom;
@@ -109,8 +116,8 @@ public class Chaine {
     }
 
     /**
-     * Create a StringBuilder to write listEntree in the correct format for the csv file
-     * @return String
+     * Parse the listeEntree into csv format
+     * @return the Hashmap entree in the csv format
      */
     public String getListeEntreeCSVType(){
         StringBuilder str = new StringBuilder();
@@ -127,6 +134,10 @@ public class Chaine {
         return str.toString();
     }
 
+    /**
+     * Parse the listeSortie into csv format
+     * @return the Hashmap sortie in the csv format
+     */
     public String getListeSortieCSVType(){
         StringBuilder str = new StringBuilder();
         for (Map.Entry<Element, Double> entry : listeElementSortie.entrySet()) {
@@ -172,14 +183,25 @@ public class Chaine {
         return feasible;
     }
 
+    /**
+     *
+     * @return the hashamp of Element and their quantities
+     */
     public HashMap<Element, Double> getListeElementEntree() {
         return listeElementEntree;
     }
 
+    /**
+     *
+     * @return the hashamp of Element and their quantities
+     */
     public HashMap<Element, Double> getListeElementSortie() {
         return listeElementSortie;
     }
 
+    /**
+     * @return the private field time
+     */
     public int getTime() {
         return this.time;
     }

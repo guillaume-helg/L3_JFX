@@ -18,6 +18,11 @@ import java.util.Map;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
 
+/**
+ * Util that enable function to write, read or compute data related to Command
+ * @author Guillaume Helg
+ * @version 1.0
+ */
 public class UtilsCommande {
     /**
      * Create new file, in which you can read every chaine in the arrayList listesCommande
@@ -32,10 +37,20 @@ public class UtilsCommande {
 
         String separator = "\n--------------------------------------------------------------------\n";
         try {
-            File fichier = new File(Paths.get("NYX", "src", "main", "resources", "toulouse", "miage", "l3", "nyx", "save", "commande", "commande_" + formattedDate + ".txt").toString());
+            // Creating destination directory in the user's Downloads directory
+            Path destinationDir = Paths.get(System.getProperty("user.home"), "Downloads", "CommandesNYX");
+            Files.createDirectories(destinationDir);
+
+            // Creating destination file path
+            Path destinationPath = destinationDir.resolve("commande_" + formattedDate + ".txt");
+
+            // Creating file object
+            File fichier = destinationPath.toFile();
+
+            // Writing to the file
             PrintWriter writer = new PrintWriter(new FileWriter(fichier));
 
-            writer.println("Date de la commande -> " + LocalDateTime.now());
+            writer.println("Date de la commande -> " + dateTime);
             writer.println(separator);
             writer.println("L'incateur de valeur est égal à -> " + calculRentabiliteProduction() + "€");
             writer.println(separator);
@@ -44,36 +59,36 @@ public class UtilsCommande {
             writer.println("La liste des commandes \n");
 
             for (Commande c : getCommandes()) {
-                if (c.getFeasible()) {
-                    writer.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
-                    writer.println("\tQuantité : " + c.getQuantity());
-                    writer.println("\tListe d'éléments d'entrée : " + c.getChaine().getFormattedListeEntree());
-                    writer.println("\tListe d'éléments de sortie : " + c.getChaine().getFormattedListeSortie());
-                    writer.println("\n");
-                } else {
-                    writer.println("############ ! Pas Faisable ! ############");
-                    writer.println("\tChaîne : " + c.getChaine().getCode() + " - " + c.getChaine().getNom());
-                    writer.println("\tQuantité : " + c.getQuantity());
-                    writer.println("\tListe d'éléments d'entrée : " + c.getChaine().getFormattedListeEntree());
-                    writer.println("\tListe d'éléments de sortie : " + c.getChaine().getFormattedListeSortie());
-                    writer.println("############ ! Pas Faisable ! ############");
-                    writer.println("\n");
-                }
+                writer.println(getCommandeDetails(c));
+                writer.println("\n");
             }
 
             writer.println(separator);
             writer.close();
-
-            Path sourcePath = fichier.toPath();
-            Path destinationPath = Paths.get(System.getProperty("user.home"), "Downloads", "CommandesNYX", fichier.getName());
-            Files.createDirectories(destinationPath.getParent());
-            Files.move(sourcePath, destinationPath);
 
         } catch (IOException ex) {
             System.err.println("File access problem");
             return false;
         }
         return true;
+    }
+
+    private static String getCommandeDetails(Commande c) {
+        StringBuilder sb = new StringBuilder();
+        if (c.getFeasible()) {
+            sb.append("\tChaîne : ").append(c.getChaine().getCode()).append(" - ").append(c.getChaine().getNom()).append("\n");
+            sb.append("\tQuantité : ").append(c.getQuantity()).append("\n");
+            sb.append("\tListe d'éléments d'entrée : ").append(c.getChaine().getFormattedListeEntree()).append("\n");
+            sb.append("\tListe d'éléments de sortie : ").append(c.getChaine().getFormattedListeSortie()).append("\n");
+        } else {
+            sb.append("############ ! Pas Faisable ! ############\n");
+            sb.append("\tChaîne : ").append(c.getChaine().getCode()).append(" - ").append(c.getChaine().getNom()).append("\n");
+            sb.append("\tQuantité : ").append(c.getQuantity()).append("\n");
+            sb.append("\tListe d'éléments d'entrée : ").append(c.getChaine().getFormattedListeEntree()).append("\n");
+            sb.append("\tListe d'éléments de sortie : ").append(c.getChaine().getFormattedListeSortie()).append("\n");
+            sb.append("############ ! Pas Faisable ! ############\n");
+        }
+        return sb.toString();
     }
 
     /**
@@ -170,6 +185,7 @@ public class UtilsCommande {
 
     /**
      * Estimation of the time to produce a command
+     * @return Estimation of time
      */
     public static int timeEstimation() {
         int totalTime = 0;
