@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static toulouse.miage.l3.nyx.core.model.Usine.*;
+import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.getChaineByName;
 
 /**
  * Util that enable function to write, read or compute data related to Command
@@ -164,7 +165,6 @@ public class UtilsCommande {
 
     /**
      * Create a string of the element used to produce the command
-     * TODO : si j'ai le temps
      * @return a list of element used to build the command with their quantity
      */
     public static String getUsedElement() {
@@ -176,6 +176,8 @@ public class UtilsCommande {
             if (c.getFeasible()) {
                // d. c.getChaine().getListeElementEntree();
                        c.getQuantity();
+            } else {
+
             }
         }
 
@@ -190,9 +192,27 @@ public class UtilsCommande {
     public static int timeEstimation() {
         int totalTime = 0;
         for(Commande c : getCommandes()) {
-            totalTime += c.getChaine().getTime() * c.getQuantity();
-        }
+            if (c.getFeasible()) {
+                totalTime += c.getChaine().getTime() * c.getQuantity();
+            } else {
+                /* Chaine chaine = c.getChaine();
+                HashMap<Element, Double> elementsEntree = chaine.getListeElementEntree();
+                for (Map.Entry<Element, Double> entry : elementsEntree.entrySet()) {
+                    Element element = entry.getKey();
+                    double quantityNeeded = entry.getValue();
 
+                    if (quantityNeeded * c.getQuantity() < element.getQuantite()) {
+                        Chaine ch = getChaineByName(getChaine(), element.getNom());
+                        if(ch.getTime() == 0) {
+                            totalTime += ch.getTime();
+                        }
+                    }
+                }
+
+                 */
+                System.out.println("Un peu long");
+            }
+        }
         return totalTime;
     }
 }

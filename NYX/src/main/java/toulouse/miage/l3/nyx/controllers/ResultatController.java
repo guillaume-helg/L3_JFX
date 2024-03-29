@@ -27,8 +27,6 @@ public class ResultatController implements Initializable {
     @FXML
     private Label statTemps;
     @FXML
-    private Label recapitulatif;
-    @FXML
     private Label stat;
     @FXML
     private Label indicateurValeur;
@@ -151,12 +149,13 @@ public class ResultatController implements Initializable {
         String[] s = getNbOrder().split("/");
         double resultat = (double) Double.parseDouble(s[0]) / Double.parseDouble(s[1]) ;
         resultatCommande.setProgress(resultat);
-        stat.setText("Résultat : " + Integer.parseInt(s[0]) + "/"
-                                   + (Integer.parseInt(s[0])
-                                   + Integer.parseInt(s[1])) + " réalisées !");
+        int total = Integer.parseInt(s[0]) + Integer.parseInt(s[1]);
+        int realisees = Integer.parseInt(s[0]);
+        double pourcentage = ((double) realisees / total) * 100;
 
-        recapitulatif.setText(getUsedElement());
+        stat.setText("Résultat : " + realisees + "/" + total + " réalisées (" + pourcentage + "%) !");
 
-        statTemps.setText("Temps de prod : " + timeEstimation() + " heures");
+
+        statTemps.setText("Temps de prod : " + timeEstimation());
     }
 }

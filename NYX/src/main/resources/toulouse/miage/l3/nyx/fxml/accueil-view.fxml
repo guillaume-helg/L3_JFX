@@ -43,8 +43,7 @@
                       <TableColumn fx:id="chaineEntree" minWidth="250.0" prefWidth="248.20001220703125" styleClass="table-column" text="Eléments en entrée" />
                       <TableColumn fx:id="chaineSortie" prefWidth="248.20001220703125" styleClass="table-column" text="Eléments en sortie" />
                       <TableColumn fx:id="qte" prefWidth="248.20001220703125" styleClass="table-column" text="Qte" />
-                      <TableColumn fx:id="temps" prefWidth="248.20001220703125" styleClass="table-column" text="Temps en Heures" />
-
+                      <TableColumn fx:id="temps" prefWidth="248.20001220703125" styleClass="table-column" text="Temps en min" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

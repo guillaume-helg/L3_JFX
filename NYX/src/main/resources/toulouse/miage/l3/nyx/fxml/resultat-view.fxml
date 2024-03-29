@@ -23,7 +23,7 @@
                <center>
                       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                           <children>
-                              <TableView fx:id="chaineTableView" fixedCellSize="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="331.0" prefWidth="1017.0" styleClass="table-view">
+                              <TableView fx:id="chaineTableView" fixedCellSize="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="431.0" prefWidth="872.0" styleClass="table-view">
                                   <columns>
                                       <TableColumn fx:id="chaineCode" prefWidth=".0" styleClass="table-column" text="Code" />
                                       <TableColumn fx:id="chaineNom" prefWidth="75.0" styleClass="table-column" text="Nom" />
@@ -40,11 +40,11 @@
                       </HBox>
                </center>
                <right>
-                  <VBox alignment="TOP_CENTER" prefHeight="331.0" prefWidth="238.0" BorderPane.alignment="CENTER">
+                  <VBox alignment="TOP_CENTER" prefHeight="410.0" prefWidth="323.0" BorderPane.alignment="CENTER">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0" spacing="6.0">
                            <children>
-                              <Label fx:id="stat" prefHeight="18.0" prefWidth="240.0" text="Résultat : " />
+                              <Label fx:id="stat" prefHeight="18.0" prefWidth="323.0" text="Résultat : " />
                               <ProgressBar fx:id="resultatCommande" prefHeight="18.0" prefWidth="238.0" progress="0.0" />
                            </children>
                         </VBox>
@@ -58,11 +58,7 @@
                                  <Label fx:id="statTemps" prefHeight="17.0" prefWidth="252.0" text="Temps total : " />
                              </children>
                          </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label fx:id="recapitulatif" text="Label" />
-                           </children>
-                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
                      </children>
                      <BorderPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

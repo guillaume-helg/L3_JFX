@@ -25,7 +25,11 @@ import static toulouse.miage.l3.nyx.core.utils.UtilsChaine.*;
  */
 public class ChaineController implements Initializable {
 
-    // FXML fields for UI components
+
+    @FXML
+    public TableColumn<Chaine, String> temps;
+    @FXML
+    public TextField ajouttemps;
     @FXML
     private TextField inputQuantiteS;
     @FXML
@@ -74,6 +78,9 @@ public class ChaineController implements Initializable {
         comboBoxElemE.setItems(getNomElement());
         comboBoxElemS.setItems(getNomElement());
 
+        temps.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getTime())));
+
+
         // Add listener to update text fields when a chain is selected
         chaineTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -81,6 +88,7 @@ public class ChaineController implements Initializable {
                 ajoutnom.setText(newSelection.getNom());
                 ajoutListeEntree.setText(String.valueOf(newSelection.getListeEntreeCSVType()));
                 ajoutListeSortie.setText(String.valueOf(newSelection.getListeSortieCSVType()));
+                ajouttemps.setText(String.valueOf(newSelection.getTime()));
             }
         });
     }
@@ -142,7 +150,8 @@ public class ChaineController implements Initializable {
         try{
             Chaine c = new Chaine(ajoutcode.getText(), ajoutnom.getText(),
                     parseElementList(ajoutListeEntree.getText()),
-                    parseElementList(ajoutListeSortie.getText()));
+                    parseElementList(ajoutListeSortie.getText()),
+                    Integer.parseInt(ajouttemps.getText()));
 
             if(checkCodeChaine(ajoutcode.getText())
                     && checkNomChaine(ajoutnom.getText())){
@@ -167,7 +176,8 @@ public class ChaineController implements Initializable {
     public void modifyChaine() {
         Chaine post = new Chaine(ajoutcode.getText(), ajoutnom.getText(),
                 parseElementList(ajoutListeEntree.getText()),
-                parseElementList(ajoutListeSortie.getText()));
+                parseElementList(ajoutListeSortie.getText()),
+                Integer.parseInt(ajouttemps.getText()));
         Chaine pre=chaineTableView.getSelectionModel().getSelectedItem();
         if (chainesContains(pre)){
             modifyToChaine(pre,post);
@@ -183,6 +193,7 @@ public class ChaineController implements Initializable {
         ajoutnom.setText("");
         ajoutListeEntree.setText("");
         ajoutListeSortie.setText("");
+        ajouttemps.setText("");
     }
 
     /**
